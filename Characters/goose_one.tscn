@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dmkfwlp3crrc7"]
+[gd_scene load_steps=18 format=3 uid="uid://dmkfwlp3crrc7"]
 
 [ext_resource type="Texture2D" uid="uid://duqptn4vrqanp" path="res://Visuels/image 15.34.42.png" id="1_awr47"]
 [ext_resource type="Script" uid="uid://cjeo5xvhxnkd8" path="res://Characters/goose_one.gd" id="1_nhrjo"]
 [ext_resource type="Texture2D" uid="uid://d1dmdwrus6r1q" path="res://Visuels/Goose_move.png" id="3_1istj"]
 [ext_resource type="AudioStream" uid="uid://xwcj861s47dd" path="res://Sound/knife.wav" id="3_1o6sh"]
+[ext_resource type="Texture2D" uid="uid://byar4doo43cmv" path="res://Visuels/bec.png" id="5_41shl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nhrjo"]
 atlas = ExtResource("1_awr47")
@@ -66,6 +67,35 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_awr47"]
 size = Vector2(94, 150)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwgcs"]
+atlas = ExtResource("5_41shl")
+region = Rect2(0, 0, 1520, 1520)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lud4l"]
+atlas = ExtResource("5_41shl")
+region = Rect2(0, 1520, 1520, 1520)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwrcf"]
+atlas = ExtResource("5_41shl")
+region = Rect2(0, 3040, 1520, 1520)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jk1bf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwgcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lud4l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwrcf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
 [node name="GooseOne" type="CharacterBody2D"]
 position = Vector2(587, 296)
 motion_mode = 1
@@ -84,3 +114,10 @@ shape = SubResource("RectangleShape2D_awr47")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_1o6sh")
+
+[node name="BeakAnimation" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(10, -38)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_jk1bf")
+offset = Vector2(600, 0)
