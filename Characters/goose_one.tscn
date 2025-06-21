@@ -1,0 +1,86 @@
+[gd_scene load_steps=13 format=3 uid="uid://dmkfwlp3crrc7"]
+
+[ext_resource type="Texture2D" uid="uid://duqptn4vrqanp" path="res://Visuels/image 15.34.42.png" id="1_awr47"]
+[ext_resource type="Script" uid="uid://cjeo5xvhxnkd8" path="res://Characters/goose_one.gd" id="1_nhrjo"]
+[ext_resource type="Texture2D" uid="uid://d1dmdwrus6r1q" path="res://Visuels/Goose_move.png" id="3_1istj"]
+[ext_resource type="AudioStream" uid="uid://xwcj861s47dd" path="res://Sound/knife.wav" id="3_1o6sh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhrjo"]
+atlas = ExtResource("1_awr47")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1o6sh"]
+atlas = ExtResource("1_awr47")
+region = Rect2(0, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1istj"]
+atlas = ExtResource("1_awr47")
+region = Rect2(0, 640, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_41shl"]
+atlas = ExtResource("3_1istj")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_btgeg"]
+atlas = ExtResource("3_1istj")
+region = Rect2(0, 320, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y12rt"]
+atlas = ExtResource("3_1istj")
+region = Rect2(0, 640, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_41shl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhrjo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1o6sh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1istj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1o6sh")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_41shl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_btgeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y12rt")
+}],
+"loop": true,
+"name": &"walking",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_awr47"]
+size = Vector2(94, 150)
+
+[node name="GooseOne" type="CharacterBody2D"]
+position = Vector2(587, 296)
+motion_mode = 1
+script = ExtResource("1_nhrjo")
+SPEED = 500.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_41shl")
+animation = &"walking"
+autoplay = "walking"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 16)
+shape = SubResource("RectangleShape2D_awr47")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_1o6sh")
