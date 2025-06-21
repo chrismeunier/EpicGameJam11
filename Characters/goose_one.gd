@@ -21,14 +21,15 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
-		animated_sprite_2d.stop()
+		if animated_sprite_2d.animation == "walking":
+			animated_sprite_2d.stop()
 
 	move_and_slide()
 
 	animated_sprite_2d.flip_h = directionX < 0
 
-# func _process(delta: float) -> void:
-# 	if Input.is_action_just_pressed("ui_accept"):
-# 		animated_sprite_2d.play("default")
-# 		if not audio_stream_player.playing:
-# 			audio_stream_player.play()
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_accept"):
+		animated_sprite_2d.play("default")
+		if not audio_stream_player.playing:
+			audio_stream_player.play()
