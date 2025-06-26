@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var beak_animation: AnimatedSprite2D = $BeakAnimation
 
 @export var SPEED = 300.0
 const JUMP_VELOCITY = -400.0
@@ -27,9 +28,13 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 	animated_sprite_2d.flip_h = directionX < 0
+	beak_animation.flip_h = directionX < 0
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_accept"):
 		animated_sprite_2d.play("default")
 		if not audio_stream_player.playing:
 			audio_stream_player.play()
+			
+	if Input.is_action_just_pressed("ui_focus_next"):
+		beak_animation.play("default")
