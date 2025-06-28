@@ -6,11 +6,14 @@ class_name CommandItem
 @onready var label: Label = %Label
 @onready var id_label: Label = %IdLabel
 
+@export var label_x_value := 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	id_label.text = str(id)
+	if label_x_value < 1:
+		label.text = ""
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func increment_label():
+	label_x_value = label_x_value + 1
+	label.text = "X" + str(label_x_value)
