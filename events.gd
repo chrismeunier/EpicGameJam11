@@ -14,6 +14,9 @@ signal to_select_mode
 signal movement_ended
 # Call "Events.movement_ended.emit()" when movement is done
 
+# Feedback signal to know if granny made the right move
+signal moved_successfully(success: bool)
+
 
 func _ready() -> void:
 	pass # Replace with function body.
