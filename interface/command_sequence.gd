@@ -5,7 +5,8 @@ const COMMAND_ITEM = preload("res://interface/command_item_v_2.tscn")
 
 @onready var grid_container: GridContainer = %GridContainer
 
-var cmd_list = []
+# list of registered commands
+var cmd_list : Array[int] = []
 
 func _ready() -> void:
 	for item in get_sequence():
