@@ -15,8 +15,6 @@ func _ready() -> void:
 		item.mouse_filter = MOUSE_FILTER_IGNORE
 		item.toggle_mode = true
 
-func _process(_delta: float) -> void:
-	print(cmd_list)
 func get_sequence():
 	return grid_container.get_children()
 
@@ -27,7 +25,11 @@ func get_last_command_item() -> CommandItem:
 
 func remove_last_command_item():
 	if grid_container.get_child_count():
-		get_last_command_item().call_deferred("queue_free")
+		var last_item = get_last_command_item()
+		if len(cmd_list) > 1 and cmd_list[-1] == cmd_list[-2]:
+			last_item.decrement_label()
+		else:
+			last_item.call_deferred("queue_free")
 		cmd_list.pop_back()
 
 func disable_sequence():
