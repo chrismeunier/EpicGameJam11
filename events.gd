@@ -9,9 +9,6 @@ signal go_right
 signal go_up
 signal go_down
 
-# Feedback signal to know if granny made the right move
-signal moved_successfully(success: bool)
-
 func _ready() -> void:
 	pass # Replace with function body.
 
