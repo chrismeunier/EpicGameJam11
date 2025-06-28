@@ -1,7 +1,7 @@
 extends VBoxContainer
 class_name SequencePanel
 
-const COMMAND_ITEM = preload("res://interface/command_item.tscn")
+const COMMAND_ITEM = preload("res://interface/command_item_v_2.tscn")
 
 @onready var grid_container: GridContainer = %GridContainer
 
