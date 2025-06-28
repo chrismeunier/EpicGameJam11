@@ -23,18 +23,24 @@ columns = 4
 
 [node name="CommandItem" parent="GridContainer" instance=ExtResource("2_gfyro")]
 layout_mode = 2
+disabled = true
 
 [node name="CommandItem2" parent="GridContainer" instance=ExtResource("2_gfyro")]
 layout_mode = 2
+toggle_mode = true
+button_pressed = true
+id = 1
 
 [node name="CommandItem3" parent="GridContainer" instance=ExtResource("2_gfyro")]
 layout_mode = 2
 
 [node name="CommandItem4" parent="GridContainer" instance=ExtResource("2_gfyro")]
 layout_mode = 2
+id = 2
 
 [node name="CommandItem5" parent="GridContainer" instance=ExtResource("2_gfyro")]
 layout_mode = 2
+id = 3
 
 [node name="CommandItem6" parent="GridContainer" instance=ExtResource("2_gfyro")]
 layout_mode = 2
