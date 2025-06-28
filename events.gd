@@ -11,11 +11,9 @@ signal go_down
 
 # Signals to interact with the control panel
 signal to_select_mode
-signal movement_ended
-# Call "Events.movement_ended.emit()" when movement is done
-
 # Feedback signal to know if granny made the right move
-signal moved_successfully(success: bool)
+signal movement_ended(success: bool)
+# Call "Events.movement_ended.emit(value)" when movement is done
 
 
 func _ready() -> void:

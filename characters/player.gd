@@ -30,7 +30,7 @@ func _process(_delta: float) -> void:
 		if disturbanceLvl != "lvl0":
 			new_signal = disturb_signal()
 
-		Events.moved_successfully.emit(new_signal == signal_direction)
+		Events.movement_ended.emit(new_signal == signal_direction)
 
 		if new_signal == signal_direction:
 			play_sound(signal_direction)
