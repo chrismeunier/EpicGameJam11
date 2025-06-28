@@ -32,6 +32,7 @@ func _process(_delta: float) -> void:
 
 		Events.moved_successfully.emit(new_signal == signal_direction)
 		signal_direction = new_signal
+		play_sound()
 		move(signal_direction)
 	else:
 		move(Vector2.ZERO)
@@ -155,4 +156,25 @@ func get_new_random_signal(proba: float) -> Vector2:
 				return Vector2.UP
 	
 	return signal_direction
+
+func play_sound() -> void:
+	var player: AudioStreamPlayer
+	match signal_direction:
+		Vector2.LEFT:
+			var count = AudioManager.gameplay_left.get_child_count() - 1
+			var index = randi % count
+			player = AudioManager.gameplay_left.get_child(index)
+		Vector2.RIGHT:
+			var count = AudioManager.gameplay_right.get_child_count() - 1
+			var index = randi % count
+			player = AudioManager.gameplay_right.get_child(index)
+		Vector2.DOWN:
+			var count = AudioManager.gameplay_down.get_child_count() - 1
+			var index = randi % count
+			player = AudioManager.gameplay_down.get_child(index)
+		Vector2.UP:
+			var count = AudioManager.gameplay_up.get_child_count() - 1
+			var index = randi % count
+			player = AudioManager.gameplay_up.get_child(index)
 	
+	player.play()
