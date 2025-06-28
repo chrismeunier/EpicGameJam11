@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dyg7pxyytxieq"]
+[gd_scene load_steps=34 format=3 uid="uid://dyg7pxyytxieq"]
 
 [ext_resource type="Script" uid="uid://c6efr17g6np36" path="res://Sound/audio_manager.gd" id="1_vrqsf"]
 [ext_resource type="AudioStream" uid="uid://cclfnybxwu85h" path="res://Sound/missunderstanding-001.wav" id="2_643oj"]
@@ -31,6 +31,8 @@
 [ext_resource type="AudioStream" uid="uid://dh0aqhnrot7jl" path="res://Sound/gameplay-directions-down-001.wav" id="29_h3vwp"]
 [ext_resource type="AudioStream" uid="uid://bh2cmt5suxbyr" path="res://Sound/gameplay-directions-down-002.wav" id="30_2k3ny"]
 [ext_resource type="AudioStream" uid="uid://btyq2gl7edv5x" path="res://Sound/grandma-move-loop.wav" id="31_gwav0"]
+[ext_resource type="AudioStream" uid="uid://bkbbr3oij4gsh" path="res://Sound/enter-carzone1.wav" id="32_ujgfe"]
+[ext_resource type="AudioStream" uid="uid://dgcpxwef2htxt" path="res://Sound/enter-carzone2.wav" id="33_dqga6"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_vrqsf")
@@ -194,3 +196,12 @@ max_polyphony = 2
 unique_name_in_owner = true
 stream = ExtResource("31_gwav0")
 max_polyphony = 2
+
+[node name="EnterCarZone" type="Node" parent="Gameplay"]
+unique_name_in_owner = true
+
+[node name="Klaxon1" type="AudioStreamPlayer" parent="Gameplay/EnterCarZone"]
+stream = ExtResource("32_ujgfe")
+
+[node name="Klaxon2" type="AudioStreamPlayer" parent="Gameplay/EnterCarZone"]
+stream = ExtResource("33_dqga6")
