@@ -2,9 +2,10 @@ extends Node2D
 
 var tilemap: TileMapLayer
 @onready var anim = $AnimatedSprite2D
+@onready var rayCast = $AnimatedSprite2D/RayCast2D
 
 var lastDirection = Vector2.ZERO
-var can_move: bool = true
+var can_move_input: bool = true
 const MOVE_COOLDOWN := 0.3  # seconds between moves
 
 # Called when the node enters the scene tree for the first time.
@@ -12,8 +13,8 @@ func _ready() -> void:
 	# Optional: preload or set up any timers
 	pass
 
-func _process(delta: float) -> void:
-	if not can_move:
+func _process(_delta: float) -> void:
+	if not can_move_input:
 		return
 		
 	var input_direction = Vector2.ZERO
@@ -39,8 +40,7 @@ func move(direction: Vector2):
 		handle_idle()
 		return
 	
-	can_move = false  # lock input
-	animate_player(direction)
+	can_move_input = false  # lock input
 
 	var currentTile = tilemap.local_to_map(global_position)
 	var targetTile: Vector2i = Vector2i(
@@ -48,12 +48,26 @@ func move(direction: Vector2):
 		currentTile.y + int(direction.y),
 	)
 	
+	var tileData: TileData = tilemap.get_cell_tile_data(targetTile)
+	
+	if (tileData.get_custom_data("walkable") == false):
+		can_move_input = true
+		return
+	
+	rayCast.target_position = direction * 64
+	rayCast.force_raycast_update()
+	
+	if rayCast.is_colliding():
+		can_move_input = true
+		return
+	
+	animate_player(direction)
 	global_position = tilemap.map_to_local(targetTile)
 	lastDirection = direction
 	
 	# Start cooldown
 	await get_tree().create_timer(MOVE_COOLDOWN).timeout
-	can_move = true
+	can_move_input = true
 
 func animate_player(direction: Vector2) -> void:
 	if direction == Vector2.DOWN and anim.animation != "move_down":
