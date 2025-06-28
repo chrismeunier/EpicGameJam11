@@ -15,10 +15,28 @@ run/main_scene="uid://gje6isjwjbvi"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Events="*res://events.gd"
+
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=480
+window/size/resizable=false
+window/size/always_on_top=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_state_charts/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://interface/": "yellow"
+}
+
+[gui]
+
+theme/custom="uid://bo1gfp2uqybx"
 
 [input]
 

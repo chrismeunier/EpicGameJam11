@@ -1,0 +1,173 @@
+[gd_scene load_steps=13 format=3 uid="uid://udway7ncy7id"]
+
+[ext_resource type="Script" uid="uid://2mux5u6bkh0j" path="res://interface/controls.gd" id="1_ij41j"]
+[ext_resource type="PackedScene" uid="uid://dvjjg6cpbfily" path="res://interface/command_select.tscn" id="2_x0sgd"]
+[ext_resource type="Texture2D" uid="uid://cfar6npgupuuf" path="res://icon.svg" id="3_epadu"]
+[ext_resource type="PackedScene" uid="uid://jcmlafiwx4rg" path="res://interface/command_sequence.tscn" id="3_lodp2"]
+[ext_resource type="Theme" uid="uid://bo1gfp2uqybx" path="res://fonts/pixelFont.tres" id="5_2upaq"]
+[ext_resource type="Texture2D" uid="uid://bs7s25k1wngu0" path="res://Visuels/icons/iconSelect.svg" id="5_oghbf"]
+[ext_resource type="Script" uid="uid://couw105c3bde4" path="res://addons/godot_state_charts/state_chart.gd" id="6_krx4v"]
+[ext_resource type="Texture2D" uid="uid://drlimo86dlbvv" path="res://Visuels/icons/iconHover.svg" id="6_uqaec"]
+[ext_resource type="Script" uid="uid://jk2jm1g6q853" path="res://addons/godot_state_charts/compound_state.gd" id="7_mi4ox"]
+[ext_resource type="Texture2D" uid="uid://bqn10tht0xpdd" path="res://Visuels/icons/iconGray.svg" id="7_vgvyt"]
+[ext_resource type="Script" uid="uid://cytafq8i1y8qm" path="res://addons/godot_state_charts/atomic_state.gd" id="8_65j56"]
+[ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="9_bnwvy"]
+
+[node name="Controls" type="CanvasLayer"]
+script = ExtResource("1_ij41j")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+texture_filter = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -236.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="MainMarginContainer" type="MarginContainer" parent="PanelContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="MainVerticalLayout" type="VBoxContainer" parent="PanelContainer/MainMarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="CommandSelect" parent="PanelContainer/MainMarginContainer/MainVerticalLayout" instance=ExtResource("2_x0sgd")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Separator" type="TextureRect" parent="PanelContainer/MainMarginContainer/MainVerticalLayout"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+texture = ExtResource("3_epadu")
+expand_mode = 1
+
+[node name="CommandSequence" parent="PanelContainer/MainMarginContainer/MainVerticalLayout" instance=ExtResource("3_lodp2")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="PanelContainer/MainMarginContainer/MainVerticalLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MainMarginContainer/MainVerticalLayout"]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="UndoButton" type="TextureButton" parent="PanelContainer/MainMarginContainer/MainVerticalLayout/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+texture_normal = ExtResource("3_epadu")
+texture_pressed = ExtResource("5_oghbf")
+texture_hover = ExtResource("6_uqaec")
+texture_disabled = ExtResource("7_vgvyt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="PanelContainer/MainMarginContainer/MainVerticalLayout/HBoxContainer/UndoButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_2upaq")
+theme_override_font_sizes/font_size = 48
+text = "Undo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="PanelContainer/MainMarginContainer/MainVerticalLayout/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("3_epadu")
+texture_pressed = ExtResource("5_oghbf")
+texture_hover = ExtResource("6_uqaec")
+texture_disabled = ExtResource("7_vgvyt")
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="PanelContainer/MainMarginContainer/MainVerticalLayout/HBoxContainer/PlayButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_2upaq")
+theme_override_font_sizes/font_size = 64
+text = "Play !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StateChart" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("6_krx4v")
+track_in_editor = true
+metadata/_custom_type_script = "uid://couw105c3bde4"
+
+[node name="CompoundState" type="Node" parent="StateChart"]
+script = ExtResource("7_mi4ox")
+initial_state = NodePath("Inactive")
+metadata/_custom_type_script = "uid://jk2jm1g6q853"
+
+[node name="Inactive" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("8_65j56")
+metadata/_custom_type_script = "uid://cytafq8i1y8qm"
+
+[node name="ToSelecting" type="Node" parent="StateChart/CompoundState/Inactive"]
+script = ExtResource("9_bnwvy")
+to = NodePath("../../Selecting")
+event = &"start_selecting"
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="Selecting" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("8_65j56")
+metadata/_custom_type_script = "uid://cytafq8i1y8qm"
+
+[node name="ToPlaying" type="Node" parent="StateChart/CompoundState/Selecting"]
+script = ExtResource("9_bnwvy")
+to = NodePath("../../Playing")
+event = &"start_playing"
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="Playing" type="Node" parent="StateChart/CompoundState"]
+script = ExtResource("8_65j56")
+metadata/_custom_type_script = "uid://cytafq8i1y8qm"
+
+[node name="ToInactive" type="Node" parent="StateChart/CompoundState/Playing"]
+script = ExtResource("9_bnwvy")
+to = NodePath("../../Inactive")
+event = &"end_game"
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[connection signal="pressed" from="PanelContainer/MainMarginContainer/MainVerticalLayout/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="state_entered" from="StateChart/CompoundState/Inactive" to="." method="_on_inactive_state_entered"]
+[connection signal="state_input" from="StateChart/CompoundState/Inactive" to="." method="_on_inactive_state_input"]
+[connection signal="state_entered" from="StateChart/CompoundState/Selecting" to="." method="_on_selecting_state_entered"]
+[connection signal="state_exited" from="StateChart/CompoundState/Selecting" to="." method="_on_selecting_state_exited"]
+[connection signal="state_input" from="StateChart/CompoundState/Selecting" to="." method="_on_selecting_state_input"]
+[connection signal="state_entered" from="StateChart/CompoundState/Playing" to="." method="_on_playing_state_entered"]
+[connection signal="state_input" from="StateChart/CompoundState/Playing" to="." method="_on_playing_state_input"]
