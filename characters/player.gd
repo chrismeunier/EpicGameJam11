@@ -13,9 +13,9 @@ var signal_direction = Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	Events.go_left.connect(on_signal_go_left)
-	Events.go_left.connect(on_signal_go_right)
-	Events.go_left.connect(on_signal_go_down)
-	Events.go_left.connect(on_signal_go_up)
+	Events.go_right.connect(on_signal_go_right)
+	Events.go_down.connect(on_signal_go_down)
+	Events.go_up.connect(on_signal_go_up)
 
 func _process(_delta: float) -> void:
 	if not can_move_input:
