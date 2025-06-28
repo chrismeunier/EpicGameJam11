@@ -228,7 +228,7 @@ metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
 
 [node name="ToEnd" type="Node" parent="StateChart/CompoundState/Playing/NextMove"]
 script = ExtResource("9_bnwvy")
-to = NodePath("../../SignalToMove")
+to = NodePath("../../End")
 event = &"finished"
 delay_in_seconds = "0.0"
 metadata/_custom_type_script = "uid://cf1nsco3w0mf6"

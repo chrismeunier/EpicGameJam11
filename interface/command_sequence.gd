@@ -84,6 +84,9 @@ func trigger_movement(direction: int):
 		DOWN:
 			# Events.go_down.emit()
 			print("Going down!")
+	#! FIXME some hack to test the states
+	await get_tree().create_timer(2).timeout
+	Events.movement_ended.emit()
 
 func should_loop() -> bool:
 	if get_first_command_item().label_x_value > 1:
@@ -91,14 +94,14 @@ func should_loop() -> bool:
 	return false
 
 func decrement_current_command():
-	var current_command = get_first_command_item()
-	current_command.label_x_value = current_command.label_x_value - 1
+	get_first_command_item().decrement_label()
+	cmd_list.pop_front()
 
 func pop_free_first_command():
 	cmd_list.pop_front()
 	var command_item = get_first_command_item()
 	command_item.call_deferred("queue_free")
 
-func is_not_over() -> bool:
-	print("Sequence over", len(cmd_list), get_sequence())
+func is_not_empty() -> bool:
+	#print("Sequence over ? ", cmd_list, get_sequence())
 	return bool(len(cmd_list))

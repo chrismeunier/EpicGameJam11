@@ -36,7 +36,7 @@ func decrement_label():
 	if label_x_value < 1:
 		label.text = ""
 		# free here?
-		call_deferred("queue_free")
+		#call_deferred("queue_free")
 
 
 func disable():

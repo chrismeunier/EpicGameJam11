@@ -87,15 +87,16 @@ func _on_init_state_entered() -> void:
 
 func _on_signal_to_move_state_entered() -> void:
 	command_sequence.start_animation()
-	command_sequence.send_movement_direction() #TODO
+	command_sequence.send_movement_direction()
 
 
 func to_ask_for_loop():
 	state_chart.send_event("ask_for_loop")
 func _on_repeat_state_entered() -> void:
-	if command_sequence.should_loop(): #TODO
+	if command_sequence.should_loop():
 		state_chart.send_event("count_down")
 	else:
+		command_sequence.pop_free_first_command()
 		state_chart.send_event("no_repeat")
 
 
@@ -105,8 +106,7 @@ func _on_decrement_state_entered() -> void:
 
 
 func _on_next_move_state_entered() -> void:
-	command_sequence.pop_free_first_command()
-	if command_sequence.is_not_over():
+	if command_sequence.is_not_empty():
 		state_chart.send_event("move")
 	else:
 		state_chart.send_event("finished")
