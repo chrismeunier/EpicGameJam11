@@ -6,7 +6,7 @@ var tilemap: TileMapLayer
 
 var lastDirection = Vector2.ZERO
 var can_move_input: bool = true
-const MOVE_COOLDOWN := 0.3  # seconds between moves
+const MOVE_COOLDOWN := 0.84  # seconds between moves
 var disturbanceLvl = "lvl0"
 var signal_direction = Vector2.ZERO
 
@@ -30,8 +30,13 @@ func _process(_delta: float) -> void:
 			new_signal = disturb_signal()
 
 		Events.moved_successfully.emit(new_signal == signal_direction)
+
+		if new_signal == signal_direction:
+			play_sound(signal_direction)
+		else:
+			play_error_sound()
+			
 		signal_direction = new_signal
-		play_sound(signal_direction)
 		move(signal_direction)
 		signal_direction = Vector2.ZERO
 	else:
@@ -152,23 +157,26 @@ func get_new_random_signal(proba: float) -> Vector2:
 	return signal_direction
 
 func play_sound(direction: Vector2) -> void:
-	var player: AudioStreamPlayer
+	var instructionPlayer: AudioStreamPlayer
 	match direction:
 		Vector2.LEFT:
-			var count = AudioManager.gameplay_left.get_child_count()
-			var index = randi() % count
-			player = AudioManager.gameplay_left.get_child(index)
+			var index = randi() % AudioManager.gameplay_left.get_child_count()
+			instructionPlayer = AudioManager.gameplay_left.get_child(index)
 		Vector2.RIGHT:
-			var count = AudioManager.gameplay_right.get_child_count()
-			var index = randi() % count
-			player = AudioManager.gameplay_right.get_child(index)
+			var index = randi() % AudioManager.gameplay_right.get_child_count()
+			instructionPlayer = AudioManager.gameplay_right.get_child(index)
 		Vector2.DOWN:
-			var count = AudioManager.gameplay_down.get_child_count()
-			var index = randi() % count
-			player = AudioManager.gameplay_down.get_child(index)
+			var index = randi() % AudioManager.gameplay_down.get_child_count()
+			instructionPlayer = AudioManager.gameplay_down.get_child(index)
 		Vector2.UP:
-			var count = AudioManager.gameplay_up.get_child_count()
-			var index = randi() % count
-			player = AudioManager.gameplay_up.get_child(index)
+			var index = randi() % AudioManager.gameplay_up.get_child_count()
+			instructionPlayer = AudioManager.gameplay_up.get_child(index)
 	
+	instructionPlayer.play()
+	var stepPlayer: AudioStreamPlayer = AudioManager.audio_move
+	stepPlayer.play()
+
+func play_error_sound() -> void:
+	var index = randi() % AudioManager.error.get_child_count()
+	var player: AudioStreamPlayer = AudioManager.error.get_child(index)
 	player.play()
