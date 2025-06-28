@@ -1,11 +1,14 @@
 extends VBoxContainer
 
+@onready var grid_container: GridContainer = %GridContainer
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func get_sequence():
+	return grid_container.get_children() # as Array[CommandItem]
 
+func disable_sequence():
+	for item in get_sequence():
+		item.disabled = true
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func enable_sequence():
+	for item in get_sequence():
+		item.disabled = false
