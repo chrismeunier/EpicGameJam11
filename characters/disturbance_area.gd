@@ -46,6 +46,7 @@ func _ready():
 			float o = cos(TIME * speed);
 			float ring_size = ring_radius + o * oscillation_scalar;
 			float alpha = step(dist, ring_size) * smoothstep(ring_size * (1.0 - thickness_scalar), ring_size, dist);
+			alpha = alpha * 0.1;
 			float w = range_lerp(o, -1.0, 1.0, 1.0, 0.0);
 			COLOR = vec4(mix(main_color.rgb, lerp_color.rgb, w), alpha);
 		}
@@ -60,6 +61,6 @@ func _ready():
 	target_node.material = shader_material
 
 	# Optional: Modify uniforms from GDScript
-	shader_material.set_shader_parameter("main_color", Color.YELLOW)
-	shader_material.set_shader_parameter("lerp_color", Color.RED)
+	shader_material.set_shader_parameter("main_color", Color(Color.YELLOW, 0.2))
+	shader_material.set_shader_parameter("lerp_color", Color(Color.YELLOW, 0.2))
 	shader_material.set_shader_parameter("speed", 2.5)
