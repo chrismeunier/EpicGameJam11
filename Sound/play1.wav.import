@@ -2,13 +2,13 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://cl4v4h447x6xm"
-path="res://.godot/imported/Atcha1.wav-57427c20bc381bbed8924005b0d2331a.sample"
+uid="uid://d37h1iql26mpn"
+path="res://.godot/imported/play1.wav-867016b79452a104f0c36b4d8294562a.sample"
 
 [deps]
 
-source_file="res://Visuels/Atcha1.wav"
-dest_files=["res://.godot/imported/Atcha1.wav-57427c20bc381bbed8924005b0d2331a.sample"]
+source_file="res://Sound/play1.wav"
+dest_files=["res://.godot/imported/play1.wav-867016b79452a104f0c36b4d8294562a.sample"]
 
 [params]
 

@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://c46d7jt8i3i33"]
 
 [ext_resource type="Script" uid="uid://cjtbrby16pu7v" path="res://characters/babark.gd" id="1_ne8ia"]
-[ext_resource type="AudioStream" uid="uid://cl4v4h447x6xm" path="res://Visuels/Atcha1.wav" id="2_c8fhr"]
+[ext_resource type="AudioStream" uid="uid://b7wyhjft6r2p6" path="res://Sound/dog-loop.wav" id="2_c8fhr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_eprk0"]
-radius = 64.0
+radius = 48.0
 
 [node name="Babark" type="Node2D"]
 script = ExtResource("1_ne8ia")
@@ -19,3 +19,7 @@ shape = SubResource("CircleShape2D_eprk0")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("2_c8fhr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

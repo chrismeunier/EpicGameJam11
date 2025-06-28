@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=4 uid="uid://gje6isjwjbvi"]
+[gd_scene load_steps=9 format=4 uid="uid://gje6isjwjbvi"]
 
 [ext_resource type="Texture2D" uid="uid://bddfgmg47ykri" path="res://Visuels/Miss_Understanding_Tilemap.png" id="1_f3sb7"]
 [ext_resource type="Script" uid="uid://cbukxpqeggff4" path="res://TileMap/world.gd" id="1_gynnu"]
 [ext_resource type="PackedScene" uid="uid://dkjvq1dd5doeu" path="res://characters/player.tscn" id="3_io7qj"]
+[ext_resource type="PackedScene" uid="uid://c46d7jt8i3i33" path="res://characters/Babark.tscn" id="4_io7qj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7u2o6"]
 bounce = 0.3
@@ -260,3 +261,6 @@ tile_map_data = PackedByteArray("AAAAAAAAAAACAAMAAAABAAAAAAAEAAUAACACAAAAAAAEAAU
 tile_set = SubResource("TileSet_2ukcw")
 
 [node name="Player" parent="." instance=ExtResource("3_io7qj")]
+
+[node name="Babark" parent="." instance=ExtResource("4_io7qj")]
+position = Vector2(342, 47)
