@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dvjjg6cpbfily"]
 
 [ext_resource type="Script" uid="uid://p65qa15c5ehc" path="res://interface/command_select.gd" id="1_68k6a"]
-[ext_resource type="PackedScene" uid="uid://b87lnji1mtd60" path="res://interface/command_item.tscn" id="2_68k6a"]
+[ext_resource type="PackedScene" uid="uid://v7j3eku8xods" path="res://interface/command_item_v_2.tscn" id="2_68k6a"]
 
 [node name="CommandSelect" type="VBoxContainer"]
 anchors_preset = 15

@@ -1,14 +1,13 @@
 extends VBoxContainer
 class_name SequencePanel
 
-const COMMAND_ITEM = preload("res://interface/command_item.tscn")
+const COMMAND_ITEM = preload("res://interface/command_item_v_2.tscn")
 
 @onready var grid_container: GridContainer = %GridContainer
 
 var cmd_list = []
 
 func _ready() -> void:
-	#clear_sequence() # clean the default view
 	for item in get_sequence():
 		item.mouse_filter = MOUSE_FILTER_IGNORE
 		item.toggle_mode = true
@@ -25,11 +24,11 @@ func remove_last_command_item():
 
 func disable_sequence():
 	for item in get_sequence():
-		item.disabled = true
+		item.custom_disabled = true
 
 func enable_sequence():
 	for item in get_sequence():
-		item.disabled = false
+		item.custom_disabled = false
 
 func clear_sequence():
 	cmd_list = []
