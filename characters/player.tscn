@@ -218,7 +218,7 @@ animations = [{
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tory2"]
 radius = 8.0
 
-[node name="Player" type="Node2D"]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_3eadt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -234,8 +234,5 @@ zoom = Vector2(2, 2)
 target_position = Vector2(0, 64)
 collide_with_areas = true
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-collision_layer = 17
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_tory2")
