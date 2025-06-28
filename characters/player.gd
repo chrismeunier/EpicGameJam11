@@ -22,8 +22,7 @@ func _process(_delta: float) -> void:
 		return
 		
 	# Uncomment this to move manually
-	# move_manually()
-	# return	
+	move_manually()
 	
 	if signal_direction != Vector2.ZERO:
 		var new_signal: Vector2 = signal_direction
@@ -32,8 +31,9 @@ func _process(_delta: float) -> void:
 
 		Events.moved_successfully.emit(new_signal == signal_direction)
 		signal_direction = new_signal
-		play_sound()
+		play_sound(signal_direction)
 		move(signal_direction)
+		signal_direction = Vector2.ZERO
 	else:
 		move(Vector2.ZERO)
 
@@ -105,20 +105,14 @@ func handle_idle() -> void:
 		anim.play("idle_up")
 
 func move_manually() -> void:
-	var input_direction = Vector2.ZERO
 	if Input.is_action_just_pressed("Down"):
-		input_direction = Vector2.DOWN
+		signal_direction = Vector2.DOWN
 	elif Input.is_action_just_pressed("Up"):
-		input_direction = Vector2.UP
+		signal_direction = Vector2.UP
 	elif Input.is_action_just_pressed("Right"):
-		input_direction = Vector2.RIGHT
+		signal_direction = Vector2.RIGHT
 	elif Input.is_action_just_pressed("Left"):
-		input_direction = Vector2.LEFT
-	
-	if input_direction != Vector2.ZERO:
-		move(input_direction)
-	else:
-		move(Vector2.ZERO)
+		signal_direction = Vector2.LEFT
 
 func on_signal_go_left() -> void:
 	signal_direction = Vector2.LEFT
@@ -157,24 +151,24 @@ func get_new_random_signal(proba: float) -> Vector2:
 	
 	return signal_direction
 
-func play_sound() -> void:
+func play_sound(direction: Vector2) -> void:
 	var player: AudioStreamPlayer
-	match signal_direction:
+	match direction:
 		Vector2.LEFT:
-			var count = AudioManager.gameplay_left.get_child_count() - 1
-			var index = randi % count
+			var count = AudioManager.gameplay_left.get_child_count()
+			var index = randi() % count
 			player = AudioManager.gameplay_left.get_child(index)
 		Vector2.RIGHT:
-			var count = AudioManager.gameplay_right.get_child_count() - 1
-			var index = randi % count
+			var count = AudioManager.gameplay_right.get_child_count()
+			var index = randi() % count
 			player = AudioManager.gameplay_right.get_child(index)
 		Vector2.DOWN:
-			var count = AudioManager.gameplay_down.get_child_count() - 1
-			var index = randi % count
+			var count = AudioManager.gameplay_down.get_child_count()
+			var index = randi() % count
 			player = AudioManager.gameplay_down.get_child(index)
 		Vector2.UP:
-			var count = AudioManager.gameplay_up.get_child_count() - 1
-			var index = randi % count
+			var count = AudioManager.gameplay_up.get_child_count()
+			var index = randi() % count
 			player = AudioManager.gameplay_up.get_child(index)
 	
 	player.play()
