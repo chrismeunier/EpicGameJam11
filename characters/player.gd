@@ -50,7 +50,8 @@ func move(direction: Vector2):
 	)
 	
 	var tileData: TileData = tilemap.get_cell_tile_data(targetTile)
-	
+	animate_player(direction)
+	lastDirection = direction
 	if (tileData.get_custom_data("walkable") == false):
 		can_move_input = true
 		return
@@ -62,9 +63,7 @@ func move(direction: Vector2):
 		can_move_input = true
 		return
 	
-	animate_player(direction)
 	global_position = tilemap.map_to_local(targetTile)
-	lastDirection = direction
 	
 	# Start cooldown
 	await get_tree().create_timer(MOVE_COOLDOWN).timeout
