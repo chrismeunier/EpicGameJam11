@@ -136,6 +136,6 @@ script = ExtResource("1_3eadt")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_q605b")
-animation = &"move_down"
+animation = &"idle_down"
 
 [node name="Camera2D" type="Camera2D" parent="AnimatedSprite2D"]

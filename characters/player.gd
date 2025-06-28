@@ -2,7 +2,7 @@ extends Node2D
 
 var tilemap: TileMapLayer
 @onready var anim = $AnimatedSprite2D
-var lastDirection
+var lastDirection = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,14 +10,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if (Input.is_action_pressed("Down")):
+	if (Input.is_action_just_pressed("Down")):
 		move(Vector2.DOWN)
-	elif (Input.is_action_pressed("Up")):
+	elif (Input.is_action_just_pressed("Up")):
 		move(Vector2.UP)
-	elif (Input.is_action_pressed("Right")):
+	elif (Input.is_action_just_pressed("Right")):
 		move(Vector2.RIGHT)
-	elif (Input.is_action_pressed("Left")):
+	elif (Input.is_action_just_pressed("Left")):
 		move(Vector2.LEFT)
+	else:
+		move(Vector2.ZERO)
 
 func set_tilemap(tmap: TileMapLayer):
 	tilemap = tmap
@@ -28,10 +30,9 @@ func move(direction: Vector2):
 		currentTile.x + direction.x,
 		currentTile.y + direction.y,
 	)
-	print(targetTile)
-	lastDirection = direction
 	animate_player(direction)
 	global_position = tilemap.map_to_local(targetTile)
+	lastDirection = direction
 
 func animate_player(direction: Vector2) -> void:
 	if (direction == Vector2.DOWN):
@@ -47,10 +48,10 @@ func animate_player(direction: Vector2) -> void:
 
 func handle_idle() -> void:
 	if (lastDirection == Vector2.DOWN):
-		anim.play("move_down")
+		anim.play("idle_down")
 	elif (lastDirection == Vector2.LEFT):
-		anim.play("move_left")
+		anim.play("idle_left")
 	elif (lastDirection == Vector2.RIGHT):
-		anim.play("move_right")
+		anim.play("idle_right")
 	elif (lastDirection == Vector2.UP):
-		anim.play("move_up")
+		anim.play("idle_up")
