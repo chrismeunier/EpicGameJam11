@@ -1,14 +1,16 @@
-[gd_scene load_steps=5 format=3 uid="uid://udway7ncy7id"]
+[gd_scene load_steps=6 format=3 uid="uid://udway7ncy7id"]
 
 [ext_resource type="Script" uid="uid://2mux5u6bkh0j" path="res://interface/controls.gd" id="1_ij41j"]
-[ext_resource type="PackedScene" uid="uid://dvjjg6cpbfily" path="res://Interface/command_select.tscn" id="2_x0sgd"]
+[ext_resource type="PackedScene" uid="uid://dvjjg6cpbfily" path="res://interface/command_select.tscn" id="2_x0sgd"]
 [ext_resource type="Texture2D" uid="uid://cfar6npgupuuf" path="res://icon.svg" id="3_epadu"]
-[ext_resource type="PackedScene" uid="uid://jcmlafiwx4rg" path="res://Interface/command_sequence.tscn" id="3_lodp2"]
+[ext_resource type="PackedScene" uid="uid://jcmlafiwx4rg" path="res://interface/command_sequence.tscn" id="3_lodp2"]
+[ext_resource type="Theme" uid="uid://bo1gfp2uqybx" path="res://fonts/pixelFont.tres" id="5_2upaq"]
 
 [node name="Controls" type="CanvasLayer"]
 script = ExtResource("1_ij41j")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
+texture_filter = 1
 anchors_preset = 11
 anchor_left = 1.0
 anchor_right = 1.0
@@ -63,9 +65,8 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 4
-theme_override_font_sizes/font_size = 32
+theme = ExtResource("5_2upaq")
+theme_override_font_sizes/font_size = 64
 text = "Play !"
 horizontal_alignment = 1
 vertical_alignment = 1
