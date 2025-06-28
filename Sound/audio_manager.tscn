@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dyg7pxyytxieq"]
+[gd_scene load_steps=32 format=3 uid="uid://dyg7pxyytxieq"]
 
 [ext_resource type="Script" uid="uid://c6efr17g6np36" path="res://Sound/audio_manager.gd" id="1_vrqsf"]
 [ext_resource type="AudioStream" uid="uid://cclfnybxwu85h" path="res://Sound/missunderstanding-001.wav" id="2_643oj"]
@@ -30,6 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://bqiwoshoocv8b" path="res://Sound/gameplay-directions-up-003.wav" id="28_fe7gr"]
 [ext_resource type="AudioStream" uid="uid://dh0aqhnrot7jl" path="res://Sound/gameplay-directions-down-001.wav" id="29_h3vwp"]
 [ext_resource type="AudioStream" uid="uid://bh2cmt5suxbyr" path="res://Sound/gameplay-directions-down-002.wav" id="30_2k3ny"]
+[ext_resource type="AudioStream" uid="uid://btyq2gl7edv5x" path="res://Sound/grandma-move-loop.wav" id="31_gwav0"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_vrqsf")
@@ -187,4 +188,9 @@ max_polyphony = 2
 
 [node name="GameplayDown2" type="AudioStreamPlayer" parent="Gameplay/GameplayDirections/GameplayDown"]
 stream = ExtResource("30_2k3ny")
+max_polyphony = 2
+
+[node name="AudioMove" type="AudioStreamPlayer" parent="Gameplay"]
+unique_name_in_owner = true
+stream = ExtResource("31_gwav0")
 max_polyphony = 2
