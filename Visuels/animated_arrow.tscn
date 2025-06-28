@@ -266,10 +266,17 @@ animations = [{
 "loop": false,
 "name": &"inactive",
 "speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4u3wk")
+}],
+"loop": false,
+"name": &"wrong",
+"speed": 30.0
 }]
 
 [node name="AnimatedArrow" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_q1115")
-animation = &"hover"
+animation = &"wrong"
 script = ExtResource("2_l5ifi")
-direction = 1

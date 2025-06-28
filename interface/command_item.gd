@@ -1,13 +1,13 @@
 extends Button
 class_name CommandItem
 
-@export var id : int
+@export var id: int
+@export var label_x_value := 1
 
 @onready var label: Label = %Label
 @onready var id_label: Label = %IdLabel
 @onready var arrow: Arrow = %AnimatedArrow
 
-@export var label_x_value := 1
 
 var custom_disabled: bool:
 	get:
@@ -30,6 +30,14 @@ func _ready() -> void:
 func increment_label():
 	label_x_value = label_x_value + 1
 	label.text = "X" + str(label_x_value)
+func decrement_label():
+	label_x_value = label_x_value - 1
+	label.text = "X" + str(label_x_value)
+	if label_x_value < 1:
+		label.text = ""
+		# free here?
+		call_deferred("queue_free")
+
 
 func disable():
 	custom_disabled = true

@@ -163,6 +163,7 @@ event = &"end_game"
 delay_in_seconds = "0.0"
 metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
 
+[connection signal="pressed" from="PanelContainer/MainMarginContainer/MainVerticalLayout/HBoxContainer/UndoButton" to="." method="_on_undo_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MainMarginContainer/MainVerticalLayout/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="state_entered" from="StateChart/CompoundState/Inactive" to="." method="_on_inactive_state_entered"]
 [connection signal="state_input" from="StateChart/CompoundState/Inactive" to="." method="_on_inactive_state_input"]
