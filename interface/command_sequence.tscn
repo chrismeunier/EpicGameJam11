@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://jcmlafiwx4rg"]
+
+[ext_resource type="Script" uid="uid://bu6ip6puabiyu" path="res://Interface/command_sequence.gd" id="1_8digy"]
+[ext_resource type="PackedScene" uid="uid://b87lnji1mtd60" path="res://Interface/command_item.tscn" id="2_gfyro"]
+
+[node name="CommandSequence" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_8digy")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Planned sequence"
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 12
+columns = 4
+
+[node name="CommandItem" parent="GridContainer" instance=ExtResource("2_gfyro")]
+layout_mode = 2
+
+[node name="CommandItem2" parent="GridContainer" instance=ExtResource("2_gfyro")]
+layout_mode = 2
+
+[node name="CommandItem3" parent="GridContainer" instance=ExtResource("2_gfyro")]
+layout_mode = 2
+
+[node name="CommandItem4" parent="GridContainer" instance=ExtResource("2_gfyro")]
+layout_mode = 2
+
+[node name="CommandItem5" parent="GridContainer" instance=ExtResource("2_gfyro")]
+layout_mode = 2
+
+[node name="CommandItem6" parent="GridContainer" instance=ExtResource("2_gfyro")]
+layout_mode = 2
