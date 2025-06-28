@@ -3,6 +3,12 @@ extends Node
 # Define all signals for communication between nodes
 # when they are not hierarchically linked
 
+# Signals to make granny move her body
+signal go_left
+signal go_right
+signal go_up
+signal go_down
+
 func _ready() -> void:
 	pass # Replace with function body.
 
