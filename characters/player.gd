@@ -8,28 +8,31 @@ var lastDirection = Vector2.ZERO
 var can_move_input: bool = true
 const MOVE_COOLDOWN := 0.3  # seconds between moves
 var disturbanceLvl = "lvl0"
+var signal_direction = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	# Optional: preload or set up any timers
-	pass
+	Events.go_left.connect(on_signal_go_left)
+	Events.go_left.connect(on_signal_go_right)
+	Events.go_left.connect(on_signal_go_down)
+	Events.go_left.connect(on_signal_go_up)
 
 func _process(_delta: float) -> void:
 	if not can_move_input:
 		return
 		
-	var input_direction = Vector2.ZERO
-	if Input.is_action_just_pressed("Down"):
-		input_direction = Vector2.DOWN
-	elif Input.is_action_just_pressed("Up"):
-		input_direction = Vector2.UP
-	elif Input.is_action_just_pressed("Right"):
-		input_direction = Vector2.RIGHT
-	elif Input.is_action_just_pressed("Left"):
-		input_direction = Vector2.LEFT
+	# Uncomment this to move manually
+	# move_manually()
+	# return	
 	
-	if input_direction != Vector2.ZERO:
-		move(input_direction)
+	if signal_direction != Vector2.ZERO:
+		var new_signal: Vector2 = signal_direction
+		if disturbanceLvl != "lvl0":
+			new_signal = disturb_signal()
+
+		Events.moved_successfully.emit(new_signal == signal_direction)
+		signal_direction = new_signal
+		move(signal_direction)
 	else:
 		move(Vector2.ZERO)
 
@@ -79,7 +82,6 @@ func setDisturbanceZoneLevel(lvl: String, isEntered: bool) -> void:
 			disturbanceLvl = "lvl1"
 		else:
 			disturbanceLvl = "lvl0"
-	print(disturbanceLvl)
 
 func animate_player(direction: Vector2) -> void:
 	if direction == Vector2.DOWN and anim.animation != "move_down":
@@ -100,3 +102,57 @@ func handle_idle() -> void:
 		anim.play("idle_right")
 	elif lastDirection == Vector2.UP and anim.animation != "idle_up":
 		anim.play("idle_up")
+
+func move_manually() -> void:
+	var input_direction = Vector2.ZERO
+	if Input.is_action_just_pressed("Down"):
+		input_direction = Vector2.DOWN
+	elif Input.is_action_just_pressed("Up"):
+		input_direction = Vector2.UP
+	elif Input.is_action_just_pressed("Right"):
+		input_direction = Vector2.RIGHT
+	elif Input.is_action_just_pressed("Left"):
+		input_direction = Vector2.LEFT
+	
+	if input_direction != Vector2.ZERO:
+		move(input_direction)
+	else:
+		move(Vector2.ZERO)
+
+func on_signal_go_left() -> void:
+	signal_direction = Vector2.LEFT
+
+func on_signal_go_right() -> void:
+	signal_direction = Vector2.RIGHT
+
+func on_signal_go_down() -> void:
+	signal_direction = Vector2.DOWN
+
+func on_signal_go_up() -> void:
+	signal_direction = Vector2.UP
+	
+func disturb_signal() -> Vector2:
+	match disturbanceLvl:
+		"lvl1":
+			return get_new_random_signal(0.3)
+		"lvl2":
+			return get_new_random_signal(0.6)
+		"lvl3":
+			return get_new_random_signal(0.95)
+		_:
+			return signal_direction
+
+func get_new_random_signal(proba: float) -> Vector2:
+	if (randf() < proba):
+		match randi() % 4:
+			0:
+				return Vector2.LEFT
+			1:
+				return Vector2.RIGHT
+			2:
+				return Vector2.DOWN
+			_:
+				return Vector2.UP
+	
+	return signal_direction
+	
