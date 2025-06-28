@@ -9,6 +9,11 @@ signal go_right
 signal go_up
 signal go_down
 
+# Signals to interact with the control panel
+signal to_select_mode
+signal movement_ended
+
+
 func _ready() -> void:
 	pass # Replace with function body.
 
