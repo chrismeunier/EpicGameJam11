@@ -1,15 +1,17 @@
 extends CanvasLayer
+class_name ControlPanel
 
-@onready var command_select: VBoxContainer = %CommandSelect
-@onready var command_sequence: VBoxContainer = %CommandSequence
+
+@onready var command_select: CommandPanel = %CommandSelect
+@onready var command_sequence: SequencePanel = %CommandSequence
 @onready var play_button: TextureButton = %PlayButton
 @onready var undo_button: TextureButton = %UndoButton
 @onready var state_chart: StateChart = %StateChart
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
+func _ready() -> void:
+	command_sequence.clear_sequence()
+	command_select.add_command_to_sequence.connect(add_command_from_select)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -36,6 +38,9 @@ func _enable_play_undo_buttons() -> void:
 func _on_play_button_pressed() -> void:
 	state_chart.send_event("start_playing")
 
+# Signals interactions
+func add_command_from_select(id : int):
+	command_sequence.add_command(id)
 
 # INPUTS TO CHANGE STATES
 

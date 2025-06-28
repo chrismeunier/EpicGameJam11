@@ -27,9 +27,12 @@ layout_mode = 2
 
 [node name="CommandItem2" parent="HBoxContainer" instance=ExtResource("2_68k6a")]
 layout_mode = 2
+id = 1
 
 [node name="CommandItem3" parent="HBoxContainer" instance=ExtResource("2_68k6a")]
 layout_mode = 2
+id = 2
 
 [node name="CommandItem4" parent="HBoxContainer" instance=ExtResource("2_68k6a")]
 layout_mode = 2
+id = 3
