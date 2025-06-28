@@ -44,33 +44,33 @@ func move(direction: Vector2):
 	if direction == Vector2.ZERO:
 		handle_idle()
 		return
-	
-	can_move_input = false  # lock input
 
-	var currentTile = tilemap.local_to_map(global_position)
-	var targetTile: Vector2i = Vector2i(
-		currentTile.x + int(direction.x),
-		currentTile.y + int(direction.y),
-	)
-	
-	var tileData: TileData = tilemap.get_cell_tile_data(targetTile)
+	can_move_input = false
+
+	var current_tile = tilemap.local_to_map(global_position)
+	var target_tile = current_tile + Vector2i(direction)
+	var tile_data: TileData = tilemap.get_cell_tile_data(target_tile)
+
 	animate_player(direction)
 	lastDirection = direction
-	if (tileData.get_custom_data("walkable") == false):
+
+	if tile_data.get_custom_data("walkable") == false:
 		can_move_input = true
 		return
-	
+
 	rayCast.target_position = direction * 64
 	rayCast.force_raycast_update()
-	
 	if rayCast.is_colliding():
 		can_move_input = true
 		return
-	
-	global_position = tilemap.map_to_local(targetTile)
-	
-	# Start cooldown
-	await get_tree().create_timer(MOVE_COOLDOWN).timeout
+
+	var target_position = tilemap.map_to_local(target_tile)
+
+	# Use SceneTreeTween to animate
+	var tween := get_tree().create_tween()
+	tween.tween_property(self, "global_position", target_position, MOVE_COOLDOWN).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+
+	await tween.finished
 	can_move_input = true
 
 func setDisturbanceZoneLevel(lvl: String, isEntered: bool) -> void:

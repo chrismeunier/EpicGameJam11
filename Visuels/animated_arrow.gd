@@ -1,6 +1,8 @@
 extends AnimatedSprite2D
 class_name Arrow
 
+enum {LEFT, RIGHT, UP, DOWN}
+
 var disabled := true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,20 +10,17 @@ func _ready() -> void:
 
 func set_direction(direction):
 	match direction:
-		0:
+		LEFT:
 			flip_h = true
 			rotation = 0.0
-		1:
+		RIGHT:
 			flip_h = false
 			rotation = 0.0
-		2:
+		UP:
 			rotation_degrees = -90.0
-		3:
+		DOWN:
 			rotation_degrees = 90.0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
 
 func click():
 	if is_playing():
