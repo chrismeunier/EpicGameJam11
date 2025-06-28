@@ -34,7 +34,8 @@ func _enable_play_undo_buttons() -> void:
 	undo_button.disabled = false
 
 func _on_play_button_pressed() -> void:
-	state_chart.send_event("start_playing")
+	if command_sequence.is_not_empty():
+		state_chart.send_event("start_playing")
 
 func _on_undo_button_pressed() -> void:
 	command_sequence.remove_last_command_item()
@@ -68,6 +69,7 @@ func _on_playing_state_input(event: InputEvent) -> void:
 # ENTRY/EXIT OF STATES
 func _on_inactive_state_entered() -> void:
 	_disable_all_buttons()
+	command_sequence.clear_sequence()
 
 
 func _on_selecting_state_entered() -> void:
@@ -86,8 +88,8 @@ func _on_init_state_entered() -> void:
 
 
 func _on_signal_to_move_state_entered() -> void:
-	command_sequence.start_animation()
 	command_sequence.send_movement_direction()
+	command_sequence.start_animation()
 
 
 func to_ask_for_loop():
@@ -96,7 +98,7 @@ func _on_repeat_state_entered() -> void:
 	if command_sequence.should_loop():
 		state_chart.send_event("count_down")
 	else:
-		command_sequence.pop_free_first_command()
+		command_sequence.pop_first_command()
 		state_chart.send_event("no_repeat")
 
 

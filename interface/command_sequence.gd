@@ -25,7 +25,10 @@ func get_last_command_item() -> CommandItem:
 
 func get_first_command_item() -> CommandItem:
 	if grid_container.get_child_count():
-		return get_sequence()[0]
+		for i in range(grid_container.get_child_count()):
+			if grid_container.get_child(i).disabled:
+				continue
+			return get_sequence()[i]
 	return null
 
 func remove_last_command_item():
@@ -85,8 +88,8 @@ func trigger_movement(direction: int):
 			# Events.go_down.emit()
 			print("Going down!")
 	#! FIXME some hack to test the states
-	await get_tree().create_timer(2).timeout
-	Events.movement_ended.emit()
+	#await get_tree().create_timer(2).timeout
+	#Events.movement_ended.emit()
 
 func should_loop() -> bool:
 	if get_first_command_item().label_x_value > 1:
@@ -97,10 +100,11 @@ func decrement_current_command():
 	get_first_command_item().decrement_label()
 	cmd_list.pop_front()
 
-func pop_free_first_command():
+func pop_first_command():
 	cmd_list.pop_front()
 	var command_item = get_first_command_item()
-	command_item.call_deferred("queue_free")
+	command_item.disable()
+	command_item.decrement_label()
 
 func is_not_empty() -> bool:
 	#print("Sequence over ? ", cmd_list, get_sequence())

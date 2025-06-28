@@ -12,6 +12,7 @@ signal go_down
 # Signals to interact with the control panel
 signal to_select_mode
 signal movement_ended
+# Call "Events.movement_ended.emit()" when movement is done
 
 
 func _ready() -> void:
