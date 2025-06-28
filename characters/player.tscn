@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dkjvq1dd5doeu"]
+[gd_scene load_steps=30 format=3 uid="uid://dkjvq1dd5doeu"]
 
 [ext_resource type="Script" uid="uid://cjrh0q7secvp0" path="res://characters/player.gd" id="1_3eadt"]
 [ext_resource type="Texture2D" uid="uid://b03uudwjsewd1" path="res://Visuels/Grandma_left_down.png" id="2_tory2"]
@@ -215,6 +215,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tory2"]
+radius = 8.0
+
 [node name="Player" type="Node2D"]
 script = ExtResource("1_3eadt")
 
@@ -230,3 +233,9 @@ zoom = Vector2(2, 2)
 [node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]
 target_position = Vector2(0, 64)
 collide_with_areas = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+shape = SubResource("CapsuleShape2D_tory2")
