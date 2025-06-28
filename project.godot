@@ -14,6 +14,25 @@ config/name="EpicGameJam11"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Events="*res://events.gd"
+
+[display]
+
+window/size/resizable=false
+window/size/always_on_top=true
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/godot_state_charts/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://interface/": "yellow"
+}
+
 [gui]
 
 theme/custom="uid://bo1gfp2uqybx"
