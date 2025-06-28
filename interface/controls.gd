@@ -13,10 +13,6 @@ func _ready() -> void:
 	command_sequence.clear_sequence()
 	command_select.add_command_to_sequence.connect(add_command_from_select)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
 func _disable_all_buttons() -> void:
 	command_select.disable_sequence()
 	command_sequence.disable_sequence()
@@ -38,9 +34,14 @@ func _enable_play_undo_buttons() -> void:
 func _on_play_button_pressed() -> void:
 	state_chart.send_event("start_playing")
 
+func _on_undo_button_pressed() -> void:
+	command_sequence.remove_last_command_item()
+
+
 # Signals interactions
-func add_command_from_select(id : int):
+func add_command_from_select(id: int):
 	command_sequence.add_command(id)
+	#print(id)
 
 # INPUTS TO CHANGE STATES
 

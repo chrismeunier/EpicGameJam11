@@ -12,6 +12,7 @@ script = ExtResource("1_57cr3")
 [node name="AnimatedArrow" parent="." instance=ExtResource("2_y73yj")]
 unique_name_in_owner = true
 position = Vector2(32, 32)
+animation = &"disabled"
 
 [node name="Label" type="Label" parent="."]
 unique_name_in_owner = true

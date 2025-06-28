@@ -1,27 +1,34 @@
 extends VBoxContainer
 class_name SequencePanel
 
+enum {LEFT, RIGHT, UP, DOWN}
+
 const COMMAND_ITEM = preload("res://interface/command_item_v_2.tscn")
 
-@onready var grid_container: GridContainer = %GridContainer
-
 # list of registered commands
-var cmd_list : Array[int] = []
+var cmd_list: Array[int] = []
+
+@onready var grid_container: GridContainer = %GridContainer
 
 func _ready() -> void:
 	for item in get_sequence():
 		item.mouse_filter = MOUSE_FILTER_IGNORE
 		item.toggle_mode = true
 
+func _process(_delta: float) -> void:
+	print(cmd_list)
 func get_sequence():
-	return grid_container.get_children() # as Array[CommandItem]
+	return grid_container.get_children()
 
 func get_last_command_item() -> CommandItem:
-	return get_sequence()[-1]
+	if grid_container.get_child_count():
+		return get_sequence()[-1]
+	return null
 
 func remove_last_command_item():
-	get_last_command_item().call_deferred("queue_free")
-	cmd_list.pop_back()
+	if grid_container.get_child_count():
+		get_last_command_item().call_deferred("queue_free")
+		cmd_list.pop_back()
 
 func disable_sequence():
 	for item in get_sequence():
@@ -36,7 +43,7 @@ func clear_sequence():
 	for item in get_sequence():
 		item.queue_free()
 
-func add_command(id : int):
+func add_command(id: int):
 	var cmd_item = COMMAND_ITEM.instantiate()
 	cmd_item.id = id
 	# increment the counter if same as previous
@@ -47,3 +54,20 @@ func add_command(id : int):
 		cmd_item.mouse_filter = MOUSE_FILTER_IGNORE
 		cmd_item.toggle_mode = true
 	cmd_list.append(id)
+
+
+
+func trigger_movement(direction: int):
+	match direction:
+		LEFT:
+			# Events.go_left.emit()
+			print("Going left!")
+		RIGHT:
+			# Events.go_right.emit()
+			print("Going right!")
+		UP:
+			# Events.go_up.emit()
+			print("Going up!")
+		DOWN:
+			# Events.go_down.emit()
+			print("Going down!")
