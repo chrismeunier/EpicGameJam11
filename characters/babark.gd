@@ -20,6 +20,9 @@ func _process(delta: float) -> void:
 	if isPlayerInArea and not audio_stream_player_2d.playing:
 		audio_stream_player_2d.play()
 		audio_stream_player_2d.attenuation = get_sound_volume()
+	else:
+		if audio_stream_player_2d.playing:
+			audio_stream_player_2d.stop()
 
 func get_sound_volume() -> float:
 	if player == null:
@@ -27,3 +30,10 @@ func get_sound_volume() -> float:
 	else:
 		var volume: float = 1 - (global_position.distance_to(player.global_position)	/ collision_shape_2d.shape.get_rect().size.x)
 		return volume * 100
+
+func _on_success_detect_body_entered(body: Node2D) -> void:
+	if (body.name == "Player"):
+		body.set_success_animation()
+		isPlayerInArea = false
+		visible = false
+		AudioManager.level_success.play()
