@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgkvdtri7wgx6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kkq0g"]
+radius = 80.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fs26o"]
+radius = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5b4fr"]
+radius = 40.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_reurw"]
+radius = 20.0
+
+[node name="BaseEnnemy" type="Node2D"]
+
+[node name="DetectionArea_20" type="Area2D" parent="."]
+collision_layer = 2048
+
+[node name="Radius_80" type="CollisionShape2D" parent="DetectionArea_20"]
+shape = SubResource("CircleShape2D_kkq0g")
+
+[node name="DetectionArea_40" type="Area2D" parent="."]
+collision_layer = 1024
+
+[node name="Radius_60" type="CollisionShape2D" parent="DetectionArea_40"]
+shape = SubResource("CircleShape2D_fs26o")
+
+[node name="DetectionArea_60" type="Area2D" parent="."]
+collision_layer = 512
+
+[node name="Radius_40" type="CollisionShape2D" parent="DetectionArea_60"]
+shape = SubResource("CircleShape2D_5b4fr")
+
+[node name="DetectionArea_80" type="Area2D" parent="."]
+collision_layer = 256
+
+[node name="Radius_20" type="CollisionShape2D" parent="DetectionArea_80"]
+shape = SubResource("CircleShape2D_reurw")
