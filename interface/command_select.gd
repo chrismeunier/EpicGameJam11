@@ -15,18 +15,18 @@ func _ready() -> void:
 		cmd_item.id = i
 		h_box_container.add_child(cmd_item)
 		cmd_item.pressed.connect(command_pressed.bind(i))
-		
+
 
 func command_pressed(id : int):
 	add_command_to_sequence.emit(id)
 
 func get_sequence():
-	return h_box_container.get_children() # as Array[CommandItem]
+	return h_box_container.get_children()
 
 func disable_sequence():
 	for item in get_sequence():
-		item.disabled = true
+		item.custom_disabled = true
 
 func enable_sequence():
 	for item in get_sequence():
-		item.disabled = false
+		item.custom_disabled = false

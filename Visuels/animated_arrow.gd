@@ -1,6 +1,7 @@
 extends AnimatedSprite2D
 class_name Arrow
 
+var disabled := true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	play("inactive")
@@ -28,14 +29,18 @@ func click():
 	play("click")
 
 func hover_in():
-	play("hover")
+	if not disabled:
+		play("hover")
 func hover_out():
-	play_backwards("hover")
+	if not disabled:
+		play_backwards("hover")
 
 func disable():
+	disabled = true
 	if is_playing():
 		stop()
 	play("disabled")
 
 func inactive():
+	disabled = false
 	play("inactive")

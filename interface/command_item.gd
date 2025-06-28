@@ -9,8 +9,19 @@ class_name CommandItem
 
 @export var label_x_value := 1
 
+var custom_disabled: bool:
+	get:
+		return disabled
+	set(value):
+		disabled = value
+		if disabled:
+			arrow.disable()
+		else:
+			arrow.inactive()
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	disable()
 	arrow.set_direction(id)
 	id_label.text = str(id)
 	if label_x_value < 1:
@@ -20,6 +31,10 @@ func increment_label():
 	label_x_value = label_x_value + 1
 	label.text = "X" + str(label_x_value)
 
+func disable():
+	custom_disabled = true
+func enable():
+	custom_disabled = false
 
 func _on_pressed() -> void:
 	arrow.click()
