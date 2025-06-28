@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://dvh8a06htwsy5"
+uid="uid://i33er7k1axin"
 path="res://.godot/imported/ambiance-oiseaux.wav-7ebf00dded29b9a6dca71d8610a4b1b5.sample"
 
 [deps]
@@ -14,11 +14,11 @@ dest_files=["res://.godot/imported/ambiance-oiseaux.wav-7ebf00dded29b9a6dca71d86
 
 force/8_bit=false
 force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
+force/max_rate=true
+force/max_rate_hz=48000.0
 edit/trim=false
 edit/normalize=false
-edit/loop_mode=0
+edit/loop_mode=2
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=2
+compress/mode=0

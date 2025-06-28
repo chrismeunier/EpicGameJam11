@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dyg7pxyytxieq"]
+
+[ext_resource type="Script" uid="uid://c6efr17g6np36" path="res://Sound/audio_manager.gd" id="1_vrqsf"]
+[ext_resource type="AudioStream" uid="uid://cclfnybxwu85h" path="res://Sound/missunderstanding-001.wav" id="2_643oj"]
+[ext_resource type="AudioStream" uid="uid://i33er7k1axin" path="res://Sound/ambiance-oiseaux.wav" id="2_wqhkw"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_vrqsf")
+
+[node name="TemplateSound" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_643oj")
+
+[node name="AmbianceGameplay" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("2_wqhkw")

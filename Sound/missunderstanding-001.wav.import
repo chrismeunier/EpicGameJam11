@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://b7y7noc2uyd0d"
+uid="uid://cclfnybxwu85h"
 path="res://.godot/imported/missunderstanding-001.wav-18f2d3425ea20ddcd921836782320a7e.sample"
 
 [deps]
@@ -14,11 +14,11 @@ dest_files=["res://.godot/imported/missunderstanding-001.wav-18f2d3425ea20ddcd92
 
 force/8_bit=false
 force/mono=false
-force/max_rate=false
-force/max_rate_hz=44100
+force/max_rate=true
+force/max_rate_hz=48000.0
 edit/trim=false
 edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=2
+compress/mode=0

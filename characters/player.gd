@@ -7,6 +7,7 @@ var tilemap: TileMapLayer
 var lastDirection = Vector2.ZERO
 var can_move_input: bool = true
 const MOVE_COOLDOWN := 0.3  # seconds between moves
+var disturbanceLvl = "lvl0"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -68,6 +69,18 @@ func move(direction: Vector2):
 	# Start cooldown
 	await get_tree().create_timer(MOVE_COOLDOWN).timeout
 	can_move_input = true
+
+func setDisturbanceZoneLevel(lvl: String, isEntered: bool) -> void:
+	if(isEntered):
+		disturbanceLvl = lvl
+	else:
+		if lvl == "lvl3":
+			disturbanceLvl = "lvl2"
+		elif lvl == "lvl2":
+			disturbanceLvl = "lvl1"
+		else:
+			disturbanceLvl = "lvl0"
+	print(disturbanceLvl)
 
 func animate_player(direction: Vector2) -> void:
 	if direction == Vector2.DOWN and anim.animation != "move_down":
