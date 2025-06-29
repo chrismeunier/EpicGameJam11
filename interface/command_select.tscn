@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dvjjg6cpbfily"]
 
 [ext_resource type="Script" uid="uid://p65qa15c5ehc" path="res://interface/command_select.gd" id="1_68k6a"]
-[ext_resource type="PackedScene" uid="uid://b87lnji1mtd60" path="res://interface/command_item.tscn" id="2_68k6a"]
+[ext_resource type="PackedScene" uid="uid://v7j3eku8xods" path="res://interface/command_item_v_2.tscn" id="2_68k6a"]
 
 [node name="CommandSelect" type="VBoxContainer"]
 anchors_preset = 15
@@ -24,12 +24,19 @@ theme_override_constants/separation = 8
 
 [node name="CommandItem" parent="HBoxContainer" instance=ExtResource("2_68k6a")]
 layout_mode = 2
+label_x_value = 0
 
 [node name="CommandItem2" parent="HBoxContainer" instance=ExtResource("2_68k6a")]
 layout_mode = 2
+id = 1
+label_x_value = 0
 
 [node name="CommandItem3" parent="HBoxContainer" instance=ExtResource("2_68k6a")]
 layout_mode = 2
+id = 2
+label_x_value = 0
 
 [node name="CommandItem4" parent="HBoxContainer" instance=ExtResource("2_68k6a")]
 layout_mode = 2
+id = 3
+label_x_value = 0

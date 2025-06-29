@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://v7j3eku8xods"]
+
+[ext_resource type="Script" uid="uid://d1uquss3x5qx5" path="res://interface/command_item.gd" id="1_57cr3"]
+[ext_resource type="PackedScene" uid="uid://dpa4o2k8dmo0v" path="res://Visuels/animated_arrow.tscn" id="2_y73yj"]
+
+[node name="CommandItemV2" type="Button"]
+custom_minimum_size = Vector2(64, 64)
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("1_57cr3")
+
+[node name="AnimatedArrow" parent="." instance=ExtResource("2_y73yj")]
+unique_name_in_owner = true
+position = Vector2(32, 32)
+animation = &"disabled"
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "X1"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="IdLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 20
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

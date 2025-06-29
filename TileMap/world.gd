@@ -1,10 +1,24 @@
 extends Node2D
 
+@onready var tilemap = $Map
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Player.set_tilemap($Map)
+	$Player.set_tilemap(tilemap)
+	$Grid.set_tilemap(tilemap)
+	$Vroum.set_path(get_car_path_for_world())
+	$Vroum.set_tilemap(tilemap)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func get_car_path_for_world() -> Array:
+	var path := []
+	for i in 9:
+		path.append(Vector2.UP)
+
+	for i in 13:
+		path.append(Vector2.RIGHT)
+
+	for i in 9:
+		path.append(Vector2.DOWN)
+
+	for i in 13:
+		path.append(Vector2.LEFT)
+	return path

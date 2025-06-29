@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://d07g2f0i2186d"]
+
+[ext_resource type="Script" uid="uid://cmdg8jsinfabu" path="res://TileMap/grid.gd" id="1_5ex3m"]
+
+[node name="Grid" type="Node2D"]
+script = ExtResource("1_5ex3m")

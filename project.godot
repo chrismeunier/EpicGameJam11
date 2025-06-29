@@ -18,15 +18,16 @@ config/icon="res://icon.svg"
 [autoload]
 
 Events="*res://events.gd"
+AudioManager="*res://Sound/audio_manager.tscn"
+Signal_Debugger="*res://addons/SignalVisualizer/Debugger/SignalDebugger.gd"
 
 [display]
 
 window/size/resizable=false
-window/size/always_on_top=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godot_state_charts/plugin.cfg")
+enabled=PackedStringArray("res://addons/SignalVisualizer/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg")
 
 [file_customization]
 
@@ -37,6 +38,21 @@ folder_colors={
 [gui]
 
 theme/custom="uid://bo1gfp2uqybx"
+
+[importer_defaults]
+
+wav={
+"compress/mode": 0,
+"edit/loop_begin": 0,
+"edit/loop_end": -1,
+"edit/loop_mode": 0,
+"edit/normalize": false,
+"edit/trim": false,
+"force/8_bit": false,
+"force/max_rate": true,
+"force/max_rate_hz": 48000.0,
+"force/mono": false
+}
 
 [input]
 
