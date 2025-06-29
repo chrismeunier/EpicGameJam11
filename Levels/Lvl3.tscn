@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://d30gwmdi62022" path="res://TileMap/Decors_tilemap.tres" id="2_ly5sr"]
 [ext_resource type="PackedScene" uid="uid://dkjvq1dd5doeu" path="res://characters/player.tscn" id="4_slt63"]
 [ext_resource type="PackedScene" uid="uid://c46d7jt8i3i33" path="res://characters/Babark.tscn" id="5_bvblf"]
-[ext_resource type="PackedScene" uid="uid://lq88x12ervu6" path="res://characters/Vroum.tscn" id="6_ske3s"]
+[ext_resource type="PackedScene" uid="uid://bqn4nfb6gdwrl" path="res://characters/Vroum.tscn" id="6_ske3s"]
 [ext_resource type="PackedScene" uid="uid://d07g2f0i2186d" path="res://TileMap/grid.tscn" id="7_slt63"]
 
 [node name="Lvl3" type="Node2D"]
