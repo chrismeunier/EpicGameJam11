@@ -17,6 +17,11 @@ extends Node
 @onready var gameplay_down = %GameplayDown
 @onready var audio_move = %AudioMove
 @onready var enter_car_zone = %EnterCarZone
+@onready var menu_music: AudioStreamPlayer = %MenuMusic
+@onready var gameplay_music_one: AudioStreamPlayer = %GameplayMusicOne
+@onready var gameplay_music_loop: AudioStreamPlayer = %GameplayMusicLoop
+@onready var success_music: AudioStreamPlayer = %SuccessMusic
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

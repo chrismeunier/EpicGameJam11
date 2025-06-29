@@ -8,6 +8,7 @@ class_name ControlPanel
 @onready var undo_button: TextureButton = %UndoButton
 @onready var state_chart: StateChart = %StateChart
 
+var music_played_once : bool = false
 
 func _ready() -> void:
 	command_sequence.clear_sequence()
@@ -36,6 +37,11 @@ func _enable_play_undo_buttons() -> void:
 
 func _on_play_button_pressed() -> void:
 	if command_sequence.is_not_empty():
+		var index = randi() % AudioManager.play.get_child_count()
+		var audio_player : AudioStreamPlayer = AudioManager.play.get_child(index)
+		audio_player.play()
+		await audio_player.finished
+		await get_tree().create_timer(1).timeout
 		state_chart.send_event("start_playing")
 
 func _on_undo_button_pressed() -> void:
@@ -75,11 +81,19 @@ func _on_inactive_state_entered() -> void:
 
 func _on_selecting_state_entered() -> void:
 	_enable_all_buttons()
+	AudioManager.startervoicedog.play()
 
 
 func _on_selecting_state_exited() -> void:
 	_disable_all_buttons()
+	AudioManager.menu_music.stop()
 
+func _on_playing_state_entered() -> void:
+	music_played_once = false
+
+func _on_playing_state_exited() -> void:
+	AudioManager.gameplay_music_one.stop()
+	AudioManager.gameplay_music_loop.stop()
 
 # PLAYING STATES
 func _on_init_state_entered() -> void:
@@ -128,3 +142,18 @@ func _on_next_move_state_entered() -> void:
 		state_chart.send_event("move")
 	else:
 		state_chart.send_event("finished")
+
+
+func _on_selecting_state_processing(_delta: float) -> void:
+	if not AudioManager.menu_music.playing:
+		AudioManager.menu_music.play()
+
+
+func _on_playing_state_processing(_delta: float) -> void:
+	if not music_played_once and not AudioManager.gameplay_music_one.playing:
+		AudioManager.gameplay_music_one.play()
+		music_played_once = true
+	
+	if music_played_once and not AudioManager.gameplay_music_one.playing:
+		if not AudioManager.gameplay_music_loop.playing:
+			AudioManager.gameplay_music_loop.play()

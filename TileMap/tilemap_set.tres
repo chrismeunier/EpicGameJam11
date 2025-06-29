@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://q2s4f1ubq8s8"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://q2s4f1ubq8s8"]
 
 [ext_resource type="Texture2D" uid="uid://bddfgmg47ykri" path="res://Visuels/Miss_Understanding_Tilemap.png" id="1_curxd"]
+[ext_resource type="Texture2D" uid="uid://ddg3uobh1m72b" path="res://Visuels/tileset_2.png" id="2_h2jvj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7u2o6"]
 bounce = 0.3
@@ -241,6 +242,21 @@ texture_region_size = Vector2i(32, 32)
 9:7/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_gynnu")
 9:7/0/custom_data_0 = true
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wnxx2"]
+texture = ExtResource("2_h2jvj")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/custom_data_0 = true
+1:0/0 = 0
+0:1/0 = 0
+0:1/0/custom_data_0 = true
+1:1/0 = 0
+1:1/0/custom_data_0 = true
+0:2/0 = 0
+0:2/0/custom_data_0 = true
+1:2/0 = 0
+1:2/0/custom_data_0 = true
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
@@ -249,3 +265,4 @@ navigation_layer_0/layers = 1
 custom_data_layer_0/name = "walkable"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_77b5r")
+sources/2 = SubResource("TileSetAtlasSource_wnxx2")
