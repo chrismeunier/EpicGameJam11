@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bmhmfotnxjsac" path="res://Levels/lvl_2.gd" id="1_ndifn"]
 [ext_resource type="TileSet" uid="uid://q2s4f1ubq8s8" path="res://TileMap/tilemap_set.tres" id="2_11ayb"]
-[ext_resource type="Texture2D" uid="uid://brpya5wvm3a1q" path="res://Visuels/tileset_buildings.png" id="3_pft0e"]
+[ext_resource type="Texture2D" uid="uid://dxulkkpbraqay" path="res://Visuels/tileset_buildings.png" id="3_pft0e"]
 [ext_resource type="PackedScene" uid="uid://dkjvq1dd5doeu" path="res://characters/player.tscn" id="3_ubcqv"]
 [ext_resource type="PackedScene" uid="uid://c46d7jt8i3i33" path="res://characters/Babark.tscn" id="4_jq5ri"]
 [ext_resource type="PackedScene" uid="uid://c48dqyga4uqa" path="res://characters/LawnMower.tscn" id="5_jq5ri"]
