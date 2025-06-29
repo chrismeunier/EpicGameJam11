@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://udway7ncy7id"]
+[gd_scene load_steps=32 format=3 uid="uid://udway7ncy7id"]
 
 [ext_resource type="Script" uid="uid://2mux5u6bkh0j" path="res://interface/controls.gd" id="1_ij41j"]
 [ext_resource type="PackedScene" uid="uid://dvjjg6cpbfily" path="res://interface/command_select.tscn" id="2_x0sgd"]
@@ -14,6 +14,9 @@
 [ext_resource type="Script" uid="uid://cf1nsco3w0mf6" path="res://addons/godot_state_charts/transition.gd" id="9_bnwvy"]
 [ext_resource type="Texture2D" uid="uid://c83fsb3ynqx67" path="res://Visuels/grandma_lose.png" id="14_vgvyt"]
 [ext_resource type="Texture2D" uid="uid://dygvyua4ru2q6" path="res://Visuels/grandma_holding_doggo.png" id="14_vqsow"]
+[ext_resource type="Script" uid="uid://le5w1cm0ul8p" path="res://addons/godot_state_charts/expression_guard.gd" id="13_uqaec"]
+[ext_resource type="Script" uid="uid://c6l0181f4ytps" path="res://addons/godot_state_charts/guard.gd" id="13_vqsow"]
+[ext_resource type="Script" uid="uid://bxprlw40wl0c3" path="res://addons/godot_state_charts/all_of_guard.gd" id="15_bohjk"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bohjk"]
 atlas = ExtResource("14_vqsow")
@@ -94,6 +97,21 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Resource" id="Resource_opka8"]
+script = ExtResource("13_uqaec")
+expression = "not waiting_for_anim"
+metadata/_custom_type_script = "uid://le5w1cm0ul8p"
+
+[sub_resource type="Resource" id="Resource_adki0"]
+script = ExtResource("13_uqaec")
+expression = "finished_move"
+metadata/_custom_type_script = "uid://le5w1cm0ul8p"
+
+[sub_resource type="Resource" id="Resource_d3hh7"]
+script = ExtResource("15_bohjk")
+guards = Array[ExtResource("13_vqsow")]([SubResource("Resource_opka8"), SubResource("Resource_adki0")])
+metadata/_custom_type_script = "uid://bxprlw40wl0c3"
+
 [node name="Controls" type="CanvasLayer"]
 script = ExtResource("1_ij41j")
 
@@ -129,9 +147,10 @@ layout_mode = 2
 texture = ExtResource("3_epadu")
 expand_mode = 1
 
-[node name="CommandSequence" parent="PanelContainer/MainMarginContainer/MainVerticalLayout" instance=ExtResource("3_lodp2")]
+[node name="CommandSequence" parent="PanelContainer/MainMarginContainer/MainVerticalLayout" node_paths=PackedStringArray("control_state_chart") instance=ExtResource("3_lodp2")]
 unique_name_in_owner = true
 layout_mode = 2
+control_state_chart = NodePath("../../../../StateChart")
 
 [node name="Spacer" type="Control" parent="PanelContainer/MainMarginContainer/MainVerticalLayout"]
 layout_mode = 2
@@ -260,10 +279,29 @@ metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
 script = ExtResource("8_65j56")
 metadata/_custom_type_script = "uid://cytafq8i1y8qm"
 
-[node name="ToRep" type="Node" parent="StateChart/CompoundState/Playing/SignalToMove"]
+[node name="ToWait" type="Node" parent="StateChart/CompoundState/Playing/SignalToMove"]
+script = ExtResource("9_bnwvy")
+to = NodePath("../../AwaitingAnim")
+event = &"to_wait"
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="AwaitingAnim" type="Node" parent="StateChart/CompoundState/Playing"]
+script = ExtResource("8_65j56")
+metadata/_custom_type_script = "uid://cytafq8i1y8qm"
+
+[node name="ToRep" type="Node" parent="StateChart/CompoundState/Playing/AwaitingAnim"]
 script = ExtResource("9_bnwvy")
 to = NodePath("../../Repeat")
 event = &"ask_for_loop"
+guard = SubResource("Resource_d3hh7")
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="ForceToRep" type="Node" parent="StateChart/CompoundState/Playing/AwaitingAnim"]
+script = ExtResource("9_bnwvy")
+to = NodePath("../../Repeat")
+event = &"force_to_rep"
 delay_in_seconds = "0.0"
 metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
 
@@ -390,6 +428,7 @@ sprite_frames = SubResource("SpriteFrames_bohjk")
 [connection signal="state_processing" from="StateChart/CompoundState/Playing" to="." method="_on_playing_state_processing"]
 [connection signal="state_entered" from="StateChart/CompoundState/Playing/Init" to="." method="_on_init_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/Playing/SignalToMove" to="." method="_on_signal_to_move_state_entered"]
+[connection signal="state_stepped" from="StateChart/CompoundState/Playing/AwaitingAnim" to="." method="_on_awaiting_anim_state_stepped"]
 [connection signal="state_entered" from="StateChart/CompoundState/Playing/Repeat" to="." method="_on_repeat_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/Playing/Decrement" to="." method="_on_decrement_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/Playing/NextMove" to="." method="_on_next_move_state_entered"]

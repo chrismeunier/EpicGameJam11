@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://dpa4o2k8dmo0v"]
 
-[ext_resource type="Texture2D" uid="uid://b8y3iblsuckff" path="res://Visuels/arrow_four_directions.png" id="1_55ucg"]
+[ext_resource type="Texture2D" uid="uid://c36pn87vu7r4j" path="res://Visuels/arrow_four_directions.png" id="1_55ucg"]
 [ext_resource type="Script" uid="uid://cm2riy8ngo0ve" path="res://Visuels/animated_arrow.gd" id="2_l5ifi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lou5u"]

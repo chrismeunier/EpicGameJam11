@@ -1,6 +1,8 @@
 extends Button
 class_name CommandItem
 
+signal hover_animation_finished
+
 @export var id: int
 @export var label_x_value := 1
 
@@ -19,7 +21,6 @@ var custom_disabled: bool:
 		else:
 			arrow.inactive()
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	disable()
 	arrow.set_direction(id)
@@ -35,14 +36,16 @@ func decrement_label():
 	label.text = "X" + str(label_x_value)
 	if label_x_value < 1:
 		label.text = ""
-		# free here?
-		#call_deferred("queue_free")
+
 
 
 func disable():
 	custom_disabled = true
 func enable():
 	custom_disabled = false
+
+func stuck():
+	arrow.block_animation()
 
 func play_click():
 	arrow.click()
@@ -58,3 +61,9 @@ func play_hover_out():
 	arrow.hover_out()
 func _on_mouse_exited() -> void:
 	play_hover_out()
+
+
+func _on_animated_arrow_animation_finished() -> void:
+	if arrow.animation.contains("hover"):
+		#print("Animation finished: ", arrow.animation)
+		hover_animation_finished.emit()

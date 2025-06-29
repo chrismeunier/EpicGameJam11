@@ -18,6 +18,7 @@ func _ready() -> void:
 	Events.to_select_mode.connect(idle_to_select_moves)
 	Events.movement_ended.connect(to_ask_for_loop)
 	Events.level_completed.connect(on_level_completed)
+	command_sequence.current_anim_ended.connect(command_anim_ended)
 
 func _disable_all_buttons() -> void:
 	command_select.disable_sequence()
@@ -100,19 +101,32 @@ func _on_playing_state_exited() -> void:
 # PLAYING STATES
 func _on_init_state_entered() -> void:
 	command_sequence.enable_sequence()
-	# maybe await on some signal...
 	state_chart.send_event("move")
 
 
 func _on_signal_to_move_state_entered() -> void:
+	state_chart.set_expression_property("finished_move", false)
 	command_sequence.send_movement_direction()
+	state_chart.set_expression_property("waiting_for_anim", true)
 	command_sequence.start_animation()
+	state_chart.send_event("to_wait")
 
+func command_anim_ended():
+	state_chart.set_expression_property("waiting_for_anim", false)
+	state_chart.step()
 
-func to_ask_for_loop(move_succeeded:bool):
-	if not move_succeeded:
-		print("Failed to move!") #TODO
+func _on_awaiting_anim_state_stepped() -> void:
 	state_chart.send_event("ask_for_loop")
+
+
+func to_ask_for_loop(misunderstanding:bool):
+	#print("Move understood? ", not misunderstanding)
+	if misunderstanding:
+		command_sequence.failed_current_command()
+	state_chart.send_event("ask_for_loop")
+	state_chart.set_expression_property("finished_move", true)
+	state_chart.step()
+
 func _on_repeat_state_entered() -> void:
 	if command_sequence.should_loop():
 		state_chart.send_event("count_down")
