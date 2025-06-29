@@ -39,4 +39,4 @@ func _deferred_goto_scene(scene):
 	# Add it to the active scene, as child of root.
 	canvas_group.add_child(current_scene)
 	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
-	get_tree().current_scene = current_scene
+	#get_tree().current_scene = current_scene
