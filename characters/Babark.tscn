@@ -95,6 +95,7 @@ sprite_frames = SubResource("SpriteFrames_2k7nf")
 autoplay = "default"
 
 [node name="SuccessDetect" type="Area2D" parent="."]
+collision_layer = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SuccessDetect"]
 shape = SubResource("CircleShape2D_lbqyu")
