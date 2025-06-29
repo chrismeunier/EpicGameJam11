@@ -50,6 +50,7 @@ stream = ExtResource("2_643oj")
 [node name="AmbianceOiseau" type="AudioStreamPlayer" parent="Ambs"]
 unique_name_in_owner = true
 stream = ExtResource("2_wqhkw")
+max_polyphony = 5
 
 [node name="InstructionButtons" type="Node" parent="."]
 
@@ -58,52 +59,52 @@ unique_name_in_owner = true
 
 [node name="InstructionRight1" type="AudioStreamPlayer" parent="InstructionButtons/InstructionRight"]
 stream = ExtResource("4_71raq")
-max_polyphony = 2
+max_polyphony = 20
 
 [node name="InstructionRight2" type="AudioStreamPlayer" parent="InstructionButtons/InstructionRight"]
 stream = ExtResource("5_7lr0f")
-max_polyphony = 2
+max_polyphony = 20
 
 [node name="InstructionLeft" type="Node" parent="InstructionButtons"]
 unique_name_in_owner = true
 
 [node name="InstructionLeft1" type="AudioStreamPlayer" parent="InstructionButtons/InstructionLeft"]
 stream = ExtResource("6_yliwd")
-max_polyphony = 2
+max_polyphony = 20
 
 [node name="InstructionLeft2" type="AudioStreamPlayer" parent="InstructionButtons/InstructionLeft"]
 stream = ExtResource("7_nrhfp")
-max_polyphony = 2
+max_polyphony = 20
 
 [node name="InstructionLeft3" type="AudioStreamPlayer" parent="InstructionButtons/InstructionLeft"]
 stream = ExtResource("8_yvoeu")
-max_polyphony = 2
+max_polyphony = 20
 
 [node name="InstructionUp" type="Node" parent="InstructionButtons"]
 unique_name_in_owner = true
 
 [node name="InstructionUp1" type="AudioStreamPlayer" parent="InstructionButtons/InstructionUp"]
 stream = ExtResource("9_kc7h4")
-max_polyphony = 2
+max_polyphony = 20
 
 [node name="InstructionUp2" type="AudioStreamPlayer" parent="InstructionButtons/InstructionUp"]
 stream = ExtResource("10_cyvv5")
-max_polyphony = 2
+max_polyphony = 20
 
 [node name="InstructionUp3" type="AudioStreamPlayer" parent="InstructionButtons/InstructionUp"]
 stream = ExtResource("11_x5jw1")
-max_polyphony = 2
+max_polyphony = 20
 
 [node name="InstructionDown" type="Node" parent="InstructionButtons"]
 unique_name_in_owner = true
 
 [node name="InstructionDown1" type="AudioStreamPlayer" parent="InstructionButtons/InstructionDown"]
 stream = ExtResource("12_05j5o")
-max_polyphony = 2
+max_polyphony = 20
 
 [node name="InstructionDown2" type="AudioStreamPlayer" parent="InstructionButtons/InstructionDown"]
 stream = ExtResource("13_3tf1x")
-max_polyphony = 2
+max_polyphony = 20
 
 [node name="Play" type="Node" parent="InstructionButtons"]
 unique_name_in_owner = true
@@ -137,6 +138,7 @@ stream = ExtResource("18_cyvv5")
 [node name="LevelSuccess" type="AudioStreamPlayer" parent="Gameplay"]
 unique_name_in_owner = true
 stream = ExtResource("19_x5jw1")
+max_polyphony = 5
 
 [node name="GameplayDirections" type="Node" parent="Gameplay"]
 
@@ -199,31 +201,37 @@ max_polyphony = 2
 [node name="AudioMove" type="AudioStreamPlayer" parent="Gameplay"]
 unique_name_in_owner = true
 stream = ExtResource("31_gwav0")
-max_polyphony = 2
+max_polyphony = 20
 
 [node name="EnterCarZone" type="Node" parent="Gameplay"]
 unique_name_in_owner = true
 
 [node name="Klaxon1" type="AudioStreamPlayer" parent="Gameplay/EnterCarZone"]
 stream = ExtResource("32_ujgfe")
+max_polyphony = 10
 
 [node name="Klaxon2" type="AudioStreamPlayer" parent="Gameplay/EnterCarZone"]
 stream = ExtResource("33_dqga6")
+max_polyphony = 10
 
 [node name="Music" type="Node" parent="."]
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="Music"]
 unique_name_in_owner = true
 stream = ExtResource("34_lj8su")
+max_polyphony = 10
 
 [node name="GameplayMusicOne" type="AudioStreamPlayer" parent="Music"]
 unique_name_in_owner = true
 stream = ExtResource("35_fe7gr")
+max_polyphony = 10
 
 [node name="GameplayMusicLoop" type="AudioStreamPlayer" parent="Music"]
 unique_name_in_owner = true
 stream = ExtResource("36_h3vwp")
+max_polyphony = 10
 
 [node name="SuccessMusic" type="AudioStreamPlayer" parent="Music"]
 unique_name_in_owner = true
 stream = ExtResource("37_2k3ny")
+max_polyphony = 10

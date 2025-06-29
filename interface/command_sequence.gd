@@ -105,8 +105,8 @@ func failed_current_command():
 	if current_item:
 		current_item.stuck()
 		#control_state_chart.set_expression_property("finished_move", true)
-		control_state_chart.set_expression_property("waiting_for_anim", false)
-		control_state_chart.step()
+		#control_state_chart.set_expression_property("waiting_for_anim", true)
+		#control_state_chart.step()
 		#control_state_chart.send_event("force_to_rep")
 
 func should_loop() -> bool:
