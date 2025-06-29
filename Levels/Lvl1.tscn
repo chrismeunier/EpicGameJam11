@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cosh30wu56u5v" path="res://Levels/lvl_1.gd" id="1_kucer"]
 [ext_resource type="PackedScene" uid="uid://dkjvq1dd5doeu" path="res://characters/player.tscn" id="2_auopl"]
 [ext_resource type="PackedScene" uid="uid://c46d7jt8i3i33" path="res://characters/Babark.tscn" id="3_kucer"]
-[ext_resource type="PackedScene" uid="uid://d07g2f0i2186d" path="res://TileMap/grid.tscn" id="5_threx"]
+[ext_resource type="PackedScene" path="res://TileMap/grid.tscn" id="5_threx"]
 
 [node name="Lvl1" type="Node2D"]
 script = ExtResource("1_kucer")

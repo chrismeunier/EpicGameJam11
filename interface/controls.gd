@@ -35,6 +35,11 @@ func _enable_play_undo_buttons() -> void:
 
 func _on_play_button_pressed() -> void:
 	if command_sequence.is_not_empty():
+		var index = randi() % AudioManager.play.get_child_count()
+		var audio_player : AudioStreamPlayer = AudioManager.play.get_child(index)
+		audio_player.play()
+		await audio_player.finished
+		await get_tree().create_timer(1).timeout
 		state_chart.send_event("start_playing")
 
 func _on_undo_button_pressed() -> void:
@@ -74,6 +79,7 @@ func _on_inactive_state_entered() -> void:
 
 func _on_selecting_state_entered() -> void:
 	_enable_all_buttons()
+	AudioManager.startervoicedog.play()
 
 
 func _on_selecting_state_exited() -> void:

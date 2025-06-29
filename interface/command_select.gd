@@ -21,6 +21,7 @@ func _ready() -> void:
 
 
 func command_pressed(id : int):
+	play_sound(id)
 	add_command_to_sequence.emit(id)
 
 func get_sequence():
@@ -33,3 +34,18 @@ func disable_sequence():
 func enable_sequence():
 	for item in get_sequence():
 		item.custom_disabled = false
+
+func play_sound(id: int) -> void:
+	var audio_node: Node
+	match id:
+		0:
+			audio_node = AudioManager.instruction_left
+		1:
+			audio_node = AudioManager.instruction_right
+		2:
+			audio_node = AudioManager.instruction_up
+		_:
+			audio_node = AudioManager.instruction_down
+
+	var index = randi() % audio_node.get_child_count()
+	audio_node.get_child(index).play()
