@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dyg7pxyytxieq"]
+[gd_scene load_steps=38 format=3 uid="uid://dyg7pxyytxieq"]
 
 [ext_resource type="Script" uid="uid://c6efr17g6np36" path="res://Sound/audio_manager.gd" id="1_vrqsf"]
 [ext_resource type="AudioStream" uid="uid://cclfnybxwu85h" path="res://Sound/missunderstanding-001.wav" id="2_643oj"]
@@ -33,6 +33,10 @@
 [ext_resource type="AudioStream" uid="uid://btyq2gl7edv5x" path="res://Sound/grandma-move-loop.wav" id="31_gwav0"]
 [ext_resource type="AudioStream" uid="uid://b1oe5txlxoo77" path="res://Sound/enter-carzonenew1.wav" id="32_ujgfe"]
 [ext_resource type="AudioStream" uid="uid://51cnmqo7gi6k" path="res://Sound/enter-carzonenew2.wav" id="33_dqga6"]
+[ext_resource type="AudioStream" uid="uid://bbifru7grafpq" path="res://Sound/Music/Mémé_MenuMusic.wav" id="34_lj8su"]
+[ext_resource type="AudioStream" uid="uid://ds5gl1c01j31w" path="res://Sound/Music/MusicGameplay-part1.wav" id="35_fe7gr"]
+[ext_resource type="AudioStream" uid="uid://bccm7gf336iq4" path="res://Sound/Music/MusicGameplay-endInfernalLoop.wav" id="36_h3vwp"]
+[ext_resource type="AudioStream" uid="uid://8xvdpjj08ss3" path="res://Sound/Music/SuccessMusic.wav" id="37_2k3ny"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_vrqsf")
@@ -205,3 +209,21 @@ stream = ExtResource("32_ujgfe")
 
 [node name="Klaxon2" type="AudioStreamPlayer" parent="Gameplay/EnterCarZone"]
 stream = ExtResource("33_dqga6")
+
+[node name="Music" type="Node" parent="."]
+
+[node name="MenuMusic" type="AudioStreamPlayer" parent="Music"]
+unique_name_in_owner = true
+stream = ExtResource("34_lj8su")
+
+[node name="GameplayMusicOne" type="AudioStreamPlayer" parent="Music"]
+unique_name_in_owner = true
+stream = ExtResource("35_fe7gr")
+
+[node name="GameplayMusicLoop" type="AudioStreamPlayer" parent="Music"]
+unique_name_in_owner = true
+stream = ExtResource("36_h3vwp")
+
+[node name="SuccessMusic" type="AudioStreamPlayer" parent="Music"]
+unique_name_in_owner = true
+stream = ExtResource("37_2k3ny")

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bbifru7grafpq"
-path="res://.godot/imported/Mémé_MenuMusic.wav-88924431df8570920c42126b8d1bebae.sample"
+path="res://.godot/imported/Mémé_MenuMusic.wav-612cbc98414c4d6bc22972692ca1c58d.sample"
 
 [deps]
 
-source_file="res://Sound/Mémé_MenuMusic.wav"
-dest_files=["res://.godot/imported/Mémé_MenuMusic.wav-88924431df8570920c42126b8d1bebae.sample"]
+source_file="res://Sound/Music/Mémé_MenuMusic.wav"
+dest_files=["res://.godot/imported/Mémé_MenuMusic.wav-612cbc98414c4d6bc22972692ca1c58d.sample"]
 
 [params]
 
