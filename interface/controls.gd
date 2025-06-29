@@ -161,10 +161,10 @@ func on_level_completed() -> void:
 
 # Next level pressed
 func _on_next_level_button_pressed() -> void:
-	state_chart.send_event("end_game")
-	success_dialog.visible = false
+	success_dialog.hide()
 	Events.level_completed.emit()
 	Events.next_level.emit()
+	state_chart.send_event("end_game")
 
 func _on_end_state_processing(delta: float) -> void:
 	if not success_dialog.visible:
