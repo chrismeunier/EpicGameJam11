@@ -161,14 +161,16 @@ func on_level_completed() -> void:
 
 # Next level pressed
 func _on_next_level_button_pressed() -> void:
-	state_chart.send_event("start_selecting")
+	state_chart.send_event("end_game")
 	success_dialog.visible = false
 	Events.next_level.emit()
+	state_chart.send_event("start_selecting")
 
 func _on_end_state_processing(delta: float) -> void:
 	if not success_dialog.visible:
 		fail_dialog.visible = true
 
 func _on_retry_button_pressed() -> void:
-	state_chart.send_event("start_selecting")
+	state_chart.send_event("end_game")
 	fail_dialog.visible = false
+	state_chart.send_event("start_selecting")
