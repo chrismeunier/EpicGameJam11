@@ -83,6 +83,7 @@ func _on_inactive_state_entered() -> void:
 
 
 func _on_selecting_state_entered() -> void:
+	success_dialog.hide()
 	_enable_all_buttons()
 	AudioManager.startervoicedog.play()
 
@@ -156,22 +157,22 @@ func _on_playing_state_processing(_delta: float) -> void:
 			AudioManager.gameplay_music_loop.play()
 
 func on_level_completed() -> void:
+	success_dialog.show()
 	state_chart.send_event("end_game")
-	success_dialog.visible = true
 
 # Next level pressed
 func _on_next_level_button_pressed() -> void:
 	success_dialog.hide()
-	Events.level_completed.emit()
+	#Events.level_completed.emit()
 	Events.next_level.emit()
-	state_chart.send_event("end_game")
+	state_chart.send_event("start_selecting")
 
 func _on_end_state_processing(delta: float) -> void:
 	if not success_dialog.visible:
 		fail_dialog.visible = true
 
 func _on_retry_button_pressed() -> void:
-	state_chart.send_event("end_game")
 	fail_dialog.visible = false
+	state_chart.send_event("end_game")
 	Events.level_retry.emit()
 	state_chart.send_event("start_selecting")

@@ -38,5 +38,8 @@ func _deferred_goto_scene(scene):
 	# Add it to the active scene, as child of root.
 	#get_tree().root.add_child(current_scene)
 	add_child(current_scene)
+	match current_scene_index:
+		2:
+			current_scene.position = Vector2(382.0, 314.0)
 	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
 	#get_tree().current_scene = current_scene
