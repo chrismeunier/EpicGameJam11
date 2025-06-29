@@ -28,9 +28,6 @@ func _ready() -> void:
 	if label_x_value < 1:
 		label.text = ""
 
-func arrow_animation_playing():
-	return arrow.is_playing()
-
 func increment_label():
 	label_x_value = label_x_value + 1
 	label.text = "X" + str(label_x_value)
@@ -46,6 +43,9 @@ func disable():
 	custom_disabled = true
 func enable():
 	custom_disabled = false
+
+func stuck():
+	arrow.block_animation()
 
 func play_click():
 	arrow.click()

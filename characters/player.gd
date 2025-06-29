@@ -27,12 +27,13 @@ func _process(_delta: float) -> void:
 	
 	if signal_direction != Vector2.ZERO:
 		var new_signal: Vector2 = signal_direction
+
 		if disturbanceLvl != "lvl0":
 			new_signal = disturb_signal()
 
 		#Events.movement_ended.emit(new_signal == signal_direction)
-		var misunderstood_direction = new_signal == signal_direction
-		if misunderstood_direction:
+		var misunderstood_direction = not new_signal.is_equal_approx(signal_direction)
+		if not misunderstood_direction:
 			play_sound(signal_direction)
 		else:
 			play_error_sound()
@@ -63,12 +64,14 @@ func move(direction: Vector2, misunderstood_direction: bool):
 
 	if tile_data.get_custom_data("walkable") == false:
 		can_move_input = true
+		Events.movement_ended.emit(false)
 		return
 
 	rayCast.target_position = direction * 64
 	rayCast.force_raycast_update()
 	if rayCast.is_colliding():
 		can_move_input = true
+		Events.movement_ended.emit(false)
 		return
 
 	var target_position = tilemap.map_to_local(target_tile)

@@ -66,9 +66,10 @@ layout_mode = 2
 texture = ExtResource("3_epadu")
 expand_mode = 1
 
-[node name="CommandSequence" parent="PanelContainer/MainMarginContainer/MainVerticalLayout" instance=ExtResource("3_lodp2")]
+[node name="CommandSequence" parent="PanelContainer/MainMarginContainer/MainVerticalLayout" node_paths=PackedStringArray("control_state_chart") instance=ExtResource("3_lodp2")]
 unique_name_in_owner = true
 layout_mode = 2
+control_state_chart = NodePath("../../../../StateChart")
 
 [node name="Spacer" type="Control" parent="PanelContainer/MainMarginContainer/MainVerticalLayout"]
 layout_mode = 2
@@ -213,6 +214,13 @@ script = ExtResource("9_bnwvy")
 to = NodePath("../../Repeat")
 event = &"ask_for_loop"
 guard = SubResource("Resource_d3hh7")
+delay_in_seconds = "0.0"
+metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
+
+[node name="ForceToRep" type="Node" parent="StateChart/CompoundState/Playing/AwaitingAnim"]
+script = ExtResource("9_bnwvy")
+to = NodePath("../../Repeat")
+event = &"force_to_rep"
 delay_in_seconds = "0.0"
 metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
 

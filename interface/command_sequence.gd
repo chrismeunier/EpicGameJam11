@@ -6,7 +6,7 @@ signal current_anim_ended
 enum {LEFT, RIGHT, UP, DOWN}
 
 const COMMAND_ITEM = preload("res://interface/command_item_v_2.tscn")
-
+@export var control_state_chart : StateChart
 # list of registered commands
 var cmd_list: Array[int] = []
 var current_item : CommandItem
@@ -96,10 +96,18 @@ func trigger_movement(direction: int):
 			#print("Going down!")
 	#! FIXME some hack to test the states
 	#await get_tree().create_timer(2).timeout
-	#! DEBUG
+	#! DEBUG spaghettiiiii
 	if get_parent().get_parent().get_parent().get_parent().get_parent() == get_tree().root:
-		Events.movement_ended.emit(true)
+		Events.movement_ended.emit(false)
 
+func failed_current_command():
+	current_item = get_first_command_item()
+	if current_item:
+		current_item.stuck()
+		#control_state_chart.set_expression_property("finished_move", true)
+		control_state_chart.set_expression_property("waiting_for_anim", false)
+		control_state_chart.step()
+		#control_state_chart.send_event("force_to_rep")
 
 func should_loop() -> bool:
 	if get_first_command_item().label_x_value > 1:

@@ -102,10 +102,10 @@ func _on_awaiting_anim_state_stepped() -> void:
 	state_chart.send_event("ask_for_loop")
 
 
-func to_ask_for_loop(move_succeeded:bool):
-	if not move_succeeded:
-		print("Failed to move!") #TODO
-		command_sequence.failed_current_command() #TODO
+func to_ask_for_loop(misunderstanding:bool):
+	#print("Move understood? ", not misunderstanding)
+	if misunderstanding:
+		command_sequence.failed_current_command()
 	state_chart.send_event("ask_for_loop")
 	state_chart.set_expression_property("finished_move", true)
 	state_chart.step()
