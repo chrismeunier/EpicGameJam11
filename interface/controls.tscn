@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://udway7ncy7id"]
+[gd_scene load_steps=32 format=3 uid="uid://udway7ncy7id"]
 
 [ext_resource type="Script" uid="uid://2mux5u6bkh0j" path="res://interface/controls.gd" id="1_ij41j"]
 [ext_resource type="PackedScene" uid="uid://dvjjg6cpbfily" path="res://interface/command_select.tscn" id="2_x0sgd"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://voihl2a5u4n3" path="res://Visuels/undoPlay/sprite_buttons2.png" id="12_w6mer"]
 [ext_resource type="Script" uid="uid://le5w1cm0ul8p" path="res://addons/godot_state_charts/expression_guard.gd" id="13_uqaec"]
 [ext_resource type="Script" uid="uid://c6l0181f4ytps" path="res://addons/godot_state_charts/guard.gd" id="13_vqsow"]
+[ext_resource type="Texture2D" uid="uid://c83fsb3ynqx67" path="res://Visuels/grandma_lose.png" id="14_vgvyt"]
+[ext_resource type="Texture2D" uid="uid://dygvyua4ru2q6" path="res://Visuels/grandma_holding_doggo.png" id="14_vqsow"]
 [ext_resource type="Texture2D" uid="uid://cqwfrsspcjk1l" path="res://Visuels/undoPlay/sprite_buttons0.png" id="13_yldy7"]
 [ext_resource type="Script" uid="uid://bxprlw40wl0c3" path="res://addons/godot_state_charts/all_of_guard.gd" id="15_bohjk"]
 
@@ -34,6 +36,85 @@ metadata/_custom_type_script = "uid://le5w1cm0ul8p"
 script = ExtResource("15_bohjk")
 guards = Array[ExtResource("13_vqsow")]([SubResource("Resource_opka8"), SubResource("Resource_adki0")])
 metadata/_custom_type_script = "uid://bxprlw40wl0c3"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bohjk"]
+atlas = ExtResource("14_vqsow")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opka8"]
+atlas = ExtResource("14_vqsow")
+region = Rect2(64, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adki0"]
+atlas = ExtResource("14_vqsow")
+region = Rect2(128, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3hh7"]
+atlas = ExtResource("14_vqsow")
+region = Rect2(192, 0, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxodr"]
+atlas = ExtResource("14_vqsow")
+region = Rect2(0, 128, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mywjj"]
+atlas = ExtResource("14_vqsow")
+region = Rect2(64, 128, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwjjj"]
+atlas = ExtResource("14_vqsow")
+region = Rect2(128, 128, 64, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ulxes"]
+atlas = ExtResource("14_vqsow")
+region = Rect2(192, 128, 64, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_76tt1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bohjk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opka8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adki0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3hh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxodr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mywjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwjjj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ulxes")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqsow"]
+atlas = ExtResource("14_vgvyt")
+region = Rect2(0, 0, 64, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bohjk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqsow")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Controls" type="CanvasLayer"]
 script = ExtResource("1_ij41j")
@@ -67,10 +148,9 @@ layout_mode = 2
 [node name="Spacer" type="Control" parent="PanelContainer/MainMarginContainer/MainVerticalLayout"]
 layout_mode = 2
 
-[node name="CommandSequence" parent="PanelContainer/MainMarginContainer/MainVerticalLayout" node_paths=PackedStringArray("control_state_chart") instance=ExtResource("3_lodp2")]
+[node name="CommandSequence" parent="PanelContainer/MainMarginContainer/MainVerticalLayout" instance=ExtResource("3_lodp2")]
 unique_name_in_owner = true
 layout_mode = 2
-control_state_chart = NodePath("../../../../StateChart")
 
 [node name="Spacer2" type="Control" parent="PanelContainer/MainMarginContainer/MainVerticalLayout"]
 layout_mode = 2
@@ -279,6 +359,64 @@ metadata/_custom_type_script = "uid://cf1nsco3w0mf6"
 script = ExtResource("8_65j56")
 metadata/_custom_type_script = "uid://cytafq8i1y8qm"
 
+[node name="SuccessDialog" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 59.0
+offset_top = 54.0
+offset_right = 693.0
+offset_bottom = 598.0
+
+[node name="MarginContainer" type="MarginContainer" parent="SuccessDialog"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 32
+
+[node name="NextLevelButton" type="Button" parent="SuccessDialog/MarginContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Next level"
+
+[node name="PanelContainer" type="PanelContainer" parent="SuccessDialog/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="SuccessDialog/MarginContainer/PanelContainer"]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_76tt1")
+autoplay = "default"
+
+[node name="FailDialog" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+offset_left = 59.0
+offset_top = 54.0
+offset_right = 693.0
+offset_bottom = 598.0
+
+[node name="MarginContainer" type="MarginContainer" parent="FailDialog"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 32
+
+[node name="RetryButton" type="Button" parent="FailDialog/MarginContainer"]
+custom_minimum_size = Vector2(128, 32)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+text = "Retry"
+
+[node name="PanelContainer" type="PanelContainer" parent="FailDialog/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FailDialog/MarginContainer/PanelContainer"]
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_bohjk")
+
 [connection signal="pressed" from="PanelContainer/MainMarginContainer/MainVerticalLayout/HBoxContainer/UndoButton" to="." method="_on_undo_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MainMarginContainer/MainVerticalLayout/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="state_entered" from="StateChart/CompoundState/Inactive" to="." method="_on_inactive_state_entered"]
@@ -297,3 +435,6 @@ metadata/_custom_type_script = "uid://cytafq8i1y8qm"
 [connection signal="state_entered" from="StateChart/CompoundState/Playing/Repeat" to="." method="_on_repeat_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/Playing/Decrement" to="." method="_on_decrement_state_entered"]
 [connection signal="state_entered" from="StateChart/CompoundState/Playing/NextMove" to="." method="_on_next_move_state_entered"]
+[connection signal="state_processing" from="StateChart/CompoundState/Playing/End" to="." method="_on_end_state_processing"]
+[connection signal="pressed" from="SuccessDialog/MarginContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="FailDialog/MarginContainer/RetryButton" to="." method="_on_retry_button_pressed"]

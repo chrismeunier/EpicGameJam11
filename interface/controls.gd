@@ -7,6 +7,8 @@ class_name ControlPanel
 @onready var play_button: TextureButton = %PlayButton
 @onready var undo_button: TextureButton = %UndoButton
 @onready var state_chart: StateChart = %StateChart
+@onready var success_dialog: PanelContainer = %SuccessDialog
+@onready var fail_dialog: PanelContainer = %FailDialog
 
 var music_played_once : bool = false
 
@@ -15,6 +17,7 @@ func _ready() -> void:
 	command_select.add_command_to_sequence.connect(add_command_from_select)
 	Events.to_select_mode.connect(idle_to_select_moves)
 	Events.movement_ended.connect(to_ask_for_loop)
+	Events.level_completed.connect(on_level_completed)
 	command_sequence.current_anim_ended.connect(command_anim_ended)
 
 func _disable_all_buttons() -> void:
@@ -157,3 +160,21 @@ func _on_playing_state_processing(_delta: float) -> void:
 	if music_played_once and not AudioManager.gameplay_music_one.playing:
 		if not AudioManager.gameplay_music_loop.playing:
 			AudioManager.gameplay_music_loop.play()
+
+func on_level_completed() -> void:
+	state_chart.send_event("end_game")
+	success_dialog.visible = true
+
+# Next level pressed
+func _on_next_level_button_pressed() -> void:
+	state_chart.send_event("start_selecting")
+	success_dialog.visible = false
+
+
+func _on_end_state_processing(delta: float) -> void:
+	if not success_dialog.visible:
+		fail_dialog.visible = true
+
+func _on_retry_button_pressed() -> void:
+	state_chart.send_event("start_selecting")
+	fail_dialog.visible = false

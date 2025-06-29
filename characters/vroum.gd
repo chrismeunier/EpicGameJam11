@@ -26,14 +26,13 @@ func move_next() -> void:
 		var current_tile = tilemap.local_to_map(global_position)
 		var next_tile = current_tile + Vector2i(direction)
 		var tile_data := tilemap.get_cell_tile_data(next_tile)
-		
+
 		animate_car(direction)
 		# Check if tile is walkable
-		if tile_data and tile_data.get_custom_data("walkable") == true:
-			var target_pos = tilemap.map_to_local(next_tile)
-			var tween = get_tree().create_tween()
-			tween.tween_property(self, "global_position", target_pos, movement_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-			await tween.finished
+		var target_pos = tilemap.map_to_local(next_tile)
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "global_position", target_pos, movement_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+		await tween.finished
 		await get_tree().create_timer(move_interval).timeout
 
 func animate_car(direction: Vector2) -> void:
