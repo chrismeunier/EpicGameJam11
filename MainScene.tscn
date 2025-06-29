@@ -10,5 +10,9 @@ script = ExtResource("1_x4av3")
 [node name="Controls" parent="." instance=ExtResource("2_rpqi1")]
 unique_name_in_owner = true
 
-[node name="MarkerLvl1" parent="." instance=ExtResource("3_rpqi1")]
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+unique_name_in_owner = true
 position = Vector2(375, 325)
+fit_margin = 0.0
+
+[node name="MarkerLvl1" parent="CanvasGroup" instance=ExtResource("3_rpqi1")]

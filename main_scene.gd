@@ -1,7 +1,7 @@
 extends Node2D
 
-@onready var current_scene = $MarkerLvl1
 @onready var controls: ControlPanel = %Controls
+@onready var canvas_group: CanvasGroup = %CanvasGroup
 
 const CENTERED_LVL_1 = preload("res://CenteredLevels/centered_lvl_1.tscn")
 const CENTERED_LVL_2 = preload("res://CenteredLevels/centered_lvl_2.tscn")
@@ -24,6 +24,7 @@ var current_scene_index = 0
 
 func _ready() -> void:
 	Events.next_level.connect(on_next_level)
+	#current_scene.set_scene_instance_load_placeholder(true)
 
 func on_next_level() -> void:
 	current_scene_index += 1
@@ -33,9 +34,9 @@ func on_next_level() -> void:
 	call_deferred("_deferred_goto_scene", scene)
 
 func _deferred_goto_scene(scene):
-	current_scene.free()
-	current_scene = scene.instantiate()
+	canvas_group.get_child(0).free()
+	var current_scene = scene.instantiate()
 	# Add it to the active scene, as child of root.
-	get_tree().root.add_child(current_scene)
+	canvas_group.add_child(current_scene)
 	# Optionally, to make it compatible with the SceneTree.change_scene_to_file() API.
 	get_tree().current_scene = current_scene
