@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://dyg7pxyytxieq"]
+[gd_scene load_steps=39 format=3 uid="uid://dyg7pxyytxieq"]
 
 [ext_resource type="Script" uid="uid://c6efr17g6np36" path="res://Sound/audio_manager.gd" id="1_vrqsf"]
 [ext_resource type="AudioStream" uid="uid://cclfnybxwu85h" path="res://Sound/missunderstanding-001.wav" id="2_643oj"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://cgqlu880c0b7t" path="res://Sound/play1.wav" id="14_naul7"]
 [ext_resource type="AudioStream" uid="uid://dduxy4jcrmbbh" path="res://Sound/play2.wav" id="15_1jhr1"]
 [ext_resource type="AudioStream" uid="uid://qvna51580gtb" path="res://Sound/starter-voice-dog.wav" id="16_yvoeu"]
+[ext_resource type="AudioStream" uid="uid://duv8vd22s28or" path="res://Sound/singlebark.wav" id="17_fe7gr"]
 [ext_resource type="AudioStream" uid="uid://bxycqvovkbrj3" path="res://Sound/missunderstanding-002.wav" id="17_kc7h4"]
 [ext_resource type="AudioStream" uid="uid://bcm2wtgp2i1kw" path="res://Sound/missunderstanding-003.wav" id="18_cyvv5"]
 [ext_resource type="AudioStream" uid="uid://chc5wmf02moqu" path="res://Sound/success.wav" id="19_x5jw1"]
@@ -120,6 +121,9 @@ stream = ExtResource("15_1jhr1")
 unique_name_in_owner = true
 stream = ExtResource("16_yvoeu")
 
+[node name="Undo" type="AudioStreamPlayer" parent="InstructionButtons"]
+stream = ExtResource("17_fe7gr")
+
 [node name="Gameplay" type="Node" parent="."]
 
 [node name="Error" type="Node" parent="Gameplay"]
@@ -219,10 +223,12 @@ stream = ExtResource("34_lj8su")
 [node name="GameplayMusicOne" type="AudioStreamPlayer" parent="Music"]
 unique_name_in_owner = true
 stream = ExtResource("35_fe7gr")
+volume_db = -5.0
 
 [node name="GameplayMusicLoop" type="AudioStreamPlayer" parent="Music"]
 unique_name_in_owner = true
 stream = ExtResource("36_h3vwp")
+volume_db = -5.0
 
 [node name="SuccessMusic" type="AudioStreamPlayer" parent="Music"]
 unique_name_in_owner = true
