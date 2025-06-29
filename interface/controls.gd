@@ -55,7 +55,7 @@ func _on_undo_button_pressed() -> void:
 func add_command_from_select(id: int):
 	command_sequence.add_command(id)
 	#print(id)
-
+	
 # INPUTS TO CHANGE STATES
 func idle_to_select_moves():
 	state_chart.send_event("start_selecting")
@@ -169,6 +169,7 @@ func on_level_completed() -> void:
 func _on_next_level_button_pressed() -> void:
 	state_chart.send_event("end_game")
 	success_dialog.visible = false
+	Events.level_completed.emit()
 
 
 func _on_end_state_processing(delta: float) -> void:
@@ -178,4 +179,5 @@ func _on_end_state_processing(delta: float) -> void:
 func _on_retry_button_pressed() -> void:
 	state_chart.send_event("end_game")
 	fail_dialog.visible = false
+	Events.level_retry
 	state_chart.send_event("start_selecting")
