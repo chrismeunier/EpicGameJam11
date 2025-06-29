@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://b87lnji1mtd60"]
+
+[ext_resource type="Texture2D" uid="uid://cfar6npgupuuf" path="res://icon.svg" id="1_5kq1s"]
+[ext_resource type="Texture2D" uid="uid://bs7s25k1wngu0" path="res://Visuels/icons/iconSelect.svg" id="2_1sfwg"]
+[ext_resource type="Script" uid="uid://d1uquss3x5qx5" path="res://interface/command_item.gd" id="2_y3jy4"]
+[ext_resource type="Texture2D" uid="uid://drlimo86dlbvv" path="res://Visuels/icons/iconHover.svg" id="3_g161e"]
+[ext_resource type="Texture2D" uid="uid://bqn10tht0xpdd" path="res://Visuels/icons/iconGray.svg" id="4_ukheo"]
+
+[node name="CommandItem" type="TextureButton"]
+texture_filter = 1
+custom_minimum_size = Vector2(64, 64)
+offset_right = 40.0
+offset_bottom = 40.0
+texture_normal = ExtResource("1_5kq1s")
+texture_pressed = ExtResource("2_1sfwg")
+texture_hover = ExtResource("3_g161e")
+texture_disabled = ExtResource("4_ukheo")
+ignore_texture_size = true
+stretch_mode = 4
+script = ExtResource("2_y3jy4")
+
+[node name="Label" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -23.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "X1"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="IdLabel" type="Label" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 20

@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgkvdtri7wgx6"]
+
+[ext_resource type="Script" uid="uid://r0d50ecrixf6" path="res://characters/disturbance_area.gd" id="1_tbv61"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kkq0g"]
+radius = 112.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fs26o"]
+radius = 80.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5b4fr"]
+radius = 48.0
+
+[node name="DisturbanceArea" type="Node2D"]
+script = ExtResource("1_tbv61")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -112.0
+offset_top = -112.0
+offset_right = 112.0
+offset_bottom = 112.0
+color = Color(1, 1, 1, 0)
+
+[node name="DetectionArea_112" type="Area2D" parent="."]
+collision_layer = 2048
+
+[node name="Radius_112" type="CollisionShape2D" parent="DetectionArea_112"]
+shape = SubResource("CircleShape2D_kkq0g")
+
+[node name="DetectionArea_80" type="Area2D" parent="."]
+collision_layer = 1024
+
+[node name="Radius_80" type="CollisionShape2D" parent="DetectionArea_80"]
+shape = SubResource("CircleShape2D_fs26o")
+
+[node name="DetectionArea_48" type="Area2D" parent="."]
+collision_layer = 512
+
+[node name="Radius_48" type="CollisionShape2D" parent="DetectionArea_48"]
+shape = SubResource("CircleShape2D_5b4fr")
+
+[connection signal="body_entered" from="DetectionArea_112" to="." method="_on_detection_area_112_body_entered"]
+[connection signal="body_exited" from="DetectionArea_112" to="." method="_on_detection_area_112_body_exited"]
+[connection signal="body_entered" from="DetectionArea_80" to="." method="_on_detection_area_80_body_entered"]
+[connection signal="body_exited" from="DetectionArea_80" to="." method="_on_detection_area_80_body_exited"]
+[connection signal="body_entered" from="DetectionArea_48" to="." method="_on_detection_area_48_body_entered"]
+[connection signal="body_exited" from="DetectionArea_48" to="." method="_on_detection_area_48_body_exited"]

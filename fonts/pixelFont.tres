@@ -1,0 +1,9 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://bo1gfp2uqybx"]
+
+[ext_resource type="FontFile" uid="uid://dejkgyf7ktbi8" path="res://fonts/MinimalPixel v2.ttf" id="1_ebqln"]
+
+[resource]
+default_font = ExtResource("1_ebqln")
+Label/colors/font_shadow_color = Color(0, 0, 0, 1)
+Label/constants/shadow_outline_size = 8
+Label/font_sizes/font_size = 24
