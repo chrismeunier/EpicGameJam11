@@ -148,9 +148,10 @@ layout_mode = 2
 [node name="Spacer" type="Control" parent="PanelContainer/MainMarginContainer/MainVerticalLayout"]
 layout_mode = 2
 
-[node name="CommandSequence" parent="PanelContainer/MainMarginContainer/MainVerticalLayout" instance=ExtResource("3_lodp2")]
+[node name="CommandSequence" parent="PanelContainer/MainMarginContainer/MainVerticalLayout" node_paths=PackedStringArray("control_state_chart") instance=ExtResource("3_lodp2")]
 unique_name_in_owner = true
 layout_mode = 2
+control_state_chart = NodePath("../../../../StateChart")
 
 [node name="Spacer2" type="Control" parent="PanelContainer/MainMarginContainer/MainVerticalLayout"]
 layout_mode = 2
