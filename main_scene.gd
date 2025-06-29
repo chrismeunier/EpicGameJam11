@@ -20,7 +20,7 @@ var levels_list = [\
 	CENTERED_LVL_6,\
 	CENTERED_LVL_7]
 
-var current_scene_index = 0
+var current_scene_index = 4
 
 func _ready() -> void:
 	Events.next_level.connect(on_next_level)

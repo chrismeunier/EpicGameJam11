@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c48dqyga4uqa" path="res://characters/LawnMower.tscn" id="3_cfibr"]
 [ext_resource type="PackedScene" uid="uid://dkjvq1dd5doeu" path="res://characters/player.tscn" id="4_b4wwg"]
 [ext_resource type="PackedScene" uid="uid://c46d7jt8i3i33" path="res://characters/Babark.tscn" id="5_txs14"]
-[ext_resource type="PackedScene" uid="uid://d07g2f0i2186d" path="res://TileMap/grid.tscn" id="7_6ujpl"]
+[ext_resource type="PackedScene" path="res://TileMap/grid.tscn" id="7_6ujpl"]
 
 [node name="LvlPelouse" type="Node2D"]
 script = ExtResource("1_1w3ei")

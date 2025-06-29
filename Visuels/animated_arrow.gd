@@ -4,7 +4,6 @@ class_name Arrow
 enum {LEFT, RIGHT, UP, DOWN}
 
 var disabled := true
-var movement_failed := false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	play("inactive")
@@ -24,7 +23,6 @@ func set_direction(direction):
 
 func block_animation():
 	play("wrong")
-	movement_failed = true
 	modulate = Color.RED
 
 func click():
@@ -33,7 +31,7 @@ func click():
 	play("click")
 
 func hover_in():
-	if not disabled and not movement_failed:
+	if not disabled:
 		play("hover")
 func hover_out():
 	if not disabled:
