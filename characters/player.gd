@@ -59,10 +59,11 @@ func move(direction: Vector2):
 
 	animate_player(direction)
 	lastDirection = direction
-
-	if tile_data.get_custom_data("walkable") == false:
-		can_move_input = true
-		return
+	
+	if (tile_data != null):
+		if tile_data.get_custom_data("walkable") == false:
+			can_move_input = true
+			return
 
 	rayCast.target_position = direction * 64
 	rayCast.force_raycast_update()
