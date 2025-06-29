@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcalqssudta1w"]
+
+[ext_resource type="PackedScene" uid="uid://cce6261yos8em" path="res://Levels/LvlAutoroute.tscn" id="1_ei6yd"]
+
+[node name="MarkerLvl7" type="Marker2D"]
+
+[node name="AutorouteLevel" parent="." instance=ExtResource("1_ei6yd")]
+position = Vector2(-324, -326)
+scale = Vector2(0.85, 0.85)

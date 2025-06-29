@@ -103,7 +103,6 @@ func _on_init_state_entered() -> void:
 	command_sequence.enable_sequence()
 	state_chart.send_event("move")
 
-
 func _on_signal_to_move_state_entered() -> void:
 	state_chart.set_expression_property("finished_move", false)
 	command_sequence.send_movement_direction()
@@ -117,7 +116,6 @@ func command_anim_ended():
 
 func _on_awaiting_anim_state_stepped() -> void:
 	state_chart.send_event("ask_for_loop")
-
 
 func to_ask_for_loop(misunderstanding:bool):
 	#print("Move understood? ", not misunderstanding)
@@ -134,11 +132,9 @@ func _on_repeat_state_entered() -> void:
 		command_sequence.pop_first_command()
 		state_chart.send_event("no_repeat")
 
-
 func _on_decrement_state_entered() -> void:
 	command_sequence.decrement_current_command()
 	state_chart.send_event("go_to_next")
-
 
 func _on_next_move_state_entered() -> void:
 	if command_sequence.is_not_empty():
@@ -146,11 +142,9 @@ func _on_next_move_state_entered() -> void:
 	else:
 		state_chart.send_event("finished")
 
-
 func _on_selecting_state_processing(_delta: float) -> void:
 	if not AudioManager.menu_music.playing:
 		AudioManager.menu_music.play()
-
 
 func _on_playing_state_processing(_delta: float) -> void:
 	if not music_played_once and not AudioManager.gameplay_music_one.playing:
@@ -169,7 +163,7 @@ func on_level_completed() -> void:
 func _on_next_level_button_pressed() -> void:
 	state_chart.send_event("start_selecting")
 	success_dialog.visible = false
-
+	Events.next_level.emit()
 
 func _on_end_state_processing(delta: float) -> void:
 	if not success_dialog.visible:

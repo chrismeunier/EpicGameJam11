@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyof6ioq6j3mq"]
+
+[ext_resource type="Script" uid="uid://bixxbjdmjyixk" path="res://main_scene.gd" id="1_x4av3"]
+[ext_resource type="PackedScene" uid="uid://udway7ncy7id" path="res://interface/controls.tscn" id="2_rpqi1"]
+[ext_resource type="PackedScene" uid="uid://bjmwquwheatr2" path="res://CenteredLevels/centered_lvl_1.tscn" id="3_rpqi1"]
+
+[node name="MainScene" type="Node2D"]
+script = ExtResource("1_x4av3")
+
+[node name="Controls" parent="." instance=ExtResource("2_rpqi1")]
+unique_name_in_owner = true
+
+[node name="MarkerLvl1" parent="." instance=ExtResource("3_rpqi1")]
+position = Vector2(375, 325)

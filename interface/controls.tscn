@@ -226,7 +226,7 @@ metadata/_custom_type_script = "uid://couw105c3bde4"
 
 [node name="CompoundState" type="Node" parent="StateChart"]
 script = ExtResource("7_mi4ox")
-initial_state = NodePath("Inactive")
+initial_state = NodePath("Selecting")
 metadata/_custom_type_script = "uid://jk2jm1g6q853"
 
 [node name="Inactive" type="Node" parent="StateChart/CompoundState"]

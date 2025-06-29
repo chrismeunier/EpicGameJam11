@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://di86brryw6h4c"]
+
+[ext_resource type="PackedScene" uid="uid://b4eqj7kto0x4" path="res://Levels/level_forest.tscn" id="1_lwfdt"]
+
+[node name="MarkerLvl4" type="Marker2D"]
+
+[node name="LevelForest" parent="." instance=ExtResource("1_lwfdt")]
+position = Vector2(-255, -258)

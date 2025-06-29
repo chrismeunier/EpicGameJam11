@@ -23,7 +23,7 @@ func _process(_delta: float) -> void:
 		return
 		
 	# Uncomment this to move manually
-	# move_manually()
+	move_manually()
 	
 	if signal_direction != Vector2.ZERO:
 		var new_signal: Vector2 = signal_direction
