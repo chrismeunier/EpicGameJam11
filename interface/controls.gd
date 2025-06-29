@@ -92,7 +92,9 @@ func _on_signal_to_move_state_entered() -> void:
 	command_sequence.start_animation()
 
 
-func to_ask_for_loop():
+func to_ask_for_loop(move_succeeded:bool):
+	if not move_succeeded:
+		print("Failed to move!") #TODO
 	state_chart.send_event("ask_for_loop")
 func _on_repeat_state_entered() -> void:
 	if command_sequence.should_loop():

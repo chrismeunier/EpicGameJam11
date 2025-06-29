@@ -76,16 +76,16 @@ func send_movement_direction():
 func trigger_movement(direction: int):
 	match direction:
 		LEFT:
-			# Events.go_left.emit()
+			Events.go_left.emit()
 			print("Going left!")
 		RIGHT:
-			# Events.go_right.emit()
+			Events.go_right.emit()
 			print("Going right!")
 		UP:
-			# Events.go_up.emit()
+			Events.go_up.emit()
 			print("Going up!")
 		DOWN:
-			# Events.go_down.emit()
+			Events.go_down.emit()
 			print("Going down!")
 	#! FIXME some hack to test the states
 	#await get_tree().create_timer(2).timeout
