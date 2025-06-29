@@ -1,0 +1,100 @@
+[gd_scene load_steps=14 format=3 uid="uid://bqn4nfb6gdwrl"]
+
+[ext_resource type="Script" path="res://characters/vroum.gd" id="1_5lk38"]
+[ext_resource type="PackedScene" uid="uid://cgkvdtri7wgx6" path="res://characters/disturbance_area.tscn" id="1_asxv0"]
+[ext_resource type="Texture2D" uid="uid://c1k1tbfiprk1g" path="res://Visuels/car.png" id="1_mtjkn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtjkn"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lk38"]
+atlas = ExtResource("1_mtjkn")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axxip"]
+atlas = ExtResource("1_mtjkn")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hrx2x"]
+atlas = ExtResource("1_mtjkn")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v68b8"]
+atlas = ExtResource("1_mtjkn")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7t6ko"]
+atlas = ExtResource("1_mtjkn")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7mu8"]
+atlas = ExtResource("1_mtjkn")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4jq3e"]
+atlas = ExtResource("1_mtjkn")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j6jgq"]
+atlas = ExtResource("1_mtjkn")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5lk38"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5lk38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axxip")
+}],
+"loop": true,
+"name": &"ride_down",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hrx2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v68b8")
+}],
+"loop": true,
+"name": &"ride_left",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7t6ko")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7mu8")
+}],
+"loop": true,
+"name": &"ride_right",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4jq3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j6jgq")
+}],
+"loop": true,
+"name": &"ride_up",
+"speed": 6.0
+}]
+
+[node name="Vroum" type="StaticBody2D"]
+script = ExtResource("1_5lk38")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_mtjkn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_5lk38")
+animation = &"ride_down"
+
+[node name="DisturbanceArea" parent="." instance=ExtResource("1_asxv0")]

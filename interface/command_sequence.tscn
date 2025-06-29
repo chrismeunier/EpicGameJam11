@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://jcmlafiwx4rg"]
 
 [ext_resource type="Script" uid="uid://bu6ip6puabiyu" path="res://interface/command_sequence.gd" id="1_8digy"]
-[ext_resource type="PackedScene" uid="uid://b87lnji1mtd60" path="res://interface/command_item.tscn" id="2_gfyro"]
+[ext_resource type="PackedScene" uid="uid://v7j3eku8xods" path="res://interface/command_item_v_2.tscn" id="2_gfyro"]
 
 [node name="CommandSequence" type="VBoxContainer"]
 texture_filter = 1
@@ -21,26 +21,6 @@ theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 12
 columns = 4
 
-[node name="CommandItem" parent="GridContainer" instance=ExtResource("2_gfyro")]
-layout_mode = 2
-disabled = true
-
-[node name="CommandItem2" parent="GridContainer" instance=ExtResource("2_gfyro")]
+[node name="CommandItemV2" parent="GridContainer" instance=ExtResource("2_gfyro")]
 layout_mode = 2
 toggle_mode = true
-button_pressed = true
-id = 1
-
-[node name="CommandItem3" parent="GridContainer" instance=ExtResource("2_gfyro")]
-layout_mode = 2
-
-[node name="CommandItem4" parent="GridContainer" instance=ExtResource("2_gfyro")]
-layout_mode = 2
-id = 2
-
-[node name="CommandItem5" parent="GridContainer" instance=ExtResource("2_gfyro")]
-layout_mode = 2
-id = 3
-
-[node name="CommandItem6" parent="GridContainer" instance=ExtResource("2_gfyro")]
-layout_mode = 2
