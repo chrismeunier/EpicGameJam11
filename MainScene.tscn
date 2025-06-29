@@ -12,7 +12,7 @@ unique_name_in_owner = true
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 unique_name_in_owner = true
-position = Vector2(375, 325)
+position = Vector2(378, 336)
 fit_margin = 0.0
 
 [node name="MarkerLvl1" parent="CanvasGroup" instance=ExtResource("3_rpqi1")]
