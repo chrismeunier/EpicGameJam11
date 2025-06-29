@@ -1,13 +1,15 @@
 extends VBoxContainer
 class_name SequencePanel
 
+signal current_anim_ended
+
 enum {LEFT, RIGHT, UP, DOWN}
 
 const COMMAND_ITEM = preload("res://interface/command_item_v_2.tscn")
 
 # list of registered commands
 var cmd_list: Array[int] = []
-
+var current_item : CommandItem
 @onready var grid_container: GridContainer = %GridContainer
 
 func _ready() -> void:
@@ -67,8 +69,13 @@ func add_command(id: int):
 	cmd_list.append(id)
 
 func start_animation():
-	var item = get_first_command_item()
-	item.play_hover_in()
+	current_item = get_first_command_item()
+	if not current_item.hover_animation_finished.is_connected(sequence_panel_animation_finished):
+		current_item.hover_animation_finished.connect(sequence_panel_animation_finished)
+	current_item.play_hover_in()
+
+func sequence_panel_animation_finished():
+	current_anim_ended.emit()
 
 func send_movement_direction():
 	trigger_movement(cmd_list.front())
@@ -77,19 +84,22 @@ func trigger_movement(direction: int):
 	match direction:
 		LEFT:
 			Events.go_left.emit()
-			print("Going left!")
+			#print("Going left!")
 		RIGHT:
 			Events.go_right.emit()
-			print("Going right!")
+			#print("Going right!")
 		UP:
 			Events.go_up.emit()
-			print("Going up!")
+			#print("Going up!")
 		DOWN:
 			Events.go_down.emit()
-			print("Going down!")
+			#print("Going down!")
 	#! FIXME some hack to test the states
 	#await get_tree().create_timer(2).timeout
-	#Events.movement_ended.emit()
+	#! DEBUG
+	if get_parent().get_parent().get_parent().get_parent().get_parent() == get_tree().root:
+		Events.movement_ended.emit(true)
+
 
 func should_loop() -> bool:
 	if get_first_command_item().label_x_value > 1:

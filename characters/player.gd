@@ -23,30 +23,31 @@ func _process(_delta: float) -> void:
 		return
 		
 	# Uncomment this to move manually
-	move_manually()
+	# move_manually()
 	
 	if signal_direction != Vector2.ZERO:
 		var new_signal: Vector2 = signal_direction
 		if disturbanceLvl != "lvl0":
 			new_signal = disturb_signal()
 
-		Events.movement_ended.emit(new_signal == signal_direction)
-
-		if new_signal == signal_direction:
+		#Events.movement_ended.emit(new_signal == signal_direction)
+		var misunderstood_direction = new_signal == signal_direction
+		if misunderstood_direction:
 			play_sound(signal_direction)
 		else:
 			play_error_sound()
 			
 		signal_direction = new_signal
-		move(signal_direction)
+		move(signal_direction, misunderstood_direction)
 		signal_direction = Vector2.ZERO
+		#Events.movement_ended.emit(misunderstood_direction)
 	else:
-		move(Vector2.ZERO)
+		move(Vector2.ZERO, false)
 
 func set_tilemap(tmap: TileMapLayer):
 	tilemap = tmap
 
-func move(direction: Vector2):
+func move(direction: Vector2, misunderstood_direction: bool):
 	if direction == Vector2.ZERO:
 		handle_idle()
 		return
@@ -77,6 +78,7 @@ func move(direction: Vector2):
 	tween.tween_property(self, "global_position", target_position, MOVE_COOLDOWN).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 	await tween.finished
+	Events.movement_ended.emit(misunderstood_direction)
 	can_move_input = true
 
 func setDisturbanceZoneLevel(lvl: String, isEntered: bool) -> void:
