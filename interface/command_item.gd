@@ -36,7 +36,7 @@ func decrement_label():
 	if label_x_value < 1:
 		label.text = ""
 		# free here?
-		call_deferred("queue_free")
+		#call_deferred("queue_free")
 
 
 func disable():
@@ -44,13 +44,17 @@ func disable():
 func enable():
 	custom_disabled = false
 
-func _on_pressed() -> void:
+func play_click():
 	arrow.click()
+func _on_pressed() -> void:
+	play_click()
 
-
-func _on_mouse_entered() -> void:
+func play_hover_in():
 	arrow.hover_in()
+func _on_mouse_entered() -> void:
+	play_hover_in()
 
-
-func _on_mouse_exited() -> void:
+func play_hover_out():
 	arrow.hover_out()
+func _on_mouse_exited() -> void:
+	play_hover_out()

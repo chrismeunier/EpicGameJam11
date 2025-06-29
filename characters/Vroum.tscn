@@ -1,6 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://lq88x12ervu6"]
+[gd_scene load_steps=14 format=3 uid="uid://bqn4nfb6gdwrl"]
 
-[ext_resource type="Script" uid="uid://rbw3wymg74gr" path="res://characters/vroum.gd" id="1_5lk38"]
+[ext_resource type="Script" path="res://characters/vroum.gd" id="1_5lk38"]
 [ext_resource type="PackedScene" uid="uid://cgkvdtri7wgx6" path="res://characters/disturbance_area.tscn" id="1_asxv0"]
 [ext_resource type="Texture2D" uid="uid://c1k1tbfiprk1g" path="res://Visuels/car.png" id="1_mtjkn"]
 
@@ -50,7 +50,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"ride_down",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -61,7 +61,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"ride_left",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -72,7 +72,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"ride_right",
-"speed": 5.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -83,7 +83,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"ride_up",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [node name="Vroum" type="StaticBody2D"]
@@ -96,6 +96,5 @@ shape = SubResource("RectangleShape2D_mtjkn")
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_5lk38")
 animation = &"ride_down"
-frame_progress = 0.940328
 
 [node name="DisturbanceArea" parent="." instance=ExtResource("1_asxv0")]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c46d7jt8i3i33"]
+[gd_scene load_steps=15 format=3 uid="uid://c46d7jt8i3i33"]
 
 [ext_resource type="Script" uid="uid://cjtbrby16pu7v" path="res://characters/babark.gd" id="1_ne8ia"]
 [ext_resource type="AudioStream" uid="uid://b7wyhjft6r2p6" path="res://Sound/dog-loop.wav" id="2_c8fhr"]
@@ -68,8 +68,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 5.0
+"speed": 6.0
 }]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lbqyu"]
+radius = 2.0
 
 [node name="Babark" type="Node2D"]
 script = ExtResource("1_ne8ia")
@@ -90,7 +93,12 @@ stream = ExtResource("2_c8fhr")
 scale = Vector2(0.4, 0.4)
 sprite_frames = SubResource("SpriteFrames_2k7nf")
 autoplay = "default"
-frame_progress = 0.0102316
+
+[node name="SuccessDetect" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SuccessDetect"]
+shape = SubResource("CircleShape2D_lbqyu")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="SuccessDetect" to="." method="_on_success_detect_body_entered"]

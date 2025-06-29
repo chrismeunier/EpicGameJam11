@@ -12,13 +12,14 @@ var signal_direction = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	anim.play("idle_down")
 	Events.go_left.connect(on_signal_go_left)
 	Events.go_right.connect(on_signal_go_right)
 	Events.go_down.connect(on_signal_go_down)
 	Events.go_up.connect(on_signal_go_up)
 
 func _process(_delta: float) -> void:
-	if not can_move_input:
+	if not can_move_input or anim.animation == "success":
 		return
 		
 	# Uncomment this to move manually
@@ -29,7 +30,7 @@ func _process(_delta: float) -> void:
 		if disturbanceLvl != "lvl0":
 			new_signal = disturb_signal()
 
-		Events.moved_successfully.emit(new_signal == signal_direction)
+		Events.movement_ended.emit(new_signal == signal_direction)
 
 		if new_signal == signal_direction:
 			play_sound(signal_direction)
@@ -90,6 +91,8 @@ func setDisturbanceZoneLevel(lvl: String, isEntered: bool) -> void:
 			disturbanceLvl = "lvl0"
 
 func animate_player(direction: Vector2) -> void:
+	if anim.animation == "success":
+		return
 	if direction == Vector2.DOWN and anim.animation != "move_down":
 		anim.play("move_down")
 	elif direction == Vector2.LEFT and anim.animation != "move_left":
@@ -100,6 +103,8 @@ func animate_player(direction: Vector2) -> void:
 		anim.play("move_up")
 
 func handle_idle() -> void:
+	if anim.animation == "success":
+		return
 	if lastDirection == Vector2.DOWN and anim.animation != "idle_down":
 		anim.play("idle_down")
 	elif lastDirection == Vector2.LEFT and anim.animation != "idle_left":
@@ -180,3 +185,6 @@ func play_error_sound() -> void:
 	var index = randi() % AudioManager.error.get_child_count()
 	var player: AudioStreamPlayer = AudioManager.error.get_child(index)
 	player.play()
+	
+func set_success_animation() -> void:
+	anim.play("success")
