@@ -34,10 +34,10 @@ func get_car_path_for_world2() -> Array:
 	
 func get_car_path_for_world3() -> Array:
 	var path := []
-	for i in 23:
+	for i in 19:
 		path.append(Vector2.LEFT)
 
-	for i in 23:
+	for i in 19:
 		path.append(Vector2.RIGHT)
 		
 	return path
