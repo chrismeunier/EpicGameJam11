@@ -363,10 +363,14 @@ metadata/_custom_type_script = "uid://cytafq8i1y8qm"
 [node name="SuccessDialog" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 visible = false
-offset_left = 59.0
-offset_top = 54.0
-offset_right = 693.0
-offset_bottom = 598.0
+anchors_preset = -1
+anchor_right = 0.701
+anchor_bottom = 1.0
+offset_right = -1.28003
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="MarginContainer" type="MarginContainer" parent="SuccessDialog"]
 layout_mode = 2
@@ -393,10 +397,12 @@ autoplay = "default"
 [node name="FailDialog" type="PanelContainer" parent="."]
 unique_name_in_owner = true
 visible = false
-offset_left = 59.0
-offset_top = 54.0
-offset_right = 693.0
-offset_bottom = 598.0
+anchors_preset = -1
+anchor_right = 0.7
+anchor_bottom = 1.0
+offset_right = -6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="FailDialog"]
 layout_mode = 2
