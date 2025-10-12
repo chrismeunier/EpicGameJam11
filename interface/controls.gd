@@ -1,7 +1,6 @@
 extends CanvasLayer
 class_name ControlPanel
 
-
 @onready var command_select: CommandPanel = %CommandSelect
 @onready var command_sequence: SequencePanel = %CommandSequence
 @onready var play_button: TextureButton = %PlayButton
@@ -9,6 +8,7 @@ class_name ControlPanel
 @onready var state_chart: StateChart = %StateChart
 @onready var success_dialog: PanelContainer = %SuccessDialog
 @onready var fail_dialog: PanelContainer = %FailDialog
+@onready var end_dialog: PanelContainer = %EndDialog
 
 var music_played_once : bool = false
 
@@ -157,7 +157,14 @@ func _on_playing_state_processing(_delta: float) -> void:
 
 func on_level_completed() -> void:
 	state_chart.send_event("end_game")
-	success_dialog.visible = true
+	if (_is_last_level()):
+		end_dialog.visible = true
+		end_dialog.playAnimation()
+	else:
+		success_dialog.visible = true
+
+func _is_last_level() -> bool:
+	return get_parent().is_last_level()
 
 # Next level pressed
 func _on_next_level_button_pressed() -> void:
@@ -173,4 +180,5 @@ func _on_end_state_processing(delta: float) -> void:
 func _on_retry_button_pressed() -> void:
 	state_chart.send_event("end_game")
 	fail_dialog.visible = false
+	Events.reset_level.emit()
 	state_chart.send_event("start_selecting")
