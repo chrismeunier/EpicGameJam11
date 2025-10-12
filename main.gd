@@ -40,3 +40,6 @@ func _deferred_goto_scene(scene):
 func on_reset_level() -> void:
 	var scene = levels_list[current_scene_index]
 	call_deferred("_deferred_goto_scene", scene)
+
+func is_last_level() -> bool:
+	return levels_list.size() - 1 == current_scene_index
