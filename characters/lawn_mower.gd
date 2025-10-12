@@ -1,4 +1,4 @@
-extends Node2D
+extends StaticBody2D
 
 var isPlayerInArea : bool = false
 var player : Node2D
@@ -32,11 +32,3 @@ func get_sound_volume() -> float:
 		var radius: float = collision_shape_2d.shape.get_rect().size.x / 2.0
 		var distance: float = global_position.distance_to(player.global_position)
 		return -(20 * distance / radius) + 6
-
-func _on_success_detect_body_entered(body: Node2D) -> void:
-	if (body.name == "Player"):
-		body.set_success_animation()
-		isPlayerInArea = false
-		visible = false
-		AudioManager.level_success.play()
-		Events.level_completed.emit()
