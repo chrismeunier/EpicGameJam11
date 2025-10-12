@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://tsiq1qtkgto1"]
-
-[ext_resource type="PackedScene" uid="uid://db2vvw75wxgqc" path="res://Levels/LvlParking.tscn" id="1_e8xhp"]
-
-[node name="MarkerLvl6" type="Marker2D"]
-
-[node name="LvlParking" parent="." instance=ExtResource("1_e8xhp")]
-position = Vector2(-354, -121)
-scale = Vector2(0.5, 0.5)
