@@ -11,6 +11,7 @@ extends Node
 @onready var startervoicedog = %Startervoicedog
 @onready var error = %Error
 @onready var level_success = %LevelSuccess
+@onready var end_game = %EndGame
 @onready var gameplay_right = %GameplayRight
 @onready var gameplay_left = %GameplayLeft
 @onready var gameplay_up = %GameplayUp
@@ -24,4 +25,12 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	for child in get_children():
+		_set_polyphony(child)
+	
+func _set_polyphony(node: Node):
+	if node is AudioStreamPlayer:
+		node.set_max_polyphony(20)
+	elif node is Node:
+		for child in node.get_children():
+			_set_polyphony(child)

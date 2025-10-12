@@ -160,8 +160,11 @@ func on_level_completed() -> void:
 	if (_is_last_level()):
 		end_dialog.visible = true
 		end_dialog.playAnimation()
+		AudioManager.end_game.play()
 	else:
 		success_dialog.visible = true
+		AudioManager.level_success.play()
+
 
 func _is_last_level() -> bool:
 	return get_parent().is_last_level()

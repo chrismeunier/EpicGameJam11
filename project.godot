@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 driver/output_latency=60
 driver/output_latency.web=60
 driver/mix_rate=48000
+driver/mix_rate.web=48000
 
 [autoload]
 

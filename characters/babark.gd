@@ -38,5 +38,4 @@ func _on_success_detect_body_entered(body: Node2D) -> void:
 		body.set_success_animation()
 		isPlayerInArea = false
 		visible = false
-		AudioManager.level_success.play()
 		Events.level_completed.emit()
