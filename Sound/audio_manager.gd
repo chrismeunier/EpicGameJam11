@@ -11,6 +11,7 @@ extends Node
 @onready var startervoicedog = %Startervoicedog
 @onready var error = %Error
 @onready var level_success = %LevelSuccess
+@onready var end_game = %EndGame
 @onready var gameplay_right = %GameplayRight
 @onready var gameplay_left = %GameplayLeft
 @onready var gameplay_up = %GameplayUp

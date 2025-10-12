@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://udway7ncy7id"]
+[gd_scene load_steps=53 format=3 uid="uid://udway7ncy7id"]
 
 [ext_resource type="Script" uid="uid://2mux5u6bkh0j" path="res://interface/controls.gd" id="1_ij41j"]
 [ext_resource type="PackedScene" uid="uid://dvjjg6cpbfily" path="res://interface/command_select.tscn" id="2_x0sgd"]
@@ -21,8 +21,8 @@
 [ext_resource type="Texture2D" uid="uid://c83fsb3ynqx67" path="res://Visuels/grandma_lose.png" id="14_vgvyt"]
 [ext_resource type="Texture2D" uid="uid://dygvyua4ru2q6" path="res://Visuels/grandma_holding_doggo.png" id="14_vqsow"]
 [ext_resource type="Script" uid="uid://bxprlw40wl0c3" path="res://addons/godot_state_charts/all_of_guard.gd" id="15_bohjk"]
-[ext_resource type="Texture2D" uid="uid://dmkbcc6pc4e2b" path="res://Visuels/final_screen.png" id="22_lwjjj"]
-[ext_resource type="Script" uid="uid://jr8uvcpwmpj" path="res://interface/end_dialog.gd" id="22_ulxes"]
+[ext_resource type="Script" path="res://interface/end_dialog.gd" id="22_ulxes"]
+[ext_resource type="Texture2D" uid="uid://b6c7203sx10qm" path="res://Visuels/final_screen_v2.png" id="23_ulxes"]
 
 [sub_resource type="Resource" id="Resource_opka8"]
 script = ExtResource("13_uqaec")
@@ -119,64 +119,60 @@ animations = [{
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_76tt1"]
-atlas = ExtResource("22_lwjjj")
-region = Rect2(0, 0, 1281, 721)
+atlas = ExtResource("23_ulxes")
+region = Rect2(0, 0, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_olcju"]
-atlas = ExtResource("22_lwjjj")
-region = Rect2(1281, 0, 1281, 721)
+atlas = ExtResource("23_ulxes")
+region = Rect2(1280, 0, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w6mer"]
-atlas = ExtResource("22_lwjjj")
-region = Rect2(2562, 0, 1281, 721)
+atlas = ExtResource("23_ulxes")
+region = Rect2(2560, 0, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yldy7"]
-atlas = ExtResource("22_lwjjj")
-region = Rect2(0, 721, 1281, 721)
+atlas = ExtResource("23_ulxes")
+region = Rect2(0, 720, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bx1lk"]
-atlas = ExtResource("22_lwjjj")
-region = Rect2(1281, 721, 1281, 721)
+atlas = ExtResource("23_ulxes")
+region = Rect2(1280, 720, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ty5t"]
-atlas = ExtResource("22_lwjjj")
-region = Rect2(2562, 721, 1281, 721)
+atlas = ExtResource("23_ulxes")
+region = Rect2(2560, 720, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fd24t"]
-atlas = ExtResource("22_lwjjj")
-region = Rect2(0, 1442, 1281, 721)
+atlas = ExtResource("23_ulxes")
+region = Rect2(0, 1440, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rrn40"]
-atlas = ExtResource("22_lwjjj")
-region = Rect2(1281, 1442, 1281, 721)
+atlas = ExtResource("23_ulxes")
+region = Rect2(1280, 1440, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v4dsd"]
-atlas = ExtResource("22_lwjjj")
-region = Rect2(2562, 1442, 1281, 721)
+atlas = ExtResource("23_ulxes")
+region = Rect2(2560, 1440, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_283ug"]
-atlas = ExtResource("22_lwjjj")
-region = Rect2(0, 2163, 1281, 721)
+atlas = ExtResource("23_ulxes")
+region = Rect2(0, 2160, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e8npq"]
-atlas = ExtResource("22_lwjjj")
-region = Rect2(1281, 2163, 1281, 721)
+atlas = ExtResource("23_ulxes")
+region = Rect2(1280, 2160, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bsaii"]
-atlas = ExtResource("22_lwjjj")
-region = Rect2(2562, 2163, 1281, 721)
+atlas = ExtResource("23_ulxes")
+region = Rect2(2560, 2160, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ohxmy"]
-atlas = ExtResource("22_lwjjj")
-region = Rect2(0, 2884, 1281, 721)
+atlas = ExtResource("23_ulxes")
+region = Rect2(0, 2880, 1280, 720)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fwl04"]
-atlas = ExtResource("22_lwjjj")
-region = Rect2(1281, 2884, 1281, 721)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_r3b0r"]
-atlas = ExtResource("22_lwjjj")
-region = Rect2(2562, 2884, 1281, 721)
+atlas = ExtResource("23_ulxes")
+region = Rect2(1280, 2880, 1280, 720)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_shfa7"]
 animations = [{
@@ -222,13 +218,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fwl04")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_r3b0r")
 }],
 "loop": false,
 "name": &"win",
-"speed": 10.0
+"speed": 6.0
 }]
 
 [node name="Controls" type="CanvasLayer"]
