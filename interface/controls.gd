@@ -159,6 +159,7 @@ func on_level_completed() -> void:
 	state_chart.send_event("end_game")
 	if (_is_last_level()):
 		end_dialog.visible = true
+		end_dialog.playAnimation()
 	else:
 		success_dialog.visible = true
 

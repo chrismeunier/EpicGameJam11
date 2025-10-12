@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://udway7ncy7id"]
+[gd_scene load_steps=54 format=3 uid="uid://udway7ncy7id"]
 
 [ext_resource type="Script" uid="uid://2mux5u6bkh0j" path="res://interface/controls.gd" id="1_ij41j"]
 [ext_resource type="PackedScene" uid="uid://dvjjg6cpbfily" path="res://interface/command_select.tscn" id="2_x0sgd"]
@@ -22,6 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://dygvyua4ru2q6" path="res://Visuels/grandma_holding_doggo.png" id="14_vqsow"]
 [ext_resource type="Script" uid="uid://bxprlw40wl0c3" path="res://addons/godot_state_charts/all_of_guard.gd" id="15_bohjk"]
 [ext_resource type="Texture2D" uid="uid://dmkbcc6pc4e2b" path="res://Visuels/final_screen.png" id="22_lwjjj"]
+[ext_resource type="Script" uid="uid://jr8uvcpwmpj" path="res://interface/end_dialog.gd" id="22_ulxes"]
 
 [sub_resource type="Resource" id="Resource_opka8"]
 script = ExtResource("13_uqaec")
@@ -225,9 +226,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_r3b0r")
 }],
-"loop": true,
+"loop": false,
 "name": &"win",
-"speed": 5.0
+"speed": 10.0
 }]
 
 [node name="Controls" type="CanvasLayer"]
@@ -546,11 +547,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("22_ulxes")
 
 [node name="ColorRect" type="ColorRect" parent="EndDialog"]
 layout_mode = 2
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="EndDialog"]
+[node name="WinAnimationSprite" type="AnimatedSprite2D" parent="EndDialog"]
+unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_shfa7")
 animation = &"win"
 autoplay = "win"
