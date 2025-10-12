@@ -173,4 +173,5 @@ func _on_end_state_processing(delta: float) -> void:
 func _on_retry_button_pressed() -> void:
 	state_chart.send_event("end_game")
 	fail_dialog.visible = false
+	Events.reset_level.emit()
 	state_chart.send_event("start_selecting")
