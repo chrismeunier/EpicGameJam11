@@ -7,31 +7,29 @@ var player : Node2D
 @onready var collision_shape_2d: CollisionShape2D = %CollisionShape2D
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if (body.name == "Player"):
-		isPlayerInArea = true
-		player = body
-		audio_stream_player_2d.autoplay = true
-
+	isPlayerInArea = true
+	player = body
+	
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if (body.name == "Player"):
-		isPlayerInArea = false
-		player = null
+	isPlayerInArea = false
+	player = null
+	if audio_stream_player_2d.playing:
 		audio_stream_player_2d.stop()
-		audio_stream_player_2d.autoplay = false
 
 func _process(delta: float) -> void:
-	if isPlayerInArea:
-		audio_stream_player_2d.volume_db = get_sound_volume()
-		if !audio_stream_player_2d.playing:
-			audio_stream_player_2d.play()
+	if isPlayerInArea and not audio_stream_player_2d.playing:
+		audio_stream_player_2d.play()
+		audio_stream_player_2d.attenuation = get_sound_volume()
+	else:
+		if audio_stream_player_2d.playing:
+			audio_stream_player_2d.stop()
 
 func get_sound_volume() -> float:
 	if player == null:
 		return 1
 	else:
-		var radius: float = collision_shape_2d.shape.get_rect().size.x / 2.0
-		var distance: float = global_position.distance_to(player.global_position)
-		return -(20 * distance / radius) + 6
+		var volume: float = 1 - (global_position.distance_to(player.global_position)	/ collision_shape_2d.shape.get_rect().size.x)
+		return volume * 100
 
 func _on_success_detect_body_entered(body: Node2D) -> void:
 	if (body.name == "Player"):

@@ -19,10 +19,11 @@ func _ready() -> void:
 	Events.go_up.connect(on_signal_go_up)
 
 func _process(_delta: float) -> void:
-	# Uncomment this to move manually
-	# move_manually()
 	if not can_move_input or anim.animation == "success":
 		return
+		
+	# Uncomment this to move manually
+	# move_manually()
 	
 	if signal_direction != Vector2.ZERO:
 		var new_signal: Vector2 = signal_direction

@@ -1,6 +1,7 @@
 extends Node
 
 @onready var controls: ControlPanel = %Controls
+@onready var canvas_group: CanvasGroup = %CanvasGroup
 
 const LVL_1 = preload("res://Levels/Lvl1.tscn")
 const LVL_2 = preload("res://Levels/Lvl2.tscn")
@@ -23,7 +24,7 @@ var current_scene_index = 0
 
 func _ready() -> void:
 	Events.next_level.connect(on_next_level)
-	Events.reset_level.connect(on_reset_level)
+	#current_scene.set_scene_instance_load_placeholder(true)
 
 func on_next_level() -> void:
 	current_scene_index += 1
@@ -33,13 +34,7 @@ func on_next_level() -> void:
 	call_deferred("_deferred_goto_scene", scene)
 
 func _deferred_goto_scene(scene):
+	canvas_group.get_child(0).free()
 	var current_scene = scene.instantiate()
-	self.add_child(current_scene)
-	self.get_child(1).free()
-
-func on_reset_level() -> void:
-	var scene = levels_list[current_scene_index]
-	call_deferred("_deferred_goto_scene", scene)
-
-func is_last_level() -> bool:
-	return levels_list.size() - 1 == current_scene_index
+	canvas_group.add_child(current_scene)
+	#get_tree().current_scene = current_scene
