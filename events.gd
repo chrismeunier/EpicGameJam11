@@ -16,7 +16,7 @@ signal movement_ended(success: bool)
 # Call "Events.movement_ended.emit(value)" when movement is done
 signal level_completed
 signal next_level
-signal level_retry
+signal reset_level
 
 func _ready() -> void:
 	pass # Replace with function body.
