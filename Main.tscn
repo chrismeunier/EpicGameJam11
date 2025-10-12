@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cyof6ioq6j3mq"]
+
+[ext_resource type="Script" uid="uid://bixxbjdmjyixk" path="res://main.gd" id="1_x4av3"]
+[ext_resource type="PackedScene" uid="uid://udway7ncy7id" path="res://interface/controls.tscn" id="2_rpqi1"]
+[ext_resource type="PackedScene" uid="uid://r7mveck8cnw2" path="res://Levels/Lvl1.tscn" id="3_r0du0"]
+
+[node name="Main" type="Polygon2D"]
+color = Color(1, 1, 1, 0)
+polygon = PackedVector2Array(0, 0, 1280, 0, 1280, 720, 0, 720)
+uv = PackedVector2Array(3, 5, 1279, 3, 1279, 721, -3, 725)
+script = ExtResource("1_x4av3")
+
+[node name="Controls" parent="." instance=ExtResource("2_rpqi1")]
+unique_name_in_owner = true
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+unique_name_in_owner = true
+
+[node name="Lvl1" parent="CanvasGroup" instance=ExtResource("3_r0du0")]
