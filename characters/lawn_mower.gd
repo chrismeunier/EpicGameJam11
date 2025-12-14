@@ -16,3 +16,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		isPlayerInArea = false
 		player = null
 		AudioManager.lawn_mower_noise.stop()
+		
+func _process(delta: float) -> void:
+	if (isPlayerInArea && !AudioManager.lawn_mower_noise.playing):
+		AudioManager.lawn_mower_noise.play()
