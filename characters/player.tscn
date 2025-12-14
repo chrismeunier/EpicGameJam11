@@ -296,7 +296,3 @@ collide_with_areas = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_tory2")
-
-[node name="Camera" type="Camera2D" parent="."]
-unique_name_in_owner = true
-zoom = Vector2(5, 5)

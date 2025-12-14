@@ -3,7 +3,6 @@ extends Node2D
 var tilemap: TileMapLayer
 @onready var anim = %AnimatedSprite2D
 @onready var rayCast = %RayCast2D
-@onready var camera: Camera2D = %Camera
 
 var lastDirection = Vector2.ZERO
 var can_move_input: bool = true
