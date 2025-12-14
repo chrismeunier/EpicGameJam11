@@ -38,7 +38,6 @@ script = ExtResource("2_pqcqp")
 follow_mode = 2
 zoom = Vector2(5, 5)
 tween_resource = SubResource("Resource_ggiuk")
-follow_offset = Vector2(50, 0)
 draw_limits = true
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 

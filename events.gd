@@ -17,6 +17,9 @@ signal movement_ended(success: bool)
 signal level_completed
 signal next_level
 signal reset_level
+# To change the camera view
+signal focus_player
+signal unfocus_player
 
 func _ready() -> void:
 	pass # Replace with function body.
