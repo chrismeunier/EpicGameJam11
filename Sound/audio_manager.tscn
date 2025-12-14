@@ -30,7 +30,7 @@
 [ext_resource type="AudioStream" uid="uid://bqiwoshoocv8b" path="res://Sound/gameplay-directions-up-003.wav" id="28_fe7gr"]
 [ext_resource type="AudioStream" uid="uid://dh0aqhnrot7jl" path="res://Sound/gameplay-directions-down-001.wav" id="29_h3vwp"]
 [ext_resource type="AudioStream" uid="uid://bh2cmt5suxbyr" path="res://Sound/gameplay-directions-down-002.wav" id="30_2k3ny"]
-[ext_resource type="AudioStream" uid="uid://btyq2gl7edv5x" path="res://Sound/grandma-move-loop.wav" id="31_gwav0"]
+[ext_resource type="AudioStream" uid="uid://ls8cfq31ul17" path="res://Sound/grandma-move-loop2.wav" id="31_fe7gr"]
 [ext_resource type="AudioStream" uid="uid://b1oe5txlxoo77" path="res://Sound/enter-carzonenew1.wav" id="32_ujgfe"]
 [ext_resource type="AudioStream" uid="uid://51cnmqo7gi6k" path="res://Sound/enter-carzonenew2.wav" id="33_dqga6"]
 [ext_resource type="AudioStream" uid="uid://b0ukynurgyaqy" path="res://Sound/Victory.wav" id="34_fe7gr"]
@@ -201,7 +201,8 @@ max_polyphony = 2
 
 [node name="AudioMove" type="AudioStreamPlayer" parent="Gameplay"]
 unique_name_in_owner = true
-stream = ExtResource("31_gwav0")
+stream = ExtResource("31_fe7gr")
+volume_db = 10.0
 max_polyphony = 20
 
 [node name="EnterCarZone" type="Node" parent="Gameplay"]

@@ -21,7 +21,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func _process(delta: float) -> void:
 	if isPlayerInArea:
-		audio_stream_player_2d.volume_db = get_sound_volume()
+		# audio_stream_player_2d.volume_db = get_sound_volume()
 		if !audio_stream_player_2d.playing:
 			audio_stream_player_2d.play()
 

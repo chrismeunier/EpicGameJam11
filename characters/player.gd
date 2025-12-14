@@ -20,7 +20,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	# Uncomment this to move manually
-	# move_manually()
+	move_manually()
 	if not can_move_input or anim.animation == "success":
 		return
 	
