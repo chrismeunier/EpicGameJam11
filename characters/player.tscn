@@ -1,9 +1,10 @@
-[gd_scene load_steps=39 format=3 uid="uid://dkjvq1dd5doeu"]
+[gd_scene load_steps=40 format=3 uid="uid://dkjvq1dd5doeu"]
 
 [ext_resource type="Script" uid="uid://cjrh0q7secvp0" path="res://characters/player.gd" id="1_3eadt"]
 [ext_resource type="Texture2D" uid="uid://b03uudwjsewd1" path="res://Visuels/Grandma_left_down.png" id="2_tory2"]
 [ext_resource type="Texture2D" uid="uid://vouxydyjcvds" path="res://Visuels/Grandma_up_right.png" id="3_x0jl3"]
 [ext_resource type="Texture2D" uid="uid://dygvyua4ru2q6" path="res://Visuels/grandma_holding_doggo.png" id="4_x0jl3"]
+[ext_resource type="Texture2D" uid="uid://d3eduhrg1gdwa" path="res://Visuels/Mami_16x16.png" id="5_evndh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_evndh"]
 atlas = ExtResource("2_tory2")
@@ -296,3 +297,8 @@ collide_with_areas = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_tory2")
+
+[node name="TinyMamie" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(2, 2)
+texture = ExtResource("5_evndh")
