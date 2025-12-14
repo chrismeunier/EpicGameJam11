@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://c83fsb3ynqx67" path="res://Visuels/grandma_lose.png" id="14_vgvyt"]
 [ext_resource type="Texture2D" uid="uid://dygvyua4ru2q6" path="res://Visuels/grandma_holding_doggo.png" id="14_vqsow"]
 [ext_resource type="Script" uid="uid://bxprlw40wl0c3" path="res://addons/godot_state_charts/all_of_guard.gd" id="15_bohjk"]
-[ext_resource type="Script" uid="uid://jr8uvcpwmpj" path="res://interface/end_dialog.gd" id="22_ulxes"]
+[ext_resource type="Script" path="res://interface/end_dialog.gd" id="22_ulxes"]
 [ext_resource type="Texture2D" uid="uid://b6c7203sx10qm" path="res://Visuels/final_screen_v2.png" id="23_ulxes"]
 
 [sub_resource type="Resource" id="Resource_opka8"]
@@ -539,10 +539,11 @@ layout_mode = 2
 theme_override_constants/margin_bottom = 32
 
 [node name="RetryButton" type="Button" parent="FailDialog/MarginContainer"]
-custom_minimum_size = Vector2(128, 32)
+custom_minimum_size = Vector2(128, 48)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme_override_font_sizes/font_size = 24
 text = "Retry"
 
 [node name="PanelContainer" type="PanelContainer" parent="FailDialog/MarginContainer"]
@@ -572,6 +573,8 @@ unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_shfa7")
 animation = &"win"
 autoplay = "win"
+frame = 13
+frame_progress = 1.0
 centered = false
 
 [connection signal="pressed" from="PanelContainer/MainMarginContainer/MainVerticalLayout/HBoxContainer/UndoButton" to="." method="_on_undo_button_pressed"]

@@ -1,0 +1,98 @@
+[gd_scene load_steps=7 format=3 uid="uid://b0dndokajcdpi"]
+
+[ext_resource type="Script" uid="uid://byfoihc8dv231" path="res://interface/start_screen.gd" id="1_3iu3d"]
+[ext_resource type="Texture2D" uid="uid://bqn10tht0xpdd" path="res://Visuels/icons/iconGray.svg" id="1_t7167"]
+[ext_resource type="Texture2D" uid="uid://drlimo86dlbvv" path="res://Visuels/icons/iconHover.svg" id="2_bweac"]
+[ext_resource type="Theme" uid="uid://bo1gfp2uqybx" path="res://fonts/pixelFont.tres" id="2_shgn5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t7167"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_shgn5"]
+bg_color = Color(0.380392, 0.380392, 0.380392, 0.858824)
+
+[node name="StartScreen" type="CanvasLayer"]
+script = ExtResource("1_3iu3d")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_shgn5")
+
+[node name="BackgroundImage" type="TextureRect" parent="PanelContainer"]
+layout_mode = 2
+texture = ExtResource("1_t7167")
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 64
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 128
+alignment = 1
+
+[node name="PlayButton" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+texture_normal = ExtResource("2_bweac")
+
+[node name="CreditsButton" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+texture_normal = ExtResource("2_bweac")
+
+[node name="Animation" type="Node2D" parent="."]
+
+[node name="PawPrintsAnim" type="AnimatedSprite2D" parent="Animation"]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_t7167")
+
+[node name="CreditsContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_shgn5")
+
+[node name="MarginContainer" type="MarginContainer" parent="CreditsContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_bottom = 80
+
+[node name="RichTextLabel" type="Label" parent="CreditsContainer/MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Un jeu créé pour la Game Jam \"Epic Game Jam\" édition 2025.
+
+Programmation:
+    Christophe Muller, Aurèle Jomini, Hugo Serdoura
+
+Artiste visuel: Valentin Kolly
+
+Artiste son: Stefano Christen "
+
+[node name="MarginContainer2" type="MarginContainer" parent="CreditsContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 64
+
+[node name="CloseCreditsButton" type="Button" parent="CreditsContainer/MarginContainer2"]
+custom_minimum_size = Vector2(128, 48)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 24
+text = "Fermer"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="CreditsContainer/MarginContainer2/CloseCreditsButton" to="." method="_on_close_credits_button_pressed"]
