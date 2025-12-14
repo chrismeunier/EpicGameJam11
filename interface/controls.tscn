@@ -21,7 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://c83fsb3ynqx67" path="res://Visuels/grandma_lose.png" id="14_vgvyt"]
 [ext_resource type="Texture2D" uid="uid://dygvyua4ru2q6" path="res://Visuels/grandma_holding_doggo.png" id="14_vqsow"]
 [ext_resource type="Script" uid="uid://bxprlw40wl0c3" path="res://addons/godot_state_charts/all_of_guard.gd" id="15_bohjk"]
-[ext_resource type="Script" path="res://interface/end_dialog.gd" id="22_ulxes"]
+[ext_resource type="Script" uid="uid://jr8uvcpwmpj" path="res://interface/end_dialog.gd" id="22_ulxes"]
 [ext_resource type="Texture2D" uid="uid://b6c7203sx10qm" path="res://Visuels/final_screen_v2.png" id="23_ulxes"]
 
 [sub_resource type="Resource" id="Resource_opka8"]
