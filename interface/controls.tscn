@@ -1,6 +1,7 @@
-[gd_scene load_steps=53 format=3 uid="uid://udway7ncy7id"]
+[gd_scene load_steps=54 format=3 uid="uid://udway7ncy7id"]
 
 [ext_resource type="Script" uid="uid://2mux5u6bkh0j" path="res://interface/controls.gd" id="1_ij41j"]
+[ext_resource type="Texture2D" uid="uid://ckk1lonis8f8v" path="res://Visuels/command_panel.png" id="2_76tt1"]
 [ext_resource type="PackedScene" uid="uid://dvjjg6cpbfily" path="res://interface/command_select.tscn" id="2_x0sgd"]
 [ext_resource type="PackedScene" uid="uid://jcmlafiwx4rg" path="res://interface/command_sequence.tscn" id="3_lodp2"]
 [ext_resource type="Theme" uid="uid://bo1gfp2uqybx" path="res://fonts/pixelFont.tres" id="5_2upaq"]
@@ -236,6 +237,27 @@ anchor_bottom = 1.0
 offset_left = -6.10352e-05
 grow_horizontal = 0
 grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="PanelContainer"]
+layout_mode = 2
+color = Color(0.223103, 0.223103, 0.223103, 1)
+
+[node name="ImageBorder" type="MarginContainer" parent="PanelContainer/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="BackgroundImage" type="TextureRect" parent="PanelContainer/Background/ImageBorder"]
+layout_mode = 2
+texture = ExtResource("2_76tt1")
+expand_mode = 3
 
 [node name="MainMarginContainer" type="MarginContainer" parent="PanelContainer"]
 custom_minimum_size = Vector2(384, 0)
