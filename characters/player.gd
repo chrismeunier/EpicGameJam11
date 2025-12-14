@@ -3,6 +3,7 @@ extends Node2D
 var tilemap: TileMapLayer
 @onready var anim = %AnimatedSprite2D
 @onready var rayCast = %RayCast2D
+@onready var tiny_mamie: Sprite2D = %TinyMamie
 
 var lastDirection = Vector2.ZERO
 var can_move_input: bool = true
@@ -13,6 +14,9 @@ var signal_direction = Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	anim.play("idle_down")
+	anim.hide()
+	Events.focus_player.connect(zoom_on_mamie)
+	Events.unfocus_player.connect(unzoom_on_mamie)
 	Events.go_left.connect(on_signal_go_left)
 	Events.go_right.connect(on_signal_go_right)
 	Events.go_down.connect(on_signal_go_down)
@@ -20,7 +24,7 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	# Uncomment this to move manually
-	move_manually()
+	#move_manually()
 	if not can_move_input or anim.animation == "success":
 		return
 	
@@ -193,3 +197,11 @@ func play_error_sound() -> void:
 	
 func set_success_animation() -> void:
 	anim.play("success")
+
+func zoom_on_mamie():
+	anim.show()
+	tiny_mamie.hide()
+	
+func unzoom_on_mamie():
+	tiny_mamie.show()
+	anim.hide()
