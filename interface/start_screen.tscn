@@ -1,11 +1,14 @@
-[gd_scene load_steps=64 format=3 uid="uid://b0dndokajcdpi"]
+[gd_scene load_steps=67 format=3 uid="uid://b0dndokajcdpi"]
 
 [ext_resource type="Script" uid="uid://byfoihc8dv231" path="res://interface/start_screen.gd" id="1_3iu3d"]
-[ext_resource type="Texture2D" uid="uid://drlimo86dlbvv" path="res://Visuels/icons/iconHover.svg" id="2_bweac"]
 [ext_resource type="Theme" uid="uid://bo1gfp2uqybx" path="res://fonts/pixelFont.tres" id="2_shgn5"]
 [ext_resource type="Texture2D" uid="uid://c5phjn4litre5" path="res://Visuels/menu_background_only_grass.png" id="3_nerur"]
+[ext_resource type="Texture2D" uid="uid://dsr1wp466hkly" path="res://Visuels/undoPlay/sprite_buttons1.png" id="4_hnesr"]
 [ext_resource type="Texture2D" uid="uid://dd7anlasjd2cf" path="res://Visuels/animation_patounes.png" id="5_iirss"]
+[ext_resource type="Texture2D" uid="uid://3pinnijdioar" path="res://Visuels/undoPlay/sprite_buttons3.png" id="5_th3ua"]
+[ext_resource type="Texture2D" uid="uid://voihl2a5u4n3" path="res://Visuels/undoPlay/sprite_buttons2.png" id="6_140vk"]
 [ext_resource type="Texture2D" uid="uid://dn4woxet1qu7a" path="res://Visuels/transparent_background_image_menu.png" id="6_nerur"]
+[ext_resource type="Texture2D" uid="uid://cqwfrsspcjk1l" path="res://Visuels/undoPlay/sprite_buttons0.png" id="7_mkv2m"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hnesr"]
 atlas = ExtResource("5_iirss")
@@ -430,15 +433,25 @@ alignment = 1
 
 [node name="PlayButton" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 80)
 layout_mode = 2
 size_flags_vertical = 8
-texture_normal = ExtResource("2_bweac")
+texture_normal = ExtResource("4_hnesr")
+texture_pressed = ExtResource("5_th3ua")
+texture_hover = ExtResource("6_140vk")
+texture_disabled = ExtResource("7_mkv2m")
+stretch_mode = 4
 
 [node name="CreditsButton" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(128, 80)
 layout_mode = 2
 size_flags_vertical = 8
-texture_normal = ExtResource("2_bweac")
+texture_normal = ExtResource("4_hnesr")
+texture_pressed = ExtResource("5_th3ua")
+texture_hover = ExtResource("6_140vk")
+texture_disabled = ExtResource("7_mkv2m")
+stretch_mode = 4
 
 [node name="Animation" type="Node2D" parent="."]
 position = Vector2(640, 360)
