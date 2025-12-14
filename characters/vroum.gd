@@ -3,7 +3,6 @@ extends StaticBody2D
 @export var move_interval := 1.0  # time between moves
 @export var movement_duration := 0.3  # tween duration
 @onready var anim = $AnimatedSprite2D
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = %AudioStreamPlayer2D
 @onready var collision_shape_2d: CollisionShape2D = %CollisionShape2D
 
 var tilemap: TileMapLayer
@@ -53,25 +52,12 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if (body.name == "Player"):
 		isPlayerInArea = true
 		player = body
-		audio_stream_player_2d.autoplay = true
+		AudioManager.car_noise.play()
+		var index = randi() % AudioManager.enter_car_zone.get_child_count()
+		AudioManager.enter_car_zone.get_child(index).play()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if (body.name == "Player"):
 		isPlayerInArea = false
 		player = null
-		audio_stream_player_2d.stop()
-		audio_stream_player_2d.autoplay = false
-		
-func get_sound_volume() -> float:
-	if player == null:
-		return 1
-	else:
-		var radius: float = collision_shape_2d.shape.get_rect().size.x / 2.0
-		var distance: float = global_position.distance_to(player.global_position)
-		return -(20 * distance / radius) + 6
-		
-func _process(delta: float) -> void:
-	if isPlayerInArea:
-		audio_stream_player_2d.volume_db = get_sound_volume()
-		if !audio_stream_player_2d.playing:
-			audio_stream_player_2d.play()
+		AudioManager.car_noise.stop()

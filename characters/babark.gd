@@ -3,27 +3,23 @@ extends Node2D
 var isPlayerInArea : bool = false
 var player : Node2D
 @onready var area_2d: Area2D = %Area2D
-@onready var audio_stream_player_2d: AudioStreamPlayer2D = %AudioStreamPlayer2D
 @onready var collision_shape_2d: CollisionShape2D = %CollisionShape2D
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if (body.name == "Player"):
 		isPlayerInArea = true
 		player = body
-		audio_stream_player_2d.autoplay = true
+		AudioManager.babark_barking.play()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if (body.name == "Player"):
 		isPlayerInArea = false
 		player = null
-		audio_stream_player_2d.stop()
-		audio_stream_player_2d.autoplay = false
+		AudioManager.babark_barking.stop()
 
 func _process(delta: float) -> void:
 	if isPlayerInArea:
-		audio_stream_player_2d.volume_db = get_sound_volume()
-		if !audio_stream_player_2d.playing:
-			audio_stream_player_2d.play()
+		AudioManager.babark_barking.volume_db = get_sound_volume()
 
 func get_sound_volume() -> float:
 	if player == null:
@@ -38,4 +34,5 @@ func _on_success_detect_body_entered(body: Node2D) -> void:
 		body.set_success_animation()
 		isPlayerInArea = false
 		visible = false
+		AudioManager.babark_barking.stop()
 		Events.level_completed.emit()

@@ -2,22 +2,25 @@ extends Node
 
 @onready var template_sound: AudioStreamPlayer = %TemplateSound
 
-@onready var ambiance_gameplay: AudioStreamPlayer = %AmbianceOiseau
+@onready var ambiance_oiseau: AudioStreamPlayer = %AmbianceOiseau
 @onready var instruction_right = %InstructionRight
 @onready var instruction_up = %InstructionUp
 @onready var instruction_left = %InstructionLeft
 @onready var instruction_down = %InstructionDown
 @onready var play = %Play
-@onready var startervoicedog = %Startervoicedog
+@onready var startervoicedog: AudioStreamPlayer = %Startervoicedog
 @onready var error = %Error
-@onready var level_success = %LevelSuccess
-@onready var end_game = %EndGame
+@onready var level_success: AudioStreamPlayer = %LevelSuccess
+@onready var end_game: AudioStreamPlayer = %EndGame
 @onready var gameplay_right = %GameplayRight
 @onready var gameplay_left = %GameplayLeft
 @onready var gameplay_up = %GameplayUp
 @onready var gameplay_down = %GameplayDown
-@onready var audio_move = %AudioMove
+@onready var audio_move: AudioStreamPlayer = %AudioMove
 @onready var enter_car_zone = %EnterCarZone
+@onready var car_noise: AudioStreamPlayer = %CarNoise
+@onready var lawn_mower_noise: AudioStreamPlayer = %LawnMowerNoise
+@onready var babark_barking: AudioStreamPlayer = %BabarkBarking
 @onready var menu_music: AudioStreamPlayer = %MenuMusic
 @onready var gameplay_music_one: AudioStreamPlayer = %GameplayMusicOne
 @onready var gameplay_music_loop: AudioStreamPlayer = %GameplayMusicLoop

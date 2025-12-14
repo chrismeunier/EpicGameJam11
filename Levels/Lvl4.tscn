@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=4 uid="uid://b4eqj7kto0x4"]
 
 [ext_resource type="TileSet" uid="uid://q2s4f1ubq8s8" path="res://TileMap/tilemap_set.tres" id="1_4pknm"]
-[ext_resource type="Script" path="res://Levels/lvl_4.gd" id="1_hnwxt"]
+[ext_resource type="Script" uid="uid://cnqgu7y05xors" path="res://Levels/lvl_4.gd" id="1_hnwxt"]
 [ext_resource type="TileSet" uid="uid://d30gwmdi62022" path="res://TileMap/Decors_tilemap.tres" id="2_jgpee"]
 [ext_resource type="PackedScene" uid="uid://c48dqyga4uqa" path="res://characters/LawnMower.tscn" id="3_oe20o"]
 [ext_resource type="PackedScene" uid="uid://bqn4nfb6gdwrl" path="res://characters/Vroum.tscn" id="4_hnwxt"]

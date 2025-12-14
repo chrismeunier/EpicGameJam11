@@ -81,15 +81,14 @@ func _on_inactive_state_entered() -> void:
 	_disable_all_buttons()
 	command_sequence.clear_sequence()
 
-
 func _on_selecting_state_entered() -> void:
 	_enable_all_buttons()
 	AudioManager.startervoicedog.play()
 
-
 func _on_selecting_state_exited() -> void:
 	_disable_all_buttons()
 	AudioManager.menu_music.stop()
+	AudioManager.ambiance_oiseau.stop()
 
 func _on_playing_state_entered() -> void:
 	music_played_once = false
@@ -145,6 +144,8 @@ func _on_next_move_state_entered() -> void:
 func _on_selecting_state_processing(_delta: float) -> void:
 	if not AudioManager.menu_music.playing:
 		AudioManager.menu_music.play()
+	if not AudioManager.ambiance_oiseau.playing:
+		AudioManager.ambiance_oiseau.play()
 
 func _on_playing_state_processing(_delta: float) -> void:
 	if not music_played_once and not AudioManager.gameplay_music_one.playing:
