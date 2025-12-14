@@ -11,6 +11,8 @@ func _ready() -> void:
 	$Vroum2.set_tilemap(tilemap)
 	$Vroum3.set_path(get_car_path_for_world1())
 	$Vroum3.set_tilemap(tilemap)
+	$Vroum4.set_path(get_car_path_for_world1())
+	$Vroum4.set_tilemap(tilemap)
 
 func get_car_path_for_world1() -> Array:
 	var path := []

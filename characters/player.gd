@@ -1,8 +1,8 @@
 extends Node2D
 
 var tilemap: TileMapLayer
-@onready var anim = $AnimatedSprite2D
-@onready var rayCast = $AnimatedSprite2D/RayCast2D
+@onready var anim = %AnimatedSprite2D
+@onready var rayCast = %RayCast2D
 
 var lastDirection = Vector2.ZERO
 var can_move_input: bool = true

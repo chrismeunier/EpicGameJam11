@@ -92,10 +92,12 @@ func _on_selecting_state_exited() -> void:
 
 func _on_playing_state_entered() -> void:
 	music_played_once = false
+	Events.focus_player.emit()
 
 func _on_playing_state_exited() -> void:
 	AudioManager.gameplay_music_one.stop()
 	AudioManager.gameplay_music_loop.stop()
+	Events.unfocus_player.emit()
 
 # PLAYING STATES
 func _on_init_state_entered() -> void:
@@ -176,6 +178,9 @@ func _on_next_level_button_pressed() -> void:
 	success_dialog.visible = false
 	Events.next_level.emit()
 	state_chart.send_event("start_selecting")
+
+func _on_end_state_entered() -> void:
+	Events.unfocus_player.emit()
 
 func _on_end_state_processing(delta: float) -> void:
 	if not success_dialog.visible:
