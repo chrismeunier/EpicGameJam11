@@ -3,7 +3,7 @@
 .godot/
 /android/
 .nomedia
-
+addons/*/examples
 # Godot-specific ignores
 .import/
 export.cfg
