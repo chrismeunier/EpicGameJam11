@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=4 uid="uid://db2vvw75wxgqc"]
+[gd_scene load_steps=9 format=4 uid="uid://db2vvw75wxgqc"]
 
-[ext_resource type="Script" path="res://Levels/lvl_6.gd" id="1_w78fm"]
+[ext_resource type="Script" uid="uid://d7o0dyk0hs35" path="res://Levels/lvl_6.gd" id="1_w78fm"]
 [ext_resource type="TileSet" uid="uid://q2s4f1ubq8s8" path="res://TileMap/tilemap_set.tres" id="1_yh46o"]
 [ext_resource type="TileSet" uid="uid://d30gwmdi62022" path="res://TileMap/Decors_tilemap.tres" id="2_bfa30"]
 [ext_resource type="PackedScene" uid="uid://c46d7jt8i3i33" path="res://characters/Babark.tscn" id="3_bfa30"]
 [ext_resource type="PackedScene" uid="uid://dkjvq1dd5doeu" path="res://characters/player.tscn" id="4_bvgt1"]
 [ext_resource type="PackedScene" uid="uid://bqn4nfb6gdwrl" path="res://characters/Vroum.tscn" id="5_w78fm"]
 [ext_resource type="PackedScene" uid="uid://d07g2f0i2186d" path="res://TileMap/grid.tscn" id="7_d7fg0"]
+[ext_resource type="PackedScene" uid="uid://dijnnf4rwdpwm" path="res://camera/camera_manager.tscn" id="8_v6sph"]
 
 [node name="Lvl6" type="Node2D"]
 script = ExtResource("1_w78fm")
@@ -35,3 +36,6 @@ position = Vector2(272, 336)
 
 [node name="Vroum3" parent="." instance=ExtResource("5_w78fm")]
 position = Vector2(752, 464)
+
+[node name="CameraManager" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("8_v6sph")]
+Player = NodePath("../Player")

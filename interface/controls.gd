@@ -98,6 +98,7 @@ func _on_playing_state_entered() -> void:
 func _on_playing_state_exited() -> void:
 	AudioManager.gameplay_music_one.stop()
 	AudioManager.gameplay_music_loop.stop()
+	Events.unfocus_player.emit()
 
 # PLAYING STATES
 func _on_init_state_entered() -> void:
