@@ -435,7 +435,8 @@ alignment = 1
 
 [node name="PlayButton" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 80)
+z_index = 1
+custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
 size_flags_vertical = 8
 texture_normal = ExtResource("4_140vk")
@@ -445,7 +446,8 @@ stretch_mode = 4
 
 [node name="CreditsButton" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 80)
+z_index = 1
+custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
 size_flags_vertical = 8
 texture_normal = ExtResource("7_m8ypy")
