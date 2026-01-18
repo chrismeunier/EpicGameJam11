@@ -231,6 +231,7 @@ script = ExtResource("1_ij41j")
 
 [node name="CameraShiftCommands" parent="." instance=ExtResource("25_olcju")]
 unique_name_in_owner = true
+visible = false
 z_index = 0
 mouse_filter = 2
 
