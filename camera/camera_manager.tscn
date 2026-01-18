@@ -25,6 +25,7 @@ position = Vector2(640, 360)
 editor_draw_limits = true
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+process_mode = 3
 process_priority = 300
 process_physics_priority = 300
 script = ExtResource("1_nt40c")
@@ -38,6 +39,14 @@ script = ExtResource("2_pqcqp")
 follow_mode = 2
 zoom = Vector2(5, 5)
 tween_resource = SubResource("Resource_ggiuk")
+draw_limits = true
+metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
+
+[node name="PCamLevelUp" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(640, -361)
+script = ExtResource("2_pqcqp")
+tween_resource = SubResource("Resource_7lwe0")
 draw_limits = true
 metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 

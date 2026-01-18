@@ -9,6 +9,7 @@ class_name ControlPanel
 @onready var success_dialog: PanelContainer = %SuccessDialog
 @onready var fail_dialog: PanelContainer = %FailDialog
 @onready var end_dialog: PanelContainer = %EndDialog
+@onready var camera_shift_commands: PanelContainer = %CameraShiftCommands
 
 var music_played_once : bool = false
 
@@ -24,6 +25,7 @@ func _disable_all_buttons() -> void:
 	command_select.disable_sequence()
 	command_sequence.disable_sequence()
 	_disable_play_undo_buttons()
+	camera_shift_commands.disable_buttons()
 	
 func _enable_all_buttons() -> void:
 	command_select.enable_sequence()
@@ -50,6 +52,17 @@ func _on_play_button_pressed() -> void:
 func _on_undo_button_pressed() -> void:
 	command_sequence.remove_last_command_item()
 
+# TODO: show the panel in the correct level only!
+func _show_camera_shift_panel():
+	camera_shift_commands.show()
+	
+func _hide_camera_shift_panel():
+	camera_shift_commands.hide()
+
+func _is_shiftable_camera_level() -> bool:
+	if get_parent().current_scene_index == 7:
+		return true
+	return false
 
 # Signals interactions
 func add_command_from_select(id: int):
@@ -83,6 +96,9 @@ func _on_inactive_state_entered() -> void:
 
 func _on_selecting_state_entered() -> void:
 	_enable_all_buttons()
+	if _is_shiftable_camera_level():
+		_show_camera_shift_panel()
+		camera_shift_commands.enable_buttons()
 	AudioManager.startervoicedog.play()
 
 func _on_selecting_state_exited() -> void:
@@ -160,6 +176,7 @@ func _on_playing_state_processing(_delta: float) -> void:
 
 func on_level_completed() -> void:
 	state_chart.send_event("end_game")
+	_hide_camera_shift_panel()
 	if (_is_last_level()):
 		end_dialog.visible = true
 		end_dialog.playAnimation()
@@ -170,6 +187,7 @@ func on_level_completed() -> void:
 
 
 func _is_last_level() -> bool:
+	# Parent is always the Main scene
 	return get_parent().is_last_level()
 
 # Next level pressed
