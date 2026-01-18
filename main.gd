@@ -9,6 +9,7 @@ const LVL_4 = preload("res://Levels/Lvl4.tscn")
 const LVL_5 = preload("res://Levels/Lvl5.tscn")
 const LVL_6 = preload("res://Levels/Lvl6.tscn")
 const LVL_7 = preload("res://Levels/Lvl7.tscn")
+const LVL_8 = preload("res://Levels/Lvl8.tscn")
 
 var levels_list = [\
 	LVL_1,\
@@ -17,7 +18,8 @@ var levels_list = [\
 	LVL_4,\
 	LVL_5,\
 	LVL_6,\
-	LVL_7]
+	LVL_7,\
+	LVL_8]
 
 var current_scene_index = 0
 
@@ -27,8 +29,9 @@ func _ready() -> void:
 
 func on_next_level() -> void:
 	current_scene_index += 1
-	if current_scene_index >= 6:
-		current_scene_index = 6
+	var amountLevel = levels_list.size()
+	if current_scene_index >= amountLevel - 1:
+		current_scene_index = amountLevel - 1
 	var scene = levels_list[current_scene_index]
 	call_deferred("_deferred_goto_scene", scene)
 
