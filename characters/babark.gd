@@ -17,7 +17,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 		player = null
 		AudioManager.babark_barking.stop()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if isPlayerInArea:
 		AudioManager.babark_barking.volume_db = get_sound_volume()
 

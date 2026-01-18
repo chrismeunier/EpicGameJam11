@@ -33,9 +33,11 @@ func on_next_level() -> void:
 	call_deferred("_deferred_goto_scene", scene)
 
 func _deferred_goto_scene(scene):
+	for child in self.get_children():
+		if child is Node2D:
+			child.call_deferred("free")
 	var current_scene = scene.instantiate()
 	self.add_child(current_scene)
-	self.get_child(1).free()
 
 func on_reset_level() -> void:
 	var scene = levels_list[current_scene_index]
