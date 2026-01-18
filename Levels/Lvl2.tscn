@@ -29,7 +29,7 @@ position = Vector2(272, 496)
 position = Vector2(496, 240)
 
 [node name="LawnMower" parent="." instance=ExtResource("5_jq5ri")]
-position = Vector2(408, 376)
+position = Vector2(400, 368)
 
 [node name="CameraManager" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("8_e4q7a")]
 Player = NodePath("../Player")

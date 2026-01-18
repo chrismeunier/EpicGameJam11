@@ -18,7 +18,7 @@ tile_set = ExtResource("1_k88kn")
 [node name="Grid" parent="." instance=ExtResource("5_threx")]
 
 [node name="Player" parent="." instance=ExtResource("2_auopl")]
-position = Vector2(496, 296)
+position = Vector2(496, 304)
 
 [node name="Babark" parent="." instance=ExtResource("3_kucer")]
 position = Vector2(462, 498)
