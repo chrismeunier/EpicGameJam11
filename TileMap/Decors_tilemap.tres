@@ -1,7 +1,19 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://d30gwmdi62022"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://d30gwmdi62022"]
 
+[ext_resource type="Texture2D" uid="uid://d2gwiuy3eyled" path="res://Visuels/shiny_church.png" id="1_2na0c"]
 [ext_resource type="Texture2D" uid="uid://dxulkkpbraqay" path="res://Visuels/tileset_buildings.png" id="1_noi16"]
 [ext_resource type="Texture2D" uid="uid://bn8cxostm2yoj" path="res://Visuels/trees.png" id="2_gc82e"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kin8c"]
+texture = ExtResource("1_2na0c")
+texture_region_size = Vector2i(64, 64)
+0:0/animation_columns = 2
+0:0/animation_frame_0/duration = 0.5
+0:0/animation_frame_1/duration = 0.5
+0:0/animation_frame_2/duration = 0.5
+0:0/animation_frame_3/duration = 0.5
+0:0/animation_frame_4/duration = 0.5
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y3wse"]
 texture = ExtResource("1_noi16")
@@ -55,3 +67,4 @@ custom_data_layer_0/name = "walkable"
 custom_data_layer_0/type = 1
 sources/1 = SubResource("TileSetAtlasSource_y3wse")
 sources/2 = SubResource("TileSetAtlasSource_2na0c")
+sources/0 = SubResource("TileSetAtlasSource_kin8c")
