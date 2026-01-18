@@ -21,6 +21,7 @@ ease = 2
 script = ExtResource("1_pqcqp")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(640, 360)
 editor_draw_limits = true
 
@@ -44,7 +45,7 @@ metadata/_custom_type_script = "uid://bhexx6mj1xv3q"
 
 [node name="PCamLevelUp" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(640, -361)
+position = Vector2(640, -220)
 script = ExtResource("2_pqcqp")
 tween_resource = SubResource("Resource_7lwe0")
 draw_limits = true

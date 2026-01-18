@@ -3,6 +3,7 @@ extends Node2D
 @export var Player : CharacterBody2D
 @onready var p_cam_player: PhantomCamera2D = %PCamPlayer
 @onready var p_cam_level_up: PhantomCamera2D = %PCamLevelUp
+@onready var camera_2d: Camera2D = %Camera2D
 
 func _ready() -> void:
 	p_cam_player.set_follow_target(Player)
@@ -12,6 +13,7 @@ func _ready() -> void:
 	Events.unfocus_player.connect(priorize_scene_cam)
 	Events.unshift_level_camera.connect(priorize_scene_cam)
 	Events.shift_level_camera.connect(priorize_shifted_cam)
+	camera_2d.process_callback = Camera2D.CAMERA2D_PROCESS_IDLE
 
 func priorize_player_cam():
 	p_cam_player.set_priority(1)
