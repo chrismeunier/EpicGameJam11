@@ -32,10 +32,10 @@ func _ready() -> void:
 
 func on_next_level() -> void:
 	current_scene_index += 1
-	save_progression(current_scene_index)
 	var amountLevel = levels_list.size()
 	if current_scene_index >= amountLevel - 1:
 		current_scene_index = amountLevel - 1
+	save_progression(current_scene_index)
 	load_lvl()
 
 func load_lvl() -> void:
