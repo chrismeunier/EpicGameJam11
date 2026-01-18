@@ -76,6 +76,7 @@ shape = SubResource("RectangleShape2D_dnjv7")
 [node name="DisturbanceArea" parent="." instance=ExtResource("2_ucaa5")]
 
 [node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
