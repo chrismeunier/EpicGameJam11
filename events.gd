@@ -20,6 +20,8 @@ signal reset_level
 # To change the camera view
 signal focus_player
 signal unfocus_player
+signal shift_level_camera
+signal unshift_level_camera
 
 func _ready() -> void:
 	pass # Replace with function body.

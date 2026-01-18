@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://udway7ncy7id"]
+[gd_scene load_steps=55 format=3 uid="uid://udway7ncy7id"]
 
 [ext_resource type="Script" uid="uid://2mux5u6bkh0j" path="res://interface/controls.gd" id="1_ij41j"]
 [ext_resource type="Texture2D" uid="uid://ckk1lonis8f8v" path="res://Visuels/command_panel.png" id="2_76tt1"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" uid="uid://bxprlw40wl0c3" path="res://addons/godot_state_charts/all_of_guard.gd" id="15_bohjk"]
 [ext_resource type="Script" uid="uid://jr8uvcpwmpj" path="res://interface/end_dialog.gd" id="22_ulxes"]
 [ext_resource type="Texture2D" uid="uid://b6c7203sx10qm" path="res://Visuels/final_screen_v2.png" id="23_ulxes"]
+[ext_resource type="PackedScene" uid="uid://2aajgprnxcv6" path="res://interface/camera_shift_commands.tscn" id="25_olcju"]
 
 [sub_resource type="Resource" id="Resource_opka8"]
 script = ExtResource("13_uqaec")
@@ -227,6 +228,12 @@ animations = [{
 
 [node name="Controls" type="CanvasLayer"]
 script = ExtResource("1_ij41j")
+
+[node name="CameraShiftCommands" parent="." instance=ExtResource("25_olcju")]
+unique_name_in_owner = true
+visible = false
+z_index = 0
+mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 texture_filter = 1
