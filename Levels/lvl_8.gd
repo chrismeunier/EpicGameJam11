@@ -4,7 +4,7 @@ extends Node2D
 
 func _ready() -> void:
 	$Player.set_tilemap(tilemap)
-	$Grid.set_tilemap(tilemap)
+	$Grid.set_tilemap(tilemap, Vector2i(0,-18))
 	$Vroum.set_path(get_car_path_for_world1())
 	$Vroum.set_tilemap(tilemap)
 	$Vroum2.set_path(get_car_path_for_world2())
