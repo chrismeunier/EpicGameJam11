@@ -16,7 +16,7 @@ func _ready() -> void:
 	camera_2d.process_callback = Camera2D.CAMERA2D_PROCESS_IDLE
 
 func priorize_player_cam():
-	p_cam_player.set_priority(1)
+	p_cam_player.set_priority(3)
 	
 func priorize_scene_cam():
 	p_cam_player.set_priority(0)
