@@ -166,7 +166,7 @@ layer = 2
 script = ExtResource("5_3dxm6")
 
 [node name="TalkingDogo" type="AnimatedSprite2D" parent="Animation"]
-position = Vector2(-80, 80)
+position = Vector2(976, 641)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_xrxkg")
 animation = &"talking"
