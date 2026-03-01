@@ -70,6 +70,7 @@ max_polyphony = 5
 [node name="InstructionButtons" type="Node" parent="."]
 
 [node name="ErreurDirection" type="Node" parent="InstructionButtons"]
+unique_name_in_owner = true
 
 [node name="ErreurDog1" type="AudioStreamPlayer" parent="InstructionButtons/ErreurDirection"]
 stream = ExtResource("4_gjg3o")
