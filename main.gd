@@ -15,8 +15,8 @@ var config = ConfigFile.new()
 
 var levels_list = [\
 	LVL_1,\
-	LVL_2,\
 	LVL_3,\
+	LVL_2,\
 	LVL_4,\
 	LVL_5,\
 	LVL_6,\
