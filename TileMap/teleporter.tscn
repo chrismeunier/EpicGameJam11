@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx646uxbr45o0"]
+
+[ext_resource type="Script" uid="uid://dqtkhwkquuwkq" path="res://TileMap/teleporter.gd" id="1_qecaj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2oxo6"]
+size = Vector2(32, 8)
+
+[node name="Teleporter" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_qecaj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_2oxo6")
+debug_color = Color(0.362377, 0.617055, 9.62615e-07, 0.42)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
