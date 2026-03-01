@@ -1,6 +1,6 @@
 [gd_scene load_steps=69 format=3 uid="uid://b0dndokajcdpi"]
 
-[ext_resource type="Script" uid="uid://byfoihc8dv231" path="res://interface/start_screen.gd" id="1_3iu3d"]
+[ext_resource type="Script" path="res://interface/start_screen.gd" id="1_3iu3d"]
 [ext_resource type="Theme" uid="uid://bo1gfp2uqybx" path="res://fonts/pixelFont.tres" id="2_shgn5"]
 [ext_resource type="Texture2D" uid="uid://c5phjn4litre5" path="res://Visuels/menu_background_only_grass.png" id="3_nerur"]
 [ext_resource type="Texture2D" uid="uid://dx2xkofkwywyx" path="res://Visuels/menu_buttons/play_button_1.png" id="4_140vk"]
@@ -435,7 +435,8 @@ alignment = 1
 
 [node name="PlayButton" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 80)
+z_index = 1
+custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
 size_flags_vertical = 8
 texture_normal = ExtResource("4_140vk")
@@ -445,7 +446,8 @@ stretch_mode = 4
 
 [node name="CreditsButton" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(128, 80)
+z_index = 1
+custom_minimum_size = Vector2(200, 120)
 layout_mode = 2
 size_flags_vertical = 8
 texture_normal = ExtResource("7_m8ypy")

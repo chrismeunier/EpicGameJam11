@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://2aajgprnxcv6"]
+
+[ext_resource type="Script" uid="uid://txp5m3me0jck" path="res://interface/camera_shift_commands.gd" id="1_r334c"]
+[ext_resource type="Texture2D" uid="uid://dx35xqyylj5ge" path="res://Visuels/up_down_buttons/up_2.png" id="2_g7oyj"]
+[ext_resource type="Texture2D" uid="uid://ddohpu8o3v15d" path="res://Visuels/up_down_buttons/up_4.png" id="3_i7lwk"]
+[ext_resource type="Texture2D" uid="uid://caty5e3psid6" path="res://Visuels/up_down_buttons/up_3.png" id="4_0cdau"]
+[ext_resource type="Texture2D" uid="uid://dyxdb2tgmxs3c" path="res://Visuels/up_down_buttons/up_1.png" id="5_n1o83"]
+[ext_resource type="Texture2D" uid="uid://bncqcsuomt3gm" path="res://Visuels/up_down_buttons/down_2.png" id="6_bcinj"]
+[ext_resource type="Texture2D" uid="uid://bh1yegh1gggk8" path="res://Visuels/up_down_buttons/down_4.png" id="7_jdpoe"]
+[ext_resource type="Texture2D" uid="uid://borgttnitb7n4" path="res://Visuels/up_down_buttons/down_3.png" id="8_urmxe"]
+[ext_resource type="Texture2D" uid="uid://csfvmshe6iewi" path="res://Visuels/up_down_buttons/down_1.png" id="9_kbxry"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r334c"]
+
+[node name="CameraShiftCommands" type="PanelContainer"]
+z_index = -1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -477.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxEmpty_r334c")
+script = ExtResource("1_r334c")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 400
+theme_override_constants/margin_bottom = 16
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="UpButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("2_g7oyj")
+texture_pressed = ExtResource("3_i7lwk")
+texture_hover = ExtResource("4_0cdau")
+texture_disabled = ExtResource("5_n1o83")
+stretch_mode = 4
+
+[node name="Spacer" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 11.0
+
+[node name="DownButton" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+texture_normal = ExtResource("6_bcinj")
+texture_pressed = ExtResource("7_jdpoe")
+texture_hover = ExtResource("8_urmxe")
+texture_disabled = ExtResource("9_kbxry")
+stretch_mode = 4
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/UpButton" to="." method="_on_up_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/DownButton" to="." method="_on_down_button_pressed"]

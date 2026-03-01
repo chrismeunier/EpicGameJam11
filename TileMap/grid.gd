@@ -1,16 +1,19 @@
 extends Node2D
 
 var tilemap: TileMapLayer
+var extra_offset : Vector2i
 
 @export var grid_color: Color = Color.SLATE_GRAY
 @export var cell_size: Vector2i = Vector2i(32, 32)
 
-func set_tilemap(tmap: TileMapLayer):
+func set_tilemap(tmap: TileMapLayer, offset = Vector2i.ZERO):
 	tilemap = tmap
+	extra_offset = offset
 
 func _draw() -> void:
 	var size = tilemap.get_used_rect().size
 	var offset = Vector2(-16, -16)
+	offset += Vector2(32 * extra_offset.x, 32 * extra_offset.y)
 	var line_width = -1.0  # Set thickness here
 
 	for x in range(size.x):
