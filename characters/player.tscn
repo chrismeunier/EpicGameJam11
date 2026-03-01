@@ -300,5 +300,6 @@ shape = SubResource("CapsuleShape2D_tory2")
 
 [node name="TinyMamie" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+visible = false
 scale = Vector2(2, 2)
 texture = ExtResource("5_evndh")

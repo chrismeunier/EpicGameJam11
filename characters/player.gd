@@ -14,9 +14,9 @@ var signal_direction = Vector2.ZERO
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	anim.play("idle_down")
-	anim.hide()
-	Events.focus_player.connect(zoom_on_mamie)
-	Events.unfocus_player.connect(unzoom_on_mamie)
+	#anim.hide()
+	#Events.focus_player.connect(zoom_on_mamie)
+	#Events.unfocus_player.connect(unzoom_on_mamie)
 	Events.go_left.connect(on_signal_go_left)
 	Events.go_right.connect(on_signal_go_right)
 	Events.go_down.connect(on_signal_go_down)
@@ -198,10 +198,10 @@ func play_error_sound() -> void:
 func set_success_animation() -> void:
 	anim.play("success")
 
-func zoom_on_mamie():
+func zoom_on_mamie(): # plus utilisé
 	anim.show()
 	tiny_mamie.hide()
 	
-func unzoom_on_mamie():
+func unzoom_on_mamie(): # plus utilisé
 	tiny_mamie.show()
 	anim.hide()
