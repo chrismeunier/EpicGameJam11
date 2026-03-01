@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://swkj053nbgyw"]
+[gd_scene load_steps=10 format=4 uid="uid://swkj053nbgyw"]
 
 [ext_resource type="Script" uid="uid://dk83o2jiwtqvx" path="res://Levels/lvl_8.gd" id="1_2oxo6"]
 [ext_resource type="TileSet" uid="uid://q2s4f1ubq8s8" path="res://TileMap/tilemap_set.tres" id="2_b7nnr"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c46d7jt8i3i33" path="res://characters/Babark.tscn" id="6_g2jlm"]
 [ext_resource type="PackedScene" uid="uid://bqn4nfb6gdwrl" path="res://characters/Vroum.tscn" id="7_d0rup"]
 [ext_resource type="PackedScene" uid="uid://dijnnf4rwdpwm" path="res://camera/camera_manager.tscn" id="8_bqr44"]
+[ext_resource type="PackedScene" uid="uid://cx646uxbr45o0" path="res://TileMap/teleporter.tscn" id="9_b7nnr"]
 
 [node name="Lvl8" type="Node2D"]
 script = ExtResource("1_2oxo6")
@@ -51,3 +52,11 @@ position = Vector2(592, 272)
 
 [node name="CameraManager" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("8_bqr44")]
 Player = NodePath("../Player")
+
+[node name="Destination" type="Marker2D" parent="."]
+position = Vector2(240, 560)
+
+[node name="Teleporter" parent="." node_paths=PackedStringArray("map", "destination") instance=ExtResource("9_b7nnr")]
+position = Vector2(352, -384)
+map = NodePath("../Map")
+destination = NodePath("../Destination")
