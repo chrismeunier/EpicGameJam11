@@ -38,7 +38,15 @@ func _hide_play_undo_buttons() -> void:
 	undo_button.disabled = true
 	play_button.visible = false
 	undo_button.visible = false
+
+func _enable_cancel_button():
+	cancel_button.disabled = false
+	cancel_button.visible = true
 	
+func _hide_cancel_button():
+	cancel_button.disabled = true
+	cancel_button.visible = false
+
 
 func _show_play_undo_buttons() -> void:
 	play_button.disabled = false
@@ -114,13 +122,11 @@ func _on_selecting_state_exited() -> void:
 
 func _on_playing_state_entered() -> void:
 	music_played_once = false
-	cancel_button.disabled = false
-	cancel_button.visible = true
+	_enable_cancel_button()
 	Events.focus_player.emit()
 
 func _on_playing_state_exited() -> void:
-	cancel_button.disabled = true
-	cancel_button.visible = false
+	_hide_cancel_button()
 	AudioManager.gameplay_music_one.stop()
 	AudioManager.gameplay_music_loop.stop()
 	Events.unfocus_player.emit()
@@ -208,6 +214,8 @@ func _on_next_level_button_pressed() -> void:
 
 func _on_end_state_entered() -> void:
 	Events.unfocus_player.emit()
+	_hide_cancel_button()
+	AudioManager.play_error_sound()
 
 func _on_end_state_processing(delta: float) -> void:
 	if not success_dialog.visible:
@@ -221,5 +229,6 @@ func _on_retry_button_pressed() -> void:
 
 func _on_cancel_button_pressed() -> void:
 	command_sequence.clear_sequence()
-	state_chart.send_event("end_game")
 	fail_dialog.visible = true
+	AudioManager.play_error_sound()
+	state_chart.send_event("end_game")

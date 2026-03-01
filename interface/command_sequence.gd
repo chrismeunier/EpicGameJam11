@@ -35,11 +35,7 @@ func get_first_command_item() -> CommandItem:
 
 func remove_last_command_item():
 	if grid_container.get_child_count():
-		# play the undo sound
-		var nb_undo_sounds = AudioManager.erreur_direction.get_child_count()
-		var sound_index = randi() % nb_undo_sounds
-		AudioManager.erreur_direction.get_child(sound_index).play()
-		#
+		AudioManager.play_error_sound()
 		var last_item = get_last_command_item()
 		if len(cmd_list) > 1 and cmd_list[-1] == cmd_list[-2]:
 			last_item.decrement_label()

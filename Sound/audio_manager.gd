@@ -61,3 +61,9 @@ func TriggerCar(add: bool):
 			carCount -= 1
 		if carCount <= 0:
 			car_noise.stop()
+
+func play_error_sound():
+	# play one undo sound
+	var nb_undo_sounds = erreur_direction.get_child_count()
+	var sound_index = randi() % nb_undo_sounds
+	erreur_direction.get_child(sound_index).play()

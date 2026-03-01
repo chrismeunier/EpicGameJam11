@@ -75,18 +75,22 @@ unique_name_in_owner = true
 
 [node name="ErreurDog1" type="AudioStreamPlayer" parent="InstructionButtons/ErreurDirection"]
 stream = ExtResource("4_gjg3o")
+volume_db = 3.0
 max_polyphony = 20
 
 [node name="ErreurDog2" type="AudioStreamPlayer" parent="InstructionButtons/ErreurDirection"]
 stream = ExtResource("5_4pnrx")
+volume_db = 3.0
 max_polyphony = 20
 
 [node name="ErreurDog3" type="AudioStreamPlayer" parent="InstructionButtons/ErreurDirection"]
 stream = ExtResource("6_2cbbc")
+volume_db = 3.0
 max_polyphony = 20
 
 [node name="ErreurDog4" type="AudioStreamPlayer" parent="InstructionButtons/ErreurDirection"]
 stream = ExtResource("7_nmmkl")
+volume_db = 3.0
 max_polyphony = 20
 
 [node name="InstructionRight" type="Node" parent="InstructionButtons"]
