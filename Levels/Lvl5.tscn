@@ -23,22 +23,22 @@ tile_map_data = PackedByteArray("AAAAAAcAAgAAAAIAAAACAAAAAgACAAAAAAAIAAAAAgAAAAI
 tile_set = ExtResource("2_j16kb")
 
 [node name="LawnMower" parent="." instance=ExtResource("3_cfibr")]
-position = Vector2(314, 297)
+position = Vector2(304, 304)
 
 [node name="Player" parent="." instance=ExtResource("4_b4wwg")]
 position = Vector2(240, 400)
 
 [node name="LawnMower2" parent="." instance=ExtResource("3_cfibr")]
-position = Vector2(110, 448)
+position = Vector2(112, 432)
 
 [node name="LawnMower3" parent="." instance=ExtResource("3_cfibr")]
-position = Vector2(167, 288)
+position = Vector2(176, 272)
 
 [node name="LawnMower4" parent="." instance=ExtResource("3_cfibr")]
-position = Vector2(356, 457)
+position = Vector2(368, 464)
 
 [node name="LawnMower5" parent="." instance=ExtResource("3_cfibr")]
-position = Vector2(233, 530)
+position = Vector2(208, 528)
 
 [node name="Babark" parent="." instance=ExtResource("5_txs14")]
 position = Vector2(784, 272)

@@ -30,7 +30,7 @@ func _ready():
 	var shader_code := """
 		shader_type canvas_item;
 
-		uniform float ring_radius : hint_range(0.1, 0.5, 0.01) = 0.4;
+		uniform float ring_radius : hint_range(0.1, 0.5, 0.01) = 0.48;
 		uniform float thickness_scalar : hint_range(0.0, 0.99, 0.05) = 0.7;
 		uniform float oscillation_scalar : hint_range(0.0, 0.25, 0.005) = 0.025;
 		uniform float speed : hint_range(0.0, 50.0, 0.1) = 1.0;
