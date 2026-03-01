@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://dyg7pxyytxieq"]
+[gd_scene load_steps=53 format=3 uid="uid://dyg7pxyytxieq"]
 
 [ext_resource type="Script" uid="uid://c6efr17g6np36" path="res://Sound/audio_manager.gd" id="1_pil3g"]
 [ext_resource type="AudioStream" uid="uid://cclfnybxwu85h" path="res://Sound/missunderstanding-001.wav" id="2_evv53"]
@@ -45,7 +45,6 @@
 [ext_resource type="AudioStream" uid="uid://b7wyhjft6r2p6" path="res://Sound/dog-loop.wav" id="37_58lqq"]
 [ext_resource type="AudioStream" uid="uid://bccm7gf336iq4" path="res://Sound/Music/MusicGameplay-endInfernalLoop.wav" id="37_i217f"]
 [ext_resource type="AudioStream" uid="uid://8xvdpjj08ss3" path="res://Sound/Music/SuccessMusic.wav" id="38_oj0fn"]
-[ext_resource type="AudioStream" uid="uid://vvodouukjw3y" path="res://Sound/ouh-EgliseBdelay1sec.wav" id="42_ty7m8"]
 [ext_resource type="AudioStream" uid="uid://b8rdajm62e8wo" path="res://Sound/ouh-Eglise-A.wav" id="43_n1hch"]
 [ext_resource type="AudioStream" uid="uid://ihmeeyu587h0" path="res://Sound/Mémé-Retry.wav" id="44_ex434"]
 [ext_resource type="AudioStream" uid="uid://iqg1i2cmlbfu" path="res://Sound/Mémé-Paradis.wav" id="45_l4ljp"]
@@ -281,14 +280,10 @@ volume_db = 15.0
 
 [node name="Eglise" type="Node" parent="Gameplay"]
 
-[node name="Ouh-Delay" type="AudioStreamPlayer" parent="Gameplay/Eglise"]
-stream = ExtResource("42_ty7m8")
-volume_db = -10.0
-max_polyphony = 20
-
 [node name="Ouh-A" type="AudioStreamPlayer" parent="Gameplay/Eglise"]
+unique_name_in_owner = true
 stream = ExtResource("43_n1hch")
-volume_db = -10.0
+volume_db = -20.0
 max_polyphony = 20
 
 [node name="Retry" type="Node" parent="Gameplay"]

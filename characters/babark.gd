@@ -2,7 +2,6 @@ extends Node2D
 
 var isPlayerInArea : bool = false
 var player : Node2D
-@onready var area_2d: Area2D = %Area2D
 @onready var collision_shape_2d: CollisionShape2D = %CollisionShape2D
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
@@ -26,7 +25,7 @@ func get_sound_volume() -> float:
 		return 1
 	else:
 		var radius: float = collision_shape_2d.shape.get_rect().size.x / 2.0
-		var distance: float = global_position.distance_to(player.global_position)
+		var distance: float = collision_shape_2d.global_position.distance_to(player.global_position)
 		return -(20 * distance / radius) + 6
 
 func _on_success_detect_body_entered(body: Node2D) -> void:
