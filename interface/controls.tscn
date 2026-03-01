@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://udway7ncy7id"]
+[gd_scene load_steps=58 format=3 uid="uid://udway7ncy7id"]
 
 [ext_resource type="Script" uid="uid://2mux5u6bkh0j" path="res://interface/controls.gd" id="1_ij41j"]
 [ext_resource type="Texture2D" uid="uid://ckk1lonis8f8v" path="res://Visuels/command_panel.png" id="2_76tt1"]
@@ -22,6 +22,9 @@
 [ext_resource type="Texture2D" uid="uid://c83fsb3ynqx67" path="res://Visuels/grandma_lose.png" id="14_vgvyt"]
 [ext_resource type="Texture2D" uid="uid://dygvyua4ru2q6" path="res://Visuels/grandma_holding_doggo.png" id="14_vqsow"]
 [ext_resource type="Script" uid="uid://bxprlw40wl0c3" path="res://addons/godot_state_charts/all_of_guard.gd" id="15_bohjk"]
+[ext_resource type="Texture2D" uid="uid://cfga4u8et5ekq" path="res://Visuels/cancel_buttons/cancel button-1.png" id="15_bx1lk"]
+[ext_resource type="Texture2D" uid="uid://ni5nhh28lnuf" path="res://Visuels/cancel_buttons/cancel button-3.png" id="16_7ty5t"]
+[ext_resource type="Texture2D" uid="uid://bhd4r73eqkfw7" path="res://Visuels/cancel_buttons/cancel button-2.png" id="17_fd24t"]
 [ext_resource type="Script" uid="uid://jr8uvcpwmpj" path="res://interface/end_dialog.gd" id="22_ulxes"]
 [ext_resource type="Texture2D" uid="uid://b6c7203sx10qm" path="res://Visuels/final_screen_v2.png" id="23_ulxes"]
 [ext_resource type="PackedScene" uid="uid://2aajgprnxcv6" path="res://interface/camera_shift_commands.tscn" id="25_olcju"]
@@ -332,6 +335,7 @@ vertical_alignment = 1
 
 [node name="PlayButton" type="TextureButton" parent="PanelContainer/MainMarginContainer/MainVerticalLayout/HBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_horizontal = 3
 texture_normal = ExtResource("10_76tt1")
@@ -357,6 +361,37 @@ grow_vertical = 2
 theme = ExtResource("5_2upaq")
 theme_override_font_sizes/font_size = 64
 text = "Play !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CancelButton" type="TextureButton" parent="PanelContainer/MainMarginContainer/MainVerticalLayout/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_horizontal = 3
+disabled = true
+texture_normal = ExtResource("15_bx1lk")
+texture_pressed = ExtResource("16_7ty5t")
+texture_hover = ExtResource("17_fd24t")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="PanelContainer/MainMarginContainer/MainVerticalLayout/HBoxContainer/CancelButton"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -39.5
+offset_top = -12.0
+offset_right = 39.5
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_2upaq")
+text = "Cancel"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -586,6 +621,7 @@ centered = false
 
 [connection signal="pressed" from="PanelContainer/MainMarginContainer/MainVerticalLayout/HBoxContainer/UndoButton" to="." method="_on_undo_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MainMarginContainer/MainVerticalLayout/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MainMarginContainer/MainVerticalLayout/HBoxContainer/CancelButton" to="." method="_on_cancel_button_pressed"]
 [connection signal="state_entered" from="StateChart/CompoundState/Inactive" to="." method="_on_inactive_state_entered"]
 [connection signal="state_input" from="StateChart/CompoundState/Inactive" to="." method="_on_inactive_state_input"]
 [connection signal="state_entered" from="StateChart/CompoundState/Selecting" to="." method="_on_selecting_state_entered"]

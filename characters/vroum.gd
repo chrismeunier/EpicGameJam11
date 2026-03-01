@@ -52,7 +52,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if (body.name == "Player"):
 		isPlayerInArea = true
 		player = body
-		AudioManager.car_noise.play()
+		AudioManager.TriggerCar(true)
 		var index = randi() % AudioManager.enter_car_zone.get_child_count()
 		AudioManager.enter_car_zone.get_child(index).play()
 
@@ -60,4 +60,4 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	if (body.name == "Player"):
 		isPlayerInArea = false
 		player = null
-		AudioManager.car_noise.stop()
+		AudioManager.TriggerCar(false)

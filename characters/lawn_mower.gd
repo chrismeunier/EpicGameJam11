@@ -9,10 +9,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if (body.name == "Player"):
 		isPlayerInArea = true
 		player = body
-		AudioManager.lawn_mower_noise.play()
+		AudioManager.TriggerLawnMower(true)
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if (body.name == "Player"):
 		isPlayerInArea = false
 		player = null
-		AudioManager.lawn_mower_noise.stop()
+		AudioManager.TriggerLawnMower(false)
