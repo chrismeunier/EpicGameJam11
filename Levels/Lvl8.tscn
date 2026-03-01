@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://swkj053nbgyw"]
+[gd_scene load_steps=11 format=4 uid="uid://swkj053nbgyw"]
 
 [ext_resource type="Script" uid="uid://dk83o2jiwtqvx" path="res://Levels/lvl_8.gd" id="1_2oxo6"]
 [ext_resource type="TileSet" uid="uid://q2s4f1ubq8s8" path="res://TileMap/tilemap_set.tres" id="2_b7nnr"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bqn4nfb6gdwrl" path="res://characters/Vroum.tscn" id="7_d0rup"]
 [ext_resource type="PackedScene" uid="uid://dijnnf4rwdpwm" path="res://camera/camera_manager.tscn" id="8_bqr44"]
 [ext_resource type="PackedScene" uid="uid://cx646uxbr45o0" path="res://TileMap/teleporter.tscn" id="9_b7nnr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b7nnr"]
+radius = 350.0
 
 [node name="Lvl8" type="Node2D"]
 script = ExtResource("1_2oxo6")
@@ -60,3 +63,13 @@ position = Vector2(240, 560)
 position = Vector2(352, -384)
 map = NodePath("../Map")
 destination = NodePath("../Destination")
+
+[node name="Area2D" type="Area2D" parent="Teleporter"]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter/Area2D"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_b7nnr")
+
+[connection signal="body_entered" from="Teleporter/Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Teleporter/Area2D" to="." method="_on_area_2d_body_exited"]

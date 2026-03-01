@@ -25,6 +25,7 @@ extends Node
 @onready var gameplay_music_one: AudioStreamPlayer = %GameplayMusicOne
 @onready var gameplay_music_loop: AudioStreamPlayer = %GameplayMusicLoop
 @onready var success_music: AudioStreamPlayer = %SuccessMusic
+@onready var church_sound: AudioStreamPlayer = %"Ouh-A"
 
 var lawnMowerCount: int
 var carCount: int
