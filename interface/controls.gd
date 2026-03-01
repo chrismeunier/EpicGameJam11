@@ -5,6 +5,7 @@ class_name ControlPanel
 @onready var command_sequence: SequencePanel = %CommandSequence
 @onready var play_button: TextureButton = %PlayButton
 @onready var undo_button: TextureButton = %UndoButton
+@onready var cancel_button: TextureButton = %CancelButton
 @onready var state_chart: StateChart = %StateChart
 @onready var success_dialog: PanelContainer = %SuccessDialog
 @onready var fail_dialog: PanelContainer = %FailDialog
@@ -24,21 +25,26 @@ func _ready() -> void:
 func _disable_all_buttons() -> void:
 	command_select.disable_sequence()
 	command_sequence.disable_sequence()
-	_disable_play_undo_buttons()
+	_hide_play_undo_buttons()
 	camera_shift_commands.disable_buttons()
 	
 func _enable_all_buttons() -> void:
 	command_select.enable_sequence()
 	command_sequence.enable_sequence()
-	_enable_play_undo_buttons()
+	_show_play_undo_buttons()
 
-func _disable_play_undo_buttons() -> void:
+func _hide_play_undo_buttons() -> void:
 	play_button.disabled = true
 	undo_button.disabled = true
+	play_button.visible = false
+	undo_button.visible = false
+	
 
-func _enable_play_undo_buttons() -> void:
+func _show_play_undo_buttons() -> void:
 	play_button.disabled = false
 	undo_button.disabled = false
+	play_button.visible = true
+	undo_button.visible = true
 
 func _on_play_button_pressed() -> void:
 	if command_sequence.is_not_empty():
@@ -108,9 +114,13 @@ func _on_selecting_state_exited() -> void:
 
 func _on_playing_state_entered() -> void:
 	music_played_once = false
+	cancel_button.disabled = false
+	cancel_button.visible = true
 	Events.focus_player.emit()
 
 func _on_playing_state_exited() -> void:
+	cancel_button.disabled = true
+	cancel_button.visible = false
 	AudioManager.gameplay_music_one.stop()
 	AudioManager.gameplay_music_loop.stop()
 	Events.unfocus_player.emit()
@@ -185,7 +195,6 @@ func on_level_completed() -> void:
 		success_dialog.visible = true
 		AudioManager.level_success.play()
 
-
 func _is_last_level() -> bool:
 	# Parent is always the Main scene
 	return get_parent().is_last_level()
@@ -209,3 +218,8 @@ func _on_retry_button_pressed() -> void:
 	fail_dialog.visible = false
 	Events.reset_level.emit()
 	state_chart.send_event("start_selecting")
+
+func _on_cancel_button_pressed() -> void:
+	command_sequence.clear_sequence()
+	state_chart.send_event("end_game")
+	fail_dialog.visible = true

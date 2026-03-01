@@ -26,6 +26,9 @@ extends Node
 @onready var gameplay_music_loop: AudioStreamPlayer = %GameplayMusicLoop
 @onready var success_music: AudioStreamPlayer = %SuccessMusic
 
+var lawnMowerCount: int
+var carCount: int
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for child in get_children():
@@ -37,3 +40,23 @@ func _set_polyphony(node: Node):
 	elif node is Node:
 		for child in node.get_children():
 			_set_polyphony(child)
+
+func TriggerLawnMower(add: bool):
+	if add:
+		lawnMowerCount += 1
+		lawn_mower_noise.play()
+	else:
+		if lawnMowerCount > 0:
+			lawnMowerCount -= 1
+		if lawnMowerCount <= 0:
+			lawn_mower_noise.stop()
+
+func TriggerCar(add: bool):
+	if add:
+		carCount += 1
+		car_noise.play()
+	else:
+		if carCount > 0:
+			carCount -= 1
+		if carCount <= 0:
+			car_noise.stop()
