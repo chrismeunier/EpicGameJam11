@@ -15,9 +15,17 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+
+func getRandomNumber():
+	if get_parent().current_scene_index == 7:
+		# For level 8 make appear the dog only on the left
+		return randi_range(1, 2) 
+	else:
+		return randi_range(0, 3)
 	
+
 func handleNewDirectionPressed(id: int):
-	var my_random_number = randi_range(0, 3)
+	var my_random_number = getRandomNumber()
 	match my_random_number:
 		0:
 			#Bottom right
