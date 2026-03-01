@@ -3,6 +3,7 @@ extends Node
 @onready var template_sound: AudioStreamPlayer = %TemplateSound
 
 @onready var ambiance_oiseau: AudioStreamPlayer = %AmbianceOiseau
+@onready var erreur_direction: Node = %ErreurDirection
 @onready var instruction_right = %InstructionRight
 @onready var instruction_up = %InstructionUp
 @onready var instruction_left = %InstructionLeft
