@@ -1,8 +1,6 @@
 extends VBoxContainer
 class_name CommandPanel
 
-signal add_command_to_sequence(command_id : int)
-
 const COMMAND_ITEM = preload("res://interface/command_item_v_2.tscn")
 
 @onready var h_box_container: HBoxContainer = %HBoxContainer
@@ -22,7 +20,7 @@ func _ready() -> void:
 
 func command_pressed(id : int):
 	play_sound(id)
-	add_command_to_sequence.emit(id)
+	Events.add_command_to_sequence.emit(id)
 
 func get_sequence():
 	return h_box_container.get_children()

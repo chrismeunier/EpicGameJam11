@@ -16,7 +16,7 @@ var music_played_once : bool = false
 
 func _ready() -> void:
 	command_sequence.clear_sequence()
-	command_select.add_command_to_sequence.connect(add_command_from_select)
+	Events.add_command_to_sequence.connect(add_command_from_select)
 	Events.to_select_mode.connect(idle_to_select_moves)
 	Events.movement_ended.connect(to_ask_for_loop)
 	Events.level_completed.connect(on_level_completed)
@@ -78,17 +78,16 @@ func add_command_from_select(id: int):
 # INPUTS TO CHANGE STATES
 func idle_to_select_moves():
 	state_chart.send_event("start_selecting")
+
 func _on_inactive_state_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.keycode == KEY_2:
 			Events.to_select_mode.emit()
 
-
 func _on_selecting_state_input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if event.keycode == KEY_3:
 			state_chart.send_event("start_playing")
-
 
 func _on_playing_state_input(event: InputEvent) -> void:
 	if event is InputEventKey:
