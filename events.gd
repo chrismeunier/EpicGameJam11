@@ -26,6 +26,8 @@ signal unfocus_player
 signal shift_level_camera
 signal unshift_level_camera
 
+signal newGame
+
 # Signals for direction button pressed
 signal add_command_to_sequence(command_id : int)
 

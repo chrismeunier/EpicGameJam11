@@ -174,4 +174,5 @@ animation = &"talking"
 [node name="Lvl1" parent="." instance=ExtResource("3_r0du0")]
 
 [node name="StartScreen" parent="." instance=ExtResource("4_cm0pq")]
+unique_name_in_owner = true
 layer = 3

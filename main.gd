@@ -1,6 +1,7 @@
 extends Node
 
 @onready var controls: ControlPanel = %Controls
+@onready var start_screen: StartScreen = %StartScreen
 
 const LVL_1 = preload("res://Levels/Lvl1.tscn")
 const LVL_2 = preload("res://Levels/Lvl2.tscn")
@@ -28,6 +29,9 @@ var current_scene_index = load_progression_and_get_current_index()
 func _ready() -> void:
 	Events.next_level.connect(on_next_level)
 	Events.reset_level.connect(on_reset_level)
+	Events.newGame.connect(new_game)
+	if current_scene_index == 0:
+		start_screen.new_game_button.hide()
 	load_lvl()
 
 func on_next_level() -> void:
@@ -42,10 +46,16 @@ func load_lvl() -> void:
 	var scene = levels_list[current_scene_index]
 	call_deferred("_deferred_goto_scene", scene)
 
+func new_game() -> void:
+		config.set_value("Player1", "current_index_level", 0)
+		config.save("user://progression.cfg")
+		current_scene_index = 0
+		load_lvl()
+
 func save_progression(current_scene_index) -> void:
 	config.set_value("Player1", "current_index_level", current_scene_index)
 	config.save("user://progression.cfg")
-	
+
 func load_progression_and_get_current_index() -> int:
 	# Load data from a file.
 	var err = config.load("user://progression.cfg")

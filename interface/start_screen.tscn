@@ -1,12 +1,15 @@
-[gd_scene load_steps=69 format=3 uid="uid://b0dndokajcdpi"]
+[gd_scene load_steps=72 format=3 uid="uid://b0dndokajcdpi"]
 
-[ext_resource type="Script" path="res://interface/start_screen.gd" id="1_3iu3d"]
+[ext_resource type="Script" uid="uid://byfoihc8dv231" path="res://interface/start_screen.gd" id="1_3iu3d"]
 [ext_resource type="Theme" uid="uid://bo1gfp2uqybx" path="res://fonts/pixelFont.tres" id="2_shgn5"]
 [ext_resource type="Texture2D" uid="uid://c5phjn4litre5" path="res://Visuels/menu_background_only_grass.png" id="3_nerur"]
 [ext_resource type="Texture2D" uid="uid://dx2xkofkwywyx" path="res://Visuels/menu_buttons/play_button_1.png" id="4_140vk"]
+[ext_resource type="Texture2D" uid="uid://v82fhbkk44h3" path="res://Visuels/menu_buttons/new_game_button-1.png" id="4_m8ypy"]
+[ext_resource type="Texture2D" uid="uid://dkoy4xxqtau6s" path="res://Visuels/menu_buttons/new_game_button-2.png" id="5_2c8o4"]
 [ext_resource type="Texture2D" uid="uid://dd7anlasjd2cf" path="res://Visuels/animation_patounes.png" id="5_iirss"]
 [ext_resource type="Texture2D" uid="uid://b4aqnhvi1ijbi" path="res://Visuels/menu_buttons/play_button_3.png" id="5_mkv2m"]
 [ext_resource type="Texture2D" uid="uid://cu806mo2arpxc" path="res://Visuels/menu_buttons/play_button_2.png" id="6_fcdin"]
+[ext_resource type="Texture2D" uid="uid://c4d7bl7d7041y" path="res://Visuels/menu_buttons/new_game_button-3.png" id="6_mrrwl"]
 [ext_resource type="Texture2D" uid="uid://dn4woxet1qu7a" path="res://Visuels/transparent_background_image_menu.png" id="6_nerur"]
 [ext_resource type="Texture2D" uid="uid://c2dgfqsl5vt8i" path="res://Visuels/menu_buttons/credit_button_1.png" id="7_m8ypy"]
 [ext_resource type="Texture2D" uid="uid://dn2xm3hysh3vk" path="res://Visuels/menu_buttons/credit_button_3.png" id="8_2c8o4"]
@@ -433,6 +436,17 @@ layout_mode = 2
 theme_override_constants/separation = 128
 alignment = 1
 
+[node name="NewGameButton" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+z_index = 1
+custom_minimum_size = Vector2(200, 120)
+layout_mode = 2
+size_flags_vertical = 8
+texture_normal = ExtResource("4_m8ypy")
+texture_pressed = ExtResource("5_2c8o4")
+texture_hover = ExtResource("6_mrrwl")
+stretch_mode = 4
+
 [node name="PlayButton" type="TextureButton" parent="PanelContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 z_index = 1
@@ -512,6 +526,7 @@ size_flags_vertical = 8
 theme_override_font_sizes/font_size = 24
 text = "Fermer"
 
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="CreditsContainer/MarginContainer2/CloseCreditsButton" to="." method="_on_close_credits_button_pressed"]
