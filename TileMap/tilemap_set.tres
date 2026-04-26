@@ -3,8 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://bddfgmg47ykri" path="res://Visuels/Miss_Understanding_Tilemap.png" id="1_curxd"]
 [ext_resource type="Texture2D" uid="uid://ddg3uobh1m72b" path="res://Visuels/tileset_2.png" id="2_h2jvj"]
 [ext_resource type="Texture2D" uid="uid://5ha1ryvay5ab" path="res://Visuels/teleportation_goal_V2.png" id="2_wnxx2"]
-[ext_resource type="Texture2D" uid="uid://chwnly1137yqr" path="res://Visuels/two_clouds.png" id="4_a2rdq"]
-[ext_resource type="Texture2D" uid="uid://cpd4jcauc0xa0" path="res://Visuels/sky_tile.png" id="5_3yl4q"]
+[ext_resource type="Texture2D" uid="uid://dip5xwxcvnrey" path="res://Visuels/two_clouds.png" id="4_a2rdq"]
+[ext_resource type="Texture2D" uid="uid://b0qtwruauskac" path="res://Visuels/sky_tile.png" id="5_3yl4q"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_7u2o6"]
 bounce = 0.3
