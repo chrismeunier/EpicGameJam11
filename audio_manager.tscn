@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://dyg7pxyytxieq"]
+[gd_scene load_steps=54 format=3 uid="uid://dyg7pxyytxieq"]
 
 [ext_resource type="Script" uid="uid://c6efr17g6np36" path="res://Sound/audio_manager.gd" id="1_pil3g"]
 [ext_resource type="AudioStream" uid="uid://cclfnybxwu85h" path="res://Sound/missunderstanding-001.wav" id="2_evv53"]
@@ -49,6 +49,7 @@
 [ext_resource type="AudioStream" uid="uid://ihmeeyu587h0" path="res://Sound/Mémé-Retry.wav" id="44_ex434"]
 [ext_resource type="AudioStream" uid="uid://iqg1i2cmlbfu" path="res://Sound/Mémé-Paradis.wav" id="45_l4ljp"]
 [ext_resource type="AudioStream" uid="uid://blby4v8o4h1o8" path="res://Sound/Chérubin.wav" id="46_0o4ia"]
+[ext_resource type="AudioStream" uid="uid://dwavs587t58lv" path="res://Sound/Teleportation.wav" id="47_ex434"]
 [ext_resource type="AudioStream" uid="uid://384rhwfuaeyb" path="res://Sound/Poussette-Loop.wav" id="47_n1hch"]
 [ext_resource type="AudioStream" uid="uid://cvlv3o2m01vc2" path="res://Sound/Mémé_MenuMusicEglise.wav" id="48_ql6dk"]
 [ext_resource type="AudioStream" uid="uid://cvit3iqvb4xlc" path="res://Sound/Mémé_MonologueMenu.wav" id="52_8mbr6"]
@@ -312,6 +313,10 @@ unique_name_in_owner = true
 stream = ExtResource("47_n1hch")
 max_polyphony = 20
 
+[node name="Teleportation" type="AudioStreamPlayer" parent="Gameplay"]
+unique_name_in_owner = true
+stream = ExtResource("47_ex434")
+
 [node name="Music" type="Node" parent="."]
 
 [node name="MenuMusic" type="AudioStreamPlayer" parent="Music"]
@@ -319,24 +324,26 @@ unique_name_in_owner = true
 stream = ExtResource("35_6bb4x")
 max_polyphony = 10
 
-[node name="MenuMusicEglise" type="AudioStreamPlayer" parent="Music/MenuMusic"]
-stream = ExtResource("48_ql6dk")
-max_polyphony = 10
-
 [node name="GameplayMusicOne" type="AudioStreamPlayer" parent="Music"]
 unique_name_in_owner = true
 stream = ExtResource("36_4cwl4")
+volume_db = -3.0
 max_polyphony = 10
 
 [node name="GameplayMusicLoop" type="AudioStreamPlayer" parent="Music"]
 unique_name_in_owner = true
 stream = ExtResource("37_i217f")
+volume_db = -5.0
 max_polyphony = 10
 
 [node name="SuccessMusic" type="AudioStreamPlayer" parent="Music"]
 unique_name_in_owner = true
 stream = ExtResource("38_oj0fn")
 max_polyphony = 10
+
+[node name="MenuEglise" type="AudioStreamPlayer" parent="Music"]
+unique_name_in_owner = true
+stream = ExtResource("48_ql6dk")
 
 [node name="Monologue" type="Node" parent="."]
 

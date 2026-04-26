@@ -69,7 +69,6 @@ func _on_play_button_pressed() -> void:
 func _on_undo_button_pressed() -> void:
 	command_sequence.remove_last_command_item()
 
-# TODO: show the panel in the correct level only!
 func _show_camera_shift_panel():
 	camera_shift_commands.show()
 	
@@ -119,6 +118,7 @@ func _on_selecting_state_entered() -> void:
 
 func _on_selecting_state_exited() -> void:
 	_disable_all_buttons()
+	AudioManager.menu_eglise.stop()
 	AudioManager.menu_music.stop()
 	AudioManager.ambiance_oiseau.stop()
 
@@ -181,8 +181,12 @@ func _on_next_move_state_entered() -> void:
 		state_chart.send_event("finished")
 
 func _on_selecting_state_processing(_delta: float) -> void:
-	if not AudioManager.menu_music.playing:
+	if get_parent().current_scene_index == 7:
+		if not AudioManager.menu_eglise.playing:
+			AudioManager.menu_eglise.play()
+	elif not AudioManager.menu_music.playing:
 		AudioManager.menu_music.play()
+	
 	if not AudioManager.ambiance_oiseau.playing:
 		AudioManager.ambiance_oiseau.play()
 

@@ -29,6 +29,8 @@ extends Node
 @onready var church_sound: AudioStreamPlayer = %"Ouh-A"
 @onready var pleurs: AudioStreamPlayer = %Pleurs
 @onready var cri: AudioStreamPlayer = %Cri
+@onready var menu_eglise: AudioStreamPlayer = %MenuEglise
+@onready var teleportation: AudioStreamPlayer = %Teleportation
 
 var lawnMowerCount: int
 var poussetteCount: int
@@ -38,7 +40,7 @@ var carCount: int
 func _ready() -> void:
 	for child in get_children():
 		_set_polyphony(child)
-	
+
 func _set_polyphony(node: Node):
 	if node is AudioStreamPlayer:
 		node.set_max_polyphony(20)
@@ -79,7 +81,7 @@ func TriggerPoussette(add: bool):
 func TriggerCherubin():
 	cri.pitch_scale = 1.0
 	cri.play()
-	
+
 func FleeingCherubin():
 	cri.pitch_scale = 2.5
 	cri.play()
