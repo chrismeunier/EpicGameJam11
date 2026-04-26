@@ -74,8 +74,8 @@ script = ExtResource("1_l60ue")
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_r04m4")
 autoplay = "default"
-frame = 3
-frame_progress = 0.51155
+frame = 4
+frame_progress = 0.410268
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dnjv7")

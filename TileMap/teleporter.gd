@@ -10,5 +10,6 @@ func _on_body_entered(body: Node2D) -> void:
 	var target_pos = map.map_to_local(target_tile)
 	#print("Waiting for end of movement")
 	await Events.movement_ended
+	pass
 	#print("Go quantum mamie!")
 	body.global_position = target_pos

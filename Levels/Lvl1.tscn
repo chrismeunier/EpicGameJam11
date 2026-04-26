@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://r7mveck8cnw2"]
+[gd_scene load_steps=9 format=4 uid="uid://r7mveck8cnw2"]
 
 [ext_resource type="TileSet" uid="uid://q2s4f1ubq8s8" path="res://TileMap/tilemap_set.tres" id="1_k88kn"]
 [ext_resource type="Script" uid="uid://cosh30wu56u5v" path="res://Levels/lvl_1.gd" id="1_kucer"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d07g2f0i2186d" path="res://TileMap/grid.tscn" id="5_threx"]
 [ext_resource type="TileSet" uid="uid://d30gwmdi62022" path="res://TileMap/Decors_tilemap.tres" id="6_y3wse"]
 [ext_resource type="PackedScene" uid="uid://dijnnf4rwdpwm" path="res://camera/camera_manager.tscn" id="7_kskdi"]
+[ext_resource type="PackedScene" uid="uid://d1xbn7hg5caqh" path="res://characters/Cherubin.tscn" id="8_584xh"]
 
 [node name="Lvl1" type="Node2D"]
 script = ExtResource("1_kucer")
@@ -29,3 +30,6 @@ tile_set = ExtResource("6_y3wse")
 
 [node name="CameraManager" parent="." node_paths=PackedStringArray("Player") instance=ExtResource("7_kskdi")]
 Player = NodePath("../Player")
+
+[node name="Cherubin" parent="." instance=ExtResource("8_584xh")]
+position = Vector2(368, 272)

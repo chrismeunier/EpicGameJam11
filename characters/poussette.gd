@@ -1,4 +1,5 @@
 extends StaticBody2D
+class_name Poussette
 
 var isPlayerInArea : bool = false
 var player : Node2D
