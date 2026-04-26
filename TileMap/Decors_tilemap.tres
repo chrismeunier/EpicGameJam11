@@ -1,8 +1,9 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://d30gwmdi62022"]
+[gd_resource type="TileSet" load_steps=9 format=3 uid="uid://d30gwmdi62022"]
 
 [ext_resource type="Texture2D" uid="uid://d2gwiuy3eyled" path="res://Visuels/shiny_church.png" id="1_2na0c"]
 [ext_resource type="Texture2D" uid="uid://dxulkkpbraqay" path="res://Visuels/tileset_buildings.png" id="1_noi16"]
 [ext_resource type="Texture2D" uid="uid://bn8cxostm2yoj" path="res://Visuels/trees.png" id="2_gc82e"]
+[ext_resource type="Texture2D" uid="uid://chwnly1137yqr" path="res://Visuels/two_clouds.png" id="4_kin8c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kin8c"]
 texture = ExtResource("1_2na0c")
@@ -60,6 +61,16 @@ texture_region_size = Vector2i(64, 64)
 0:2/0 = 0
 0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gfo5h"]
+texture = ExtResource("4_kin8c")
+texture_region_size = Vector2i(64, 64)
+0:0/animation_frame_0/duration = 0.5
+0:0/animation_frame_1/duration = 0.5
+0:0/0 = 0
+0:1/animation_frame_0/duration = 0.5
+0:1/animation_frame_1/duration = 0.5
+0:1/0 = 0
+
 [resource]
 tile_size = Vector2i(64, 64)
 physics_layer_0/collision_layer = 1
@@ -68,3 +79,4 @@ custom_data_layer_0/type = 1
 sources/1 = SubResource("TileSetAtlasSource_y3wse")
 sources/2 = SubResource("TileSetAtlasSource_2na0c")
 sources/0 = SubResource("TileSetAtlasSource_kin8c")
+sources/3 = SubResource("TileSetAtlasSource_gfo5h")
