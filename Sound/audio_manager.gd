@@ -77,6 +77,13 @@ func TriggerPoussette(add: bool):
 			pleurs.stop()
 
 func TriggerCherubin():
+	cri.pitch_scale = 1.0
+	cri.play()
+	
+func FleeingCherubin():
+	cri.pitch_scale = 2.5
+	cri.play()
+	await cri.finished
 	cri.play()
 
 func play_error_sound():

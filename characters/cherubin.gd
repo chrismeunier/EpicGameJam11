@@ -19,15 +19,16 @@ func _on_rayon_de_fuite_body_entered(body: Node2D) -> void:
 		if linkedPoussette != null:
 			linkedPoussette.call_deferred("queue_free")
 		flee_direction = random_direction()
+		AudioManager.FleeingCherubin()
 		
 		await get_tree().create_timer(1.5).timeout
 		call_deferred("queue_free")
 
 func random_direction():
-	var sign = [-1, 1]
+	var signs = [-1, 1]
 	return Vector2(
-		sign.pick_random()*randf(), 
-		sign.pick_random()*randf()
+		signs.pick_random()*randf(), 
+		signs.pick_random()*randf()
 		).normalized()
 
 func _on_sound_radius_body_entered(body: Node2D) -> void:

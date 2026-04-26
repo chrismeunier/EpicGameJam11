@@ -60,7 +60,7 @@ debug_color = Color(0.429762, 0.59767, 0.198075, 0.42)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_lc30u")
 autoplay = "default"
-frame_progress = 0.842192
+frame_progress = 0.273452
 
 [node name="RayonDeFuite" type="Area2D" parent="."]
 unique_name_in_owner = true
