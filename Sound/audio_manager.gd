@@ -28,6 +28,7 @@ extends Node
 @onready var success_music: AudioStreamPlayer = %SuccessMusic
 @onready var church_sound: AudioStreamPlayer = %"Ouh-A"
 @onready var pleurs: AudioStreamPlayer = %Pleurs
+@onready var cri: AudioStreamPlayer = %Cri
 
 var lawnMowerCount: int
 var poussetteCount: int
@@ -74,6 +75,9 @@ func TriggerPoussette(add: bool):
 			poussetteCount -= 1
 		if poussetteCount <= 0:
 			pleurs.stop()
+
+func TriggerCherubin():
+	cri.play()
 
 func play_error_sound():
 	# play one undo sound

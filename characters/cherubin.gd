@@ -9,7 +9,6 @@ var speed_multiplier = 1.0
 
 func _physics_process(delta: float) -> void:
 	if flee_direction != Vector2.ZERO:
-		$CollisionShape2D.disabled = true
 		speed_multiplier += 0.5
 		constant_linear_velocity = flee_direction * initial_speed * speed_multiplier
 	move_and_collide(constant_linear_velocity)
@@ -25,4 +24,12 @@ func _on_rayon_de_fuite_body_entered(body: Node2D) -> void:
 		call_deferred("queue_free")
 
 func random_direction():
-	return Vector2(randf(), randf()).normalized()
+	var sign = [-1, 1]
+	return Vector2(
+		sign.pick_random()*randf(), 
+		sign.pick_random()*randf()
+		).normalized()
+
+func _on_sound_radius_body_entered(body: Node2D) -> void:
+	if (body.name == "Player"):
+		AudioManager.TriggerCherubin()

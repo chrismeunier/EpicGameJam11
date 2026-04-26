@@ -10,12 +10,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if (body.name == "Player"):
 		isPlayerInArea = true
 		player = body
-		#TODO: change logic to trigger the poussette's sound
 		AudioManager.TriggerPoussette(true)
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	if (body.name == "Player"):
 		isPlayerInArea = false
 		player = null
-		#TODO: change logic to trigger the poussette's sound
 		AudioManager.TriggerPoussette(false)

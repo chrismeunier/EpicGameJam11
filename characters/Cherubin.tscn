@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d1xbn7hg5caqh"]
+[gd_scene load_steps=11 format=3 uid="uid://d1xbn7hg5caqh"]
 
 [ext_resource type="Script" uid="uid://cwbidv25a5vun" path="res://characters/cherubin.gd" id="1_85isj"]
 [ext_resource type="Texture2D" uid="uid://bsxuqdu851mmq" path="res://Visuels/cringe_little_angel.png" id="2_my127"]
@@ -45,18 +45,22 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_my127"]
 radius = 42.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8q8wh"]
+radius = 74.0
+
 [node name="Cherubin" type="StaticBody2D"]
 script = ExtResource("1_85isj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8q8wh")
+disabled = true
 debug_color = Color(0.429762, 0.59767, 0.198075, 0.42)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_lc30u")
 autoplay = "default"
-frame_progress = 0.88584
+frame_progress = 0.842192
 
 [node name="RayonDeFuite" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -64,5 +68,14 @@ collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RayonDeFuite"]
 shape = SubResource("CircleShape2D_my127")
+debug_color = Color(0.808227, 0.371154, 0.48697, 0.42)
+
+[node name="SoundRadius" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoundRadius"]
+shape = SubResource("CircleShape2D_8q8wh")
 
 [connection signal="body_entered" from="RayonDeFuite" to="." method="_on_rayon_de_fuite_body_entered"]
+[connection signal="body_entered" from="SoundRadius" to="." method="_on_sound_radius_body_entered"]
