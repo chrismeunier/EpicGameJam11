@@ -317,10 +317,6 @@ unique_name_in_owner = true
 stream = ExtResource("35_6bb4x")
 max_polyphony = 10
 
-[node name="MenuMusicEglise" type="AudioStreamPlayer" parent="Music/MenuMusic"]
-stream = ExtResource("48_ql6dk")
-max_polyphony = 10
-
 [node name="GameplayMusicOne" type="AudioStreamPlayer" parent="Music"]
 unique_name_in_owner = true
 stream = ExtResource("36_4cwl4")
@@ -335,6 +331,10 @@ max_polyphony = 10
 unique_name_in_owner = true
 stream = ExtResource("38_oj0fn")
 max_polyphony = 10
+
+[node name="MenuEglise" type="AudioStreamPlayer" parent="Music"]
+unique_name_in_owner = true
+stream = ExtResource("48_ql6dk")
 
 [node name="Monologue" type="Node" parent="."]
 
