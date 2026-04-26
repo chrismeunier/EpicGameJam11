@@ -301,12 +301,14 @@ max_polyphony = 20
 [node name="Chérubin" type="Node" parent="Gameplay"]
 
 [node name="Cri" type="AudioStreamPlayer" parent="Gameplay/Chérubin"]
+unique_name_in_owner = true
 stream = ExtResource("46_0o4ia")
 max_polyphony = 20
 
 [node name="Poussette" type="Node" parent="Gameplay"]
 
 [node name="Pleurs" type="AudioStreamPlayer" parent="Gameplay/Poussette"]
+unique_name_in_owner = true
 stream = ExtResource("47_n1hch")
 max_polyphony = 20
 
