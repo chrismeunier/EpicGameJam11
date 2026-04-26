@@ -64,12 +64,13 @@ position = Vector2(352, -384)
 map = NodePath("../Map")
 destination = NodePath("../Destination")
 
-[node name="Area2D" type="Area2D" parent="Teleporter"]
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(352, -384)
 collision_layer = 16
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Teleporter/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_b7nnr")
 
-[connection signal="body_entered" from="Teleporter/Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Teleporter/Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -13,6 +13,8 @@ class_name ControlPanel
 @onready var camera_shift_commands: PanelContainer = %CameraShiftCommands
 
 var music_played_once : bool = false
+var should_wait : bool = false
+var timeSec : float = 0.0
 
 func _ready() -> void:
 	command_sequence.clear_sequence()
@@ -20,6 +22,7 @@ func _ready() -> void:
 	Events.to_select_mode.connect(idle_to_select_moves)
 	Events.movement_ended.connect(to_ask_for_loop)
 	Events.level_completed.connect(on_level_completed)
+	Events.waitFor.connect(on_waitFor)
 	command_sequence.current_anim_ended.connect(command_anim_ended)
 
 func _disable_all_buttons() -> void:
@@ -147,6 +150,9 @@ func command_anim_ended():
 	state_chart.step()
 
 func _on_awaiting_anim_state_stepped() -> void:
+	if should_wait:
+		await get_tree().create_timer(timeSec).timeout
+		should_wait = false
 	state_chart.send_event("ask_for_loop")
 
 func to_ask_for_loop(misunderstanding:bool):
@@ -199,6 +205,10 @@ func on_level_completed() -> void:
 	else:
 		success_dialog.visible = true
 		AudioManager.level_success.play()
+
+func on_waitFor(seconds: float):
+	should_wait = true
+	timeSec = seconds
 
 func _is_last_level() -> bool:
 	# Parent is always the Main scene

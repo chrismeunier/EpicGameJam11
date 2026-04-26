@@ -9,6 +9,9 @@ signal go_right
 signal go_up
 signal go_down
 
+# Pauses the motion sequence for x seconds
+signal waitFor(seconds: float)
+
 # Signals to interact with the control panel
 signal to_select_mode
 # Feedback signal to know if granny made the right move
@@ -26,10 +29,8 @@ signal unshift_level_camera
 # Signals for direction button pressed
 signal add_command_to_sequence(command_id : int)
 
-
 func _ready() -> void:
 	pass # Replace with function body.
-
 
 ### example:
 signal example_signal
