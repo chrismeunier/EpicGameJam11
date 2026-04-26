@@ -69,7 +69,6 @@ func _on_play_button_pressed() -> void:
 func _on_undo_button_pressed() -> void:
 	command_sequence.remove_last_command_item()
 
-# TODO: show the panel in the correct level only!
 func _show_camera_shift_panel():
 	camera_shift_commands.show()
 	

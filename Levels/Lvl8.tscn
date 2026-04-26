@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c46d7jt8i3i33" path="res://characters/Babark.tscn" id="6_g2jlm"]
 [ext_resource type="PackedScene" uid="uid://bqn4nfb6gdwrl" path="res://characters/Vroum.tscn" id="7_d0rup"]
 [ext_resource type="PackedScene" uid="uid://dijnnf4rwdpwm" path="res://camera/camera_manager.tscn" id="8_bqr44"]
-[ext_resource type="PackedScene" uid="uid://cx646uxbr45o0" path="res://TileMap/teleporter.tscn" id="9_b7nnr"]
+[ext_resource type="PackedScene" uid="uid://cx646uxbr45o0" path="res://Levels/teleporter.tscn" id="9_b7nnr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b7nnr"]
 radius = 350.0
@@ -27,7 +27,7 @@ tile_map_data = PackedByteArray("AAABAAAAAgABAAAAAAABAAoAAgACAAAAAAACAAAAAgACAAA
 tile_set = ExtResource("4_rph87")
 
 [node name="Player" parent="." instance=ExtResource("5_q464f")]
-position = Vector2(80, 80)
+position = Vector2(280, -420)
 
 [node name="Babark" parent="." instance=ExtResource("6_g2jlm")]
 position = Vector2(400, 560)

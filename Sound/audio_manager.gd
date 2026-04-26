@@ -28,6 +28,7 @@ extends Node
 @onready var success_music: AudioStreamPlayer = %SuccessMusic
 @onready var church_sound: AudioStreamPlayer = %"Ouh-A"
 @onready var menu_eglise: AudioStreamPlayer = %MenuEglise
+@onready var teleportation: AudioStreamPlayer = %Teleportation
 
 var lawnMowerCount: int
 var carCount: int

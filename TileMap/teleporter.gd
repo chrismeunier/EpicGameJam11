@@ -12,6 +12,7 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	Events.waitFor.emit(3)
 	animated_sprite_2d.play()
+	AudioManager.teleportation.play()
 	await get_tree().create_timer(1.5).timeout
 	
 	body.global_position = target_pos
