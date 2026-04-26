@@ -27,8 +27,10 @@ extends Node
 @onready var gameplay_music_loop: AudioStreamPlayer = %GameplayMusicLoop
 @onready var success_music: AudioStreamPlayer = %SuccessMusic
 @onready var church_sound: AudioStreamPlayer = %"Ouh-A"
+@onready var pleurs: AudioStreamPlayer = %Pleurs
 
 var lawnMowerCount: int
+var poussetteCount: int
 var carCount: int
 
 # Called when the node enters the scene tree for the first time.
@@ -62,6 +64,16 @@ func TriggerCar(add: bool):
 			carCount -= 1
 		if carCount <= 0:
 			car_noise.stop()
+
+func TriggerPoussette(add: bool):
+	if add:
+		poussetteCount += 1
+		pleurs.play()
+	else:
+		if poussetteCount > 0:
+			poussetteCount -= 1
+		if poussetteCount <= 0:
+			pleurs.stop()
 
 func play_error_sound():
 	# play one undo sound

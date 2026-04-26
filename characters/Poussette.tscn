@@ -1,0 +1,94 @@
+[gd_scene load_steps=14 format=3 uid="uid://1f8oqls8kf1m"]
+
+[ext_resource type="Script" uid="uid://bby7chpmfoi5x" path="res://characters/poussette.gd" id="1_l60ue"]
+[ext_resource type="Texture2D" uid="uid://c7gmgi52w4rx5" path="res://Visuels/crying_poussette.png" id="2_xmaat"]
+[ext_resource type="PackedScene" uid="uid://cgkvdtri7wgx6" path="res://characters/disturbance_area.tscn" id="3_pesxm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvctq"]
+atlas = ExtResource("2_xmaat")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjubx"]
+atlas = ExtResource("2_xmaat")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bx6b7"]
+atlas = ExtResource("2_xmaat")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui1qx"]
+atlas = ExtResource("2_xmaat")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vbvpr"]
+atlas = ExtResource("2_xmaat")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5rqn5"]
+atlas = ExtResource("2_xmaat")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6e0ey"]
+atlas = ExtResource("2_xmaat")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r04m4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvctq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjubx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bx6b7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ui1qx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vbvpr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5rqn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6e0ey")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dnjv7"]
+size = Vector2(32, 32)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sy6ug"]
+radius = 100.0
+
+[node name="Poussette" type="StaticBody2D"]
+script = ExtResource("1_l60ue")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_r04m4")
+autoplay = "default"
+frame = 3
+frame_progress = 0.51155
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_dnjv7")
+
+[node name="DisturbanceArea" parent="." instance=ExtResource("3_pesxm")]
+
+[node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_sy6ug")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
