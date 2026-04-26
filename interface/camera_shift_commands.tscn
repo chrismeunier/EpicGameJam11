@@ -54,6 +54,7 @@ size_flags_stretch_ratio = 11.0
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
+disabled = true
 texture_normal = ExtResource("6_bcinj")
 texture_pressed = ExtResource("7_jdpoe")
 texture_hover = ExtResource("8_urmxe")

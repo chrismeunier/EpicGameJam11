@@ -13,7 +13,7 @@ func disable_buttons():
 	
 func enable_buttons():
 	up_button.disabled = false
-	down_button.disabled = false
+	down_button.disabled = true
 
 func _on_up_button_pressed() -> void:
 	Events.shift_level_camera.emit()
