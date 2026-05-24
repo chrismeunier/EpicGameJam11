@@ -1,6 +1,5 @@
-[gd_scene load_steps=9 format=4 uid="uid://c4hpycbucp4i3"]
+[gd_scene load_steps=8 format=4 uid="uid://c4hpycbucp4i3"]
 
-[ext_resource type="Script" uid="uid://d7o0dyk0hs35" path="res://Levels/lvl_6.gd" id="1_qof8s"]
 [ext_resource type="TileSet" uid="uid://q2s4f1ubq8s8" path="res://TileMap/tilemap_set.tres" id="2_rkbtw"]
 [ext_resource type="PackedScene" uid="uid://d07g2f0i2186d" path="res://TileMap/grid.tscn" id="3_wpdkn"]
 [ext_resource type="TileSet" uid="uid://d30gwmdi62022" path="res://TileMap/Decors_tilemap.tres" id="4_pvpd0"]
@@ -10,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://1f8oqls8kf1m" path="res://characters/Poussette.tscn" id="8_qof8s"]
 
 [node name="Lvl9" type="Node2D"]
-script = ExtResource("1_qof8s")
 
 [node name="Map" type="TileMapLayer" parent="."]
 position = Vector2(2, -1)
