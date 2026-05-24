@@ -12,9 +12,9 @@ class_name ControlPanel
 @onready var end_dialog: PanelContainer = %EndDialog
 @onready var camera_shift_commands: PanelContainer = %CameraShiftCommands
 
-var music_played_once : bool = false
-var should_wait : bool = false
-var timeSec : float = 0.0
+var music_played_once: bool = false
+var should_wait: bool = false
+var timeSec: float = 0.0
 
 func _ready() -> void:
 	command_sequence.clear_sequence()
@@ -30,7 +30,7 @@ func _disable_all_buttons() -> void:
 	command_sequence.disable_sequence()
 	_hide_play_undo_buttons()
 	camera_shift_commands.disable_buttons()
-	
+
 func _enable_all_buttons() -> void:
 	command_select.enable_sequence()
 	command_sequence.enable_sequence()
@@ -45,7 +45,7 @@ func _hide_play_undo_buttons() -> void:
 func _enable_cancel_button():
 	cancel_button.disabled = false
 	cancel_button.visible = true
-	
+
 func _hide_cancel_button():
 	cancel_button.disabled = true
 	cancel_button.visible = false
@@ -60,7 +60,7 @@ func _show_play_undo_buttons() -> void:
 func _on_play_button_pressed() -> void:
 	if command_sequence.is_not_empty():
 		var index = randi() % AudioManager.play.get_child_count()
-		var audio_player : AudioStreamPlayer = AudioManager.play.get_child(index)
+		var audio_player: AudioStreamPlayer = AudioManager.play.get_child(index)
 		audio_player.play()
 		await audio_player.finished
 		await get_tree().create_timer(1).timeout
@@ -71,7 +71,7 @@ func _on_undo_button_pressed() -> void:
 
 func _show_camera_shift_panel():
 	camera_shift_commands.show()
-	
+
 func _hide_camera_shift_panel():
 	camera_shift_commands.hide()
 
@@ -155,7 +155,7 @@ func _on_awaiting_anim_state_stepped() -> void:
 		should_wait = false
 	state_chart.send_event("ask_for_loop")
 
-func to_ask_for_loop(misunderstanding:bool):
+func to_ask_for_loop(misunderstanding: bool):
 	#print("Move understood? ", not misunderstanding)
 	if misunderstanding:
 		command_sequence.failed_current_command()
@@ -186,7 +186,7 @@ func _on_selecting_state_processing(_delta: float) -> void:
 			AudioManager.menu_eglise.play()
 	elif not AudioManager.menu_music.playing:
 		AudioManager.menu_music.play()
-	
+
 	if not AudioManager.ambiance_oiseau.playing:
 		AudioManager.ambiance_oiseau.play()
 
@@ -194,7 +194,7 @@ func _on_playing_state_processing(_delta: float) -> void:
 	if not music_played_once and not AudioManager.gameplay_music_one.playing:
 		AudioManager.gameplay_music_one.play()
 		music_played_once = true
-	
+
 	if music_played_once and not AudioManager.gameplay_music_one.playing:
 		if not AudioManager.gameplay_music_loop.playing:
 			AudioManager.gameplay_music_loop.play()
@@ -230,7 +230,7 @@ func _on_end_state_entered() -> void:
 	_hide_cancel_button()
 	AudioManager.play_error_sound()
 
-func _on_end_state_processing(delta: float) -> void:
+func _on_end_state_processing(_delta: float) -> void:
 	if not success_dialog.visible:
 		fail_dialog.visible = true
 

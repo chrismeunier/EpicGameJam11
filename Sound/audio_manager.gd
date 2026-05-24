@@ -32,6 +32,8 @@ extends Node
 @onready var menu_eglise: AudioStreamPlayer = %MenuEglise
 @onready var teleportation: AudioStreamPlayer = %Teleportation
 
+const DEFAULT_POLYPHONY = 20
+
 var lawnMowerCount: int
 var poussetteCount: int
 var carCount: int
@@ -43,7 +45,7 @@ func _ready() -> void:
 
 func _set_polyphony(node: Node):
 	if node is AudioStreamPlayer:
-		node.set_max_polyphony(20)
+		node.set_max_polyphony(DEFAULT_POLYPHONY)
 	elif node is Node:
 		for child in node.get_children():
 			_set_polyphony(child)
