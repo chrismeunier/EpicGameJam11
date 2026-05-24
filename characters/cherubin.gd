@@ -15,7 +15,6 @@ func _physics_process(delta: float) -> void:
 
 func _on_rayon_de_fuite_body_entered(body: Node2D) -> void:
 	if (body.name == "Player"):
-		pass # do something to make the baby flee and delete the poussette
 		if linkedPoussette != null:
 			linkedPoussette.call_deferred("queue_free")
 		flee_direction = random_direction()

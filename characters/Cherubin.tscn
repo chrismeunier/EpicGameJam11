@@ -68,13 +68,14 @@ collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RayonDeFuite"]
 shape = SubResource("CircleShape2D_my127")
-debug_color = Color(0.808227, 0.371154, 0.48697, 0.42)
+debug_color = Color(1.78084e-06, 0.6289, 0.487883, 0.42)
 
 [node name="SoundRadius" type="Area2D" parent="."]
 unique_name_in_owner = true
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SoundRadius"]
+visible = false
 shape = SubResource("CircleShape2D_8q8wh")
 
 [connection signal="body_entered" from="RayonDeFuite" to="." method="_on_rayon_de_fuite_body_entered"]

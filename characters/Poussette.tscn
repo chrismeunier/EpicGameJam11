@@ -1,8 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://1f8oqls8kf1m"]
+[gd_scene load_steps=13 format=3 uid="uid://1f8oqls8kf1m"]
 
 [ext_resource type="Script" uid="uid://bby7chpmfoi5x" path="res://characters/poussette.gd" id="1_l60ue"]
 [ext_resource type="Texture2D" uid="uid://c7gmgi52w4rx5" path="res://Visuels/crying_poussette.png" id="2_xmaat"]
-[ext_resource type="PackedScene" uid="uid://cgkvdtri7wgx6" path="res://characters/disturbance_area.tscn" id="3_pesxm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lvctq"]
 atlas = ExtResource("2_xmaat")
@@ -79,8 +78,7 @@ frame_progress = 0.410268
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dnjv7")
-
-[node name="DisturbanceArea" parent="." instance=ExtResource("3_pesxm")]
+debug_color = Color(0.954169, 0.107811, 0.468374, 0.42)
 
 [node name="Area2D" type="Area2D" parent="."]
 unique_name_in_owner = true
@@ -88,6 +86,7 @@ collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 unique_name_in_owner = true
+visible = false
 shape = SubResource("CircleShape2D_sy6ug")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
