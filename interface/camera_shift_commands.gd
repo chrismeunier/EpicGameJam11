@@ -10,10 +10,14 @@ func _ready() -> void:
 func disable_buttons():
 	up_button.disabled = true
 	down_button.disabled = true
+	up_button.visible = false
+	down_button.visible = false
 	
 func enable_buttons():
 	up_button.disabled = false
 	down_button.disabled = true
+	up_button.visible = true
+	down_button.visible = true
 
 func _on_up_button_pressed() -> void:
 	Events.shift_level_camera.emit()

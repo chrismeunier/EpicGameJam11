@@ -8,7 +8,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if (body.name == "Player"):
 		isPlayerInArea = true
 		player = body
-		AudioManager.babark_barking.bus = "Master"
+		AudioManager.babark_barking.bus = "EchoBus"
 		AudioManager.babark_barking.play()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
@@ -28,11 +28,3 @@ func get_sound_volume() -> float:
 		var radius: float = collision_shape_2d.shape.get_rect().size.x / 2.0
 		var distance: float = collision_shape_2d.global_position.distance_to(player.global_position)
 		return -(20 * distance / radius) + 6
-
-func _on_success_detect_body_entered(body: Node2D) -> void:
-	if (body.name == "Player"):
-		body.set_success_animation()
-		isPlayerInArea = false
-		visible = false
-		AudioManager.babark_barking.stop()
-		Events.level_completed.emit()
