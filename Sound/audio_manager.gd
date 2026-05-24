@@ -31,6 +31,7 @@ extends Node
 @onready var cri: AudioStreamPlayer = %Cri
 @onready var menu_eglise: AudioStreamPlayer = %MenuEglise
 @onready var teleportation: AudioStreamPlayer = %Teleportation
+@onready var tetcheu: AudioStreamPlayer = %Tetcheu
 
 const DEFAULT_POLYPHONY = 20
 
