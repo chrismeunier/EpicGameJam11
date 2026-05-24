@@ -38,7 +38,7 @@ position = Vector2(112, 400)
 Player = NodePath("../Player")
 
 [node name="Poussette" parent="." instance=ExtResource("8_qof8s")]
-position = Vector2(370, 559)
+position = Vector2(368, 560)
 
 [node name="Cherubin" parent="." node_paths=PackedStringArray("linkedPoussette") instance=ExtResource("9_wpdkn")]
 position = Vector2(1712, 560)
