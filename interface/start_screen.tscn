@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://b0dndokajcdpi"]
+[gd_scene load_steps=79 format=3 uid="uid://b0dndokajcdpi"]
 
 [ext_resource type="Script" uid="uid://byfoihc8dv231" path="res://interface/start_screen.gd" id="1_3iu3d"]
 [ext_resource type="Theme" uid="uid://bo1gfp2uqybx" path="res://fonts/pixelFont.tres" id="2_shgn5"]
@@ -14,6 +14,44 @@
 [ext_resource type="Texture2D" uid="uid://c2dgfqsl5vt8i" path="res://Visuels/menu_buttons/credit_button_1.png" id="7_m8ypy"]
 [ext_resource type="Texture2D" uid="uid://dn2xm3hysh3vk" path="res://Visuels/menu_buttons/credit_button_3.png" id="8_2c8o4"]
 [ext_resource type="Texture2D" uid="uid://c3u45vrstok2r" path="res://Visuels/menu_buttons/credit_button_2.png" id="9_mrrwl"]
+[ext_resource type="Texture2D" uid="uid://c47jc8v02sotc" path="res://Visuels/talking_grandma_menu.png" id="15_2c8o4"]
+[ext_resource type="Script" uid="uid://b0x5fmooomjil" path="res://interface/talking_meme.gd" id="15_mrrwl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60x4e"]
+atlas = ExtResource("15_2c8o4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m17e7"]
+atlas = ExtResource("15_2c8o4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uka6o"]
+atlas = ExtResource("15_2c8o4")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paqu6"]
+atlas = ExtResource("15_2c8o4")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l843l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60x4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m17e7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uka6o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paqu6")
+}],
+"loop": true,
+"name": &"talking",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hnesr"]
 atlas = ExtResource("5_iirss")
@@ -414,6 +452,17 @@ bg_color = Color(0.380392, 0.380392, 0.380392, 0.858824)
 [node name="StartScreen" type="CanvasLayer"]
 script = ExtResource("1_3iu3d")
 
+[node name="TalkingMeme" type="Node2D" parent="."]
+script = ExtResource("15_mrrwl")
+
+[node name="Meme" type="AnimatedSprite2D" parent="TalkingMeme"]
+z_index = 1
+position = Vector2(1500, 286)
+rotation = -1.5708
+scale = Vector2(9, 9)
+sprite_frames = SubResource("SpriteFrames_l843l")
+animation = &"talking"
+
 [node name="PanelContainer" type="PanelContainer" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
@@ -527,6 +576,8 @@ theme_override_font_sizes/font_size = 24
 text = "Fermer"
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/NewGameButton" to="TalkingMeme" method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/PlayButton" to="TalkingMeme" method="_on_play_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="CreditsContainer/MarginContainer2/CloseCreditsButton" to="." method="_on_close_credits_button_pressed"]

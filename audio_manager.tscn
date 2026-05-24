@@ -358,5 +358,6 @@ stream = ExtResource("48_ql6dk")
 [node name="Monologue" type="Node" parent="."]
 
 [node name="MonologueMémé" type="AudioStreamPlayer" parent="Monologue"]
+unique_name_in_owner = true
 stream = ExtResource("52_8mbr6")
 max_polyphony = 20
