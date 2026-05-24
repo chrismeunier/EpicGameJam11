@@ -13,6 +13,7 @@ class_name ControlPanel
 @onready var camera_shift_commands: PanelContainer = %CameraShiftCommands
 
 var music_played_once: bool = false
+var changed_dimension: bool = false # to track the use of a teleporter
 var should_wait: bool = false
 var timeSec: float = 0.0
 
@@ -23,6 +24,7 @@ func _ready() -> void:
 	Events.movement_ended.connect(to_ask_for_loop)
 	Events.level_completed.connect(on_level_completed)
 	Events.waitFor.connect(on_waitFor)
+	Events.teleported.connect(change_music_after_teleportation)
 	command_sequence.current_anim_ended.connect(command_anim_ended)
 
 func _disable_all_buttons() -> void:
@@ -85,6 +87,14 @@ func add_command_from_select(id: int):
 	command_sequence.add_command(id)
 	#print(id)
 
+func change_music_after_teleportation():
+	changed_dimension = true
+	AudioManager.gameplay_music_one.stop()
+	AudioManager.gameplay_music_loop.stop()
+	AudioManager.music_heaven.stop()
+	await AudioManager.tetcheu.finished
+	AudioManager.music_heaven.play()
+
 # INPUTS TO CHANGE STATES
 func idle_to_select_moves():
 	state_chart.send_event("start_selecting")
@@ -124,6 +134,7 @@ func _on_selecting_state_exited() -> void:
 
 func _on_playing_state_entered() -> void:
 	music_played_once = false
+	changed_dimension = false
 	_enable_cancel_button()
 	Events.focus_player.emit()
 
@@ -131,6 +142,7 @@ func _on_playing_state_exited() -> void:
 	_hide_cancel_button()
 	AudioManager.gameplay_music_one.stop()
 	AudioManager.gameplay_music_loop.stop()
+	AudioManager.music_heaven.stop()
 	Events.unfocus_player.emit()
 
 # PLAYING STATES
@@ -191,6 +203,8 @@ func _on_selecting_state_processing(_delta: float) -> void:
 		AudioManager.ambiance_oiseau.play()
 
 func _on_playing_state_processing(_delta: float) -> void:
+	if changed_dimension:
+		return
 	if not music_played_once and not AudioManager.gameplay_music_one.playing:
 		AudioManager.gameplay_music_one.play()
 		music_played_once = true

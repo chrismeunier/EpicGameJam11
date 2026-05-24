@@ -5,6 +5,8 @@ class_name Teleporter
 @export var destination: Marker2D
 @onready var animated_sprite_2d: AnimatedSprite2D = %AnimatedSprite2D
 
+func _ready() -> void:
+	AudioManager.teleportation.finished.connect(tp_sound_finished)
 
 func _on_body_entered(body: Node2D) -> void:
 	var target_tile = map.local_to_map(destination.global_position)
@@ -13,6 +15,10 @@ func _on_body_entered(body: Node2D) -> void:
 	Events.waitFor.emit(3)
 	animated_sprite_2d.play()
 	AudioManager.teleportation.play()
+	Events.teleported.emit()
 	await get_tree().create_timer(1.5).timeout
 
 	body.global_position = target_pos
+
+func tp_sound_finished():
+	AudioManager.tetcheu.play()

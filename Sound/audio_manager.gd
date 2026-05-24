@@ -25,12 +25,14 @@ extends Node
 @onready var menu_music: AudioStreamPlayer = %MenuMusic
 @onready var gameplay_music_one: AudioStreamPlayer = %GameplayMusicOne
 @onready var gameplay_music_loop: AudioStreamPlayer = %GameplayMusicLoop
+@onready var music_heaven: AudioStreamPlayer = %MusicHeaven
 @onready var success_music: AudioStreamPlayer = %SuccessMusic
 @onready var church_sound: AudioStreamPlayer = %"Ouh-A"
 @onready var pleurs: AudioStreamPlayer = %Pleurs
 @onready var cri: AudioStreamPlayer = %Cri
 @onready var menu_eglise: AudioStreamPlayer = %MenuEglise
 @onready var teleportation: AudioStreamPlayer = %Teleportation
+@onready var tetcheu: AudioStreamPlayer = %Tetcheu
 @onready var monologue_mémé: AudioStreamPlayer = %MonologueMémé
 
 const DEFAULT_POLYPHONY = 20
