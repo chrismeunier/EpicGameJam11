@@ -1,7 +1,8 @@
-[gd_scene load_steps=53 format=3 uid="uid://dyg7pxyytxieq"]
+[gd_scene load_steps=55 format=3 uid="uid://dyg7pxyytxieq"]
 
 [ext_resource type="Script" uid="uid://c6efr17g6np36" path="res://Sound/audio_manager.gd" id="1_pil3g"]
 [ext_resource type="AudioStream" uid="uid://cclfnybxwu85h" path="res://Sound/missunderstanding-001.wav" id="2_evv53"]
+[ext_resource type="AudioStream" uid="uid://c8fryq7rogexp" path="res://Sound/HeavenisHell-loop.wav" id="2_ex434"]
 [ext_resource type="AudioStream" uid="uid://i33er7k1axin" path="res://Sound/ambiance-oiseaux.wav" id="3_whfdm"]
 [ext_resource type="AudioStream" uid="uid://byvkohy6mtpib" path="res://Sound/erreur-dog-001.wav" id="4_gjg3o"]
 [ext_resource type="AudioStream" uid="uid://g5qh6pf75f37" path="res://Sound/instructions-dog-right-001.wav" id="4_mabco"]
@@ -49,12 +50,18 @@
 [ext_resource type="AudioStream" uid="uid://ihmeeyu587h0" path="res://Sound/Mémé-Retry.wav" id="44_ex434"]
 [ext_resource type="AudioStream" uid="uid://iqg1i2cmlbfu" path="res://Sound/Mémé-Paradis.wav" id="45_l4ljp"]
 [ext_resource type="AudioStream" uid="uid://blby4v8o4h1o8" path="res://Sound/Chérubin.wav" id="46_0o4ia"]
+[ext_resource type="AudioStream" uid="uid://b3kotntairw36" path="res://Sound/Cherubinquigicle.wav" id="47_l4ljp"]
 [ext_resource type="AudioStream" uid="uid://384rhwfuaeyb" path="res://Sound/Poussette-Loop.wav" id="47_n1hch"]
 [ext_resource type="AudioStream" uid="uid://cvlv3o2m01vc2" path="res://Sound/Mémé_MenuMusicEglise.wav" id="48_ql6dk"]
 [ext_resource type="AudioStream" uid="uid://cvit3iqvb4xlc" path="res://Sound/Mémé_MonologueMenu.wav" id="52_8mbr6"]
 
 [node name="AudioManager" type="Node"]
 script = ExtResource("1_pil3g")
+
+[node name="Paradis" type="Node" parent="."]
+
+[node name="MusicParadis" type="AudioStreamPlayer" parent="Paradis"]
+stream = ExtResource("2_ex434")
 
 [node name="TemplateSound" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
@@ -303,6 +310,9 @@ max_polyphony = 20
 [node name="Cri" type="AudioStreamPlayer" parent="Gameplay/Chérubin"]
 stream = ExtResource("46_0o4ia")
 max_polyphony = 20
+
+[node name="Fuite2" type="AudioStreamPlayer" parent="Gameplay/Chérubin"]
+stream = ExtResource("47_l4ljp")
 
 [node name="Poussette" type="Node" parent="Gameplay"]
 
