@@ -12,6 +12,7 @@ const LVL_6 = preload("res://Levels/Lvl6.tscn")
 const LVL_7 = preload("res://Levels/Lvl7.tscn")
 const LVL_8 = preload("res://Levels/Lvl8.tscn")
 const LVL_9 = preload("res://Levels/Lvl9.tscn")
+const LVL_10 = preload("res://Levels/Lvl10.tscn")
 
 var config = ConfigFile.new()
 
@@ -24,7 +25,8 @@ var levels_list = [\
 	LVL_6,\
 	LVL_7,\
 	LVL_8,\
-	LVL_9]
+	LVL_9,\
+	LVL_10]
 
 var current_scene_index = load_progression_and_get_current_index()
 
