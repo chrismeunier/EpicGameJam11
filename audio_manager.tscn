@@ -356,6 +356,10 @@ max_polyphony = 10
 unique_name_in_owner = true
 stream = ExtResource("48_ql6dk")
 
+[node name="MusicHeaven" type="AudioStreamPlayer" parent="Music"]
+unique_name_in_owner = true
+stream = ExtResource("2_ex434")
+
 [node name="Monologue" type="Node" parent="."]
 
 [node name="MonologueMémé" type="AudioStreamPlayer" parent="Monologue"]

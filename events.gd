@@ -25,6 +25,8 @@ signal focus_player
 signal unfocus_player
 signal shift_level_camera
 signal unshift_level_camera
+# Signal to change the music once after a teleportation
+signal teleported
 
 signal newGame
 
