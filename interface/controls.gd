@@ -25,6 +25,7 @@ func _ready() -> void:
 	Events.level_completed.connect(on_level_completed)
 	Events.waitFor.connect(on_waitFor)
 	Events.teleported.connect(change_music_after_teleportation)
+	Events.newGame.connect(new_game)
 	command_sequence.current_anim_ended.connect(command_anim_ended)
 
 func _disable_all_buttons() -> void:
@@ -259,3 +260,6 @@ func _on_cancel_button_pressed() -> void:
 	fail_dialog.visible = true
 	AudioManager.play_error_sound()
 	state_chart.send_event("end_game")
+	
+func new_game() -> void:
+	_hide_camera_shift_panel()
