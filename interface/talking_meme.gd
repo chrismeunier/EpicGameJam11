@@ -1,6 +1,7 @@
 extends Node2D
 
 @onready var anim = $Meme
+var is_game_started = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -8,6 +9,7 @@ func _ready() -> void:
 	trigger_event()
 
 func stop_all():
+	is_game_started = true
 	AudioManager.monologue_mémé.stop()
 	anim.stop()
 
@@ -16,7 +18,8 @@ func trigger_event():
 	await get_tree().create_timer(7.0).timeout
 	
 	# This runs exactly 7 seconds later
-	launch_animation_and_sound()
+	if (is_game_started == false):
+		launch_animation_and_sound()
 
 func launch_animation_and_sound():
 	anim.play("talking")
