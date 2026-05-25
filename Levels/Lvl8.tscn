@@ -81,7 +81,7 @@ position = Vector2(1680, 560)
 position = Vector2(560, 560)
 
 [node name="Teleporter2" parent="." node_paths=PackedStringArray("map", "destination") instance=ExtResource("9_b7nnr")]
-position = Vector2(2363, 848)
+position = Vector2(1904, 560)
 map = NodePath("../Map")
 destination = NodePath("../Destination2")
 

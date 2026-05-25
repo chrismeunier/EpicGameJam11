@@ -122,6 +122,7 @@ func _on_inactive_state_entered() -> void:
 
 func _on_selecting_state_entered() -> void:
 	_enable_all_buttons()
+	AudioManager.music_heaven.stop()
 	if _is_shiftable_camera_level():
 		_show_camera_shift_panel()
 		camera_shift_commands.enable_buttons()
