@@ -81,7 +81,7 @@ destination = NodePath("../EarthDestination")
 position = Vector2(1840, 400)
 
 [node name="EarthDestination" type="Marker2D" parent="."]
-position = Vector2(544, 145)
+position = Vector2(592, 400)
 
 [node name="ChurchArea2D" type="Area2D" parent="."]
 position = Vector2(616, -382)

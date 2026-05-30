@@ -50,7 +50,7 @@ map = NodePath("../Map")
 destination = NodePath("../HeavenDestination")
 
 [node name="TeleporterToEarth" parent="." node_paths=PackedStringArray("map", "destination") instance=ExtResource("10_pvpd0")]
-position = Vector2(1654, 325)
+position = Vector2(1456, 240)
 map = NodePath("../Map")
 destination = NodePath("../EarthDestination")
 
@@ -58,7 +58,7 @@ destination = NodePath("../EarthDestination")
 position = Vector2(1456, 272)
 
 [node name="EarthDestination" type="Marker2D" parent="."]
-position = Vector2(673, 270)
+position = Vector2(624, 272)
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(672, 248)
