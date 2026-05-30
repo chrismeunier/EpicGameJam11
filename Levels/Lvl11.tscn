@@ -788,7 +788,7 @@ map = NodePath("../Map")
 destination = NodePath("../HeavenDestination")
 
 [node name="TeleporterToEarth" parent="." node_paths=PackedStringArray("map", "destination") instance=ExtResource("11_aa6f4")]
-position = Vector2(1808, 520)
+position = Vector2(1383, 559)
 map = NodePath("../Map")
 destination = NodePath("../EarthDestination")
 
@@ -796,7 +796,7 @@ destination = NodePath("../EarthDestination")
 position = Vector2(1808, 496)
 
 [node name="EarthDestination" type="Marker2D" parent="."]
-position = Vector2(464, 528)
+position = Vector2(95, 528)
 
 [connection signal="body_entered" from="ChurchArea2D" to="." method="_on_church_area_2d_body_entered"]
 [connection signal="body_exited" from="ChurchArea2D" to="." method="_on_church_area_2d_body_exited"]
